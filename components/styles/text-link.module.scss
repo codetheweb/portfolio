@@ -1,0 +1,12 @@
+@use '../../styles/variables';
+
+.link {
+  text-decoration: underline;
+  text-decoration-color: variables.$primary-accent;
+  transition-duration: variables.$transition-duration;
+
+  &:hover {
+    text-decoration-color: transparent;
+    color: variables.$primary-accent;
+  }
+}

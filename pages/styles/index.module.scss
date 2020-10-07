@@ -1,0 +1,9 @@
+.projectTiles {
+  display: flex;
+  flex-wrap: wrap;
+
+  & > * {
+    margin-right: 5rem;
+    margin-bottom: 5rem;
+  }
+}

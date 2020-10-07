@@ -1,0 +1,13 @@
+@use '../../styles/variables';
+
+.icon {
+  margin-right: 0.5rem;
+  font-size: 1.5rem;
+  transition-duration: variables.$transition-duration;
+
+  color: mix(variables.$foreground, variables.$background, 40%);
+
+  &:hover, &:active {
+    color: variables.$primary-accent;
+  }
+}

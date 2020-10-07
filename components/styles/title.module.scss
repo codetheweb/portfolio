@@ -1,0 +1,14 @@
+@use '../../styles/variables';
+
+.title {
+  margin: 0;
+  font-size: 6rem;
+  color: variables.$foreground;
+  letter-spacing: 3px;
+  text-shadow:
+    3px  3px 0 variables.$primary-accent,
+   -1px -1px 0 variables.$primary-accent,
+    1px -1px 0 variables.$primary-accent,
+    -1px 1px 0 variables.$primary-accent,
+     1px 1px 0 variables.$primary-accent;
+}
