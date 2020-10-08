@@ -28,6 +28,7 @@
     "eslint-config-xo-typescript": "^0.33.0",
     "eslint-plugin-react": "^7.21.3",
     "eslint-plugin-react-hooks": "^4.1.2",
+    "husky": "^4.3.0",
     "imagemin-mozjpeg": "^9.0.0",
     "imagemin-optipng": "^8.0.0",
     "lqip-loader": "^2.2.1",
@@ -42,6 +43,11 @@
     "extends": "xo-react",
     "rules": {
       "react/function-component-definition": "off"
+    }
+  },
+  "husky": {
+    "hooks": {
+      "pre-commit": "yarn lint"
     }
   }
 }
