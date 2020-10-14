@@ -12,9 +12,9 @@ export default function Links({year, website, apple, github}: {year: string; web
 			<div>
 				{apple && <IconLink href={apple} icon={faApple}/>}
 
-				{website && <IconLink href={website} icon={faLink}/>}
-
 				{github && <IconLink href={github} icon={faGithub}/>}
+
+				{website && <IconLink href={website} icon={faLink}/>}
 			</div>
 		</div>
 	);

@@ -4,12 +4,19 @@ html,
 body {
   padding: 0;
   margin: 0;
-  background-color: variables.$background;
-  color: variables.$foreground;
+  background-color: variables.$white;
+  color: variables.$black;
   font-family: -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Oxygen,
     Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue, sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  transition-duration: variables.$theme-transition-duration;
+  min-height: 100vh;
+}
+
+.dark-mode {
+  background-color: variables.$black;
+  color: variables.$white;
 }
 
 a {

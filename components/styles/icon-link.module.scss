@@ -2,12 +2,18 @@
 
 .icon {
   margin-right: 0.5rem;
-  font-size: 1.5rem;
+  font-size: 1.6rem;
   transition-duration: variables.$transition-duration;
 
-  color: mix(variables.$foreground, variables.$background, 40%);
+  color: mix(variables.$white, variables.$black, 10%);
 
   &:hover, &:active {
     color: variables.$primary-accent;
+  }
+}
+
+body:global(.dark-mode) {
+  .icon {
+    color: mix(variables.$white, variables.$black, 40%);
   }
 }

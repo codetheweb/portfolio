@@ -43,7 +43,7 @@ const PROJECTS = [
 		image: FilmBoardHero,
 		name: 'Film Board',
 		year: '2019',
-		description: 'A beautiful and modern site for the Film Board at Michigan Tech.',
+		description: 'A modern & beautiful site for the Film Board at Michigan Tech.',
 		technologies: ['React', 'JavaScript', 'Next.js']
 	},
 	{

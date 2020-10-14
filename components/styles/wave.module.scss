@@ -14,7 +14,7 @@
       height: calc((1vh + 1vw) * 4);
       border-radius: 100%;
       cursor: pointer;
-      transition-duration: variables.$transition-duration * 4;
+      transition-duration: variables.$theme-transition-duration;
       background-color: variables.$yellow;
       box-shadow: 0px 0px 20px 0px rgba(variables.$yellow, 0.5);
     }
@@ -26,20 +26,22 @@
   }
 
   svg path {
-    fill: variables.$foreground;
-    fill: mix(variables.$foreground, variables.$primary-accent, 40%);
-    transition-duration: variables.$transition-duration * 4;
+    fill: variables.$white;
+    fill: mix(variables.$white, variables.$primary-accent, 15%);
+    transition-duration: variables.$theme-transition-duration;
     fill-opacity: 1;
   }
+}
 
-  &.isDark {
+body:global(.dark-mode) {
+  .container {
     .body {
-      background-color: rgba(variables.$foreground, 0.8);
-      box-shadow: 0px 0px 20px 0px rgba(variables.$foreground, 0.3);
+      background-color: rgba(variables.$white, 0.8);
+      box-shadow: 0px 0px 20px 0px rgba(variables.$white, 0.3);
     }
 
     svg path {
-      fill: #7A81FF;
+      fill: variables.$primary-accent;
       fill-opacity: 0.05;
     }
   }

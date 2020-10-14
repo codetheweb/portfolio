@@ -30,7 +30,7 @@ export default function ProjectTile({image, video, shouldVideoHaveShadow = false
 				<div className={styles.imageContainer} style={{paddingBottom: alignImageWithBottom ? 0 : '1rem'}}>
 					{image && <img src={image} style={{opacity: videoIsPlaying ? 0 : 1, marginTop: alignImageWithBottom ? 'auto' : '0'}}/>}
 
-					{video && <div className={`${styles.videoContainer} ${shouldVideoHaveShadow ? styles.withShadow : ''}`} style={{opacity: videoIsPlaying ? 1 : 0}}><video ref={videoRef} muted src={video} preload="auto"/></div>}
+					{video && <div className={`${styles.videoContainer} ${shouldVideoHaveShadow ? styles.withShadow : ''}`} style={{opacity: videoIsPlaying ? 1 : 0}}><video ref={videoRef} muted loop src={video} preload="auto"/></div>}
 				</div>
 
 				<div className={styles.details}>

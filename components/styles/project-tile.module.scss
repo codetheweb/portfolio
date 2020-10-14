@@ -8,9 +8,9 @@ $offset: 15px;
   border-radius: variables.$radius;
   display: flex;
   flex-direction: column;
-  background-color: variables.$foreground;
-  box-shadow: $offset $offset 0px 0px mix(variables.$primary-accent, variables.$background, 40%);
-  color: variables.$background;
+  background-color: variables.$white;
+  box-shadow: $offset $offset 0px 0px mix(variables.$primary-accent, variables.$black, 30%);
+  color: variables.$black;
   transition-property: all;
   transition-duration: variables.$transition-duration;
   overflow: hidden;
@@ -49,7 +49,7 @@ $offset: 15px;
     .withShadow {
       video {
         border-radius: variables.$radius;
-        box-shadow: 0px 5px 5px 2px mix(variables.$foreground, variables.$background, 30%);
+        box-shadow: 0px 5px 10px 2px rgba(mix(variables.$white, variables.$black, 30%), 50%);
         width: auto;
         height: 100%;
       }
@@ -89,7 +89,7 @@ $offset: 15px;
       .year {
         font-weight: bold;
         font-size: 1.1rem;
-        color: lighten(variables.$background, 30%);
+        color: lighten(variables.$black, 30%);
       }
     }
 
@@ -103,8 +103,8 @@ $offset: 15px;
 
     .tag {
       display: inline-block;
-      background-color: variables.$background;
-      color: variables.$foreground;
+      background-color: variables.$black;
+      color: variables.$white;
       padding: 0.3rem 0.5rem;
       border-radius: variables.$radius;
       margin-right: 0.5rem;
@@ -132,5 +132,49 @@ $offset: 15px;
     video {
       filter: none !important;
     }
+  }
+}
+
+body:global(.light-mode) {
+  .container {
+    position: relative;
+    box-shadow: none;
+    z-index: 0;
+    border: 5px solid transparent;
+
+    &:before {
+      content: '';
+      z-index: -1;
+      position: absolute;
+      top: 0;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      background: linear-gradient(variables.$white, variables.$white) padding-box, linear-gradient(to bottom right, #b827fc 0%, #2c90fc 25%, #b8fd33 50%, #fec837 75%, #fd1892 100%) border-box;
+      border: 5px solid transparent;
+      opacity: 0;
+      transition-duration: variables.$transition-duration;
+      background-size: 200% 200%;
+      animation: rainbow 3s ease infinite;
+      animation-direction: alternate;
+    }
+
+    &:hover {
+      transform: none;
+
+      &:before {
+        opacity: 0.5;
+      }
+    }
+  }
+}
+
+@keyframes rainbow {
+  from {
+    background-position: 0 50%;
+  }
+
+  to {
+    background-position: 100% 50%;
   }
 }
