@@ -9,11 +9,36 @@ $offset: 15px;
   display: flex;
   flex-direction: column;
   background-color: variables.$white;
-  box-shadow: $offset $offset 0px 0px mix(variables.$primary-accent, variables.$black, 30%);
   color: variables.$black;
   transition-property: all;
   transition-duration: variables.$transition-duration;
   overflow: hidden;
+  position: relative;
+  z-index: 0;
+
+  &:before {
+    content: '';
+    z-index: -1;
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background: linear-gradient(to bottom right, #b827fc 0%, #2c90fc 25%, #b8fd33 50%, #fec837 75%, #fd1892 100%);
+    // background: linear-gradient(to bottom right, mix(variables.$primary-accent, white, 10%) 0%, mix(variables.$primary-accent, white, 90%) 100%);
+    opacity: 0;
+    transition-duration: variables.$transition-duration;
+    background-size: 200% 200%;
+    animation: rainbow 3s ease infinite;
+    animation-direction: alternate;
+  }
+
+  &:hover {
+    &:before {
+      opacity: 0.2;
+      // opacity: 0.6;
+    }
+  }
 
   .imageContainer {
     display: flex;
@@ -113,9 +138,6 @@ $offset: 15px;
 
 
   &:hover {
-    transform: translateY($offset) translateX($offset);
-    box-shadow: none;
-
     h3 {
       color: variables.$primary-accent;
 
@@ -135,33 +157,17 @@ $offset: 15px;
   }
 }
 
-body:global(.light-mode) {
+body:global(.dark-mode) {
   .container {
-    position: relative;
-    box-shadow: none;
-    z-index: 0;
-    border: 5px solid transparent;
+    background: black;
+    color: variables.$white;
 
     &:before {
-      content: '';
-      z-index: -1;
-      position: absolute;
-      top: 0;
-      bottom: 0;
-      left: 0;
-      right: 0;
-      background: linear-gradient(variables.$white, variables.$white) padding-box, linear-gradient(to bottom right, #b827fc 0%, #2c90fc 25%, #b8fd33 50%, #fec837 75%, #fd1892 100%) border-box;
-      border: 5px solid transparent;
-      opacity: 0;
-      transition-duration: variables.$transition-duration;
-      background-size: 200% 200%;
-      animation: rainbow 3s ease infinite;
-      animation-direction: alternate;
+      background: linear-gradient(to top left, mix(variables.$primary-accent, black, 10%) 0%, mix(variables.$primary-accent, black, 90%) 100%);
     }
 
     &:hover {
-      transform: none;
-
+      background-color: mix(black, variables.$white, 80%);
       &:before {
         opacity: 0.5;
       }

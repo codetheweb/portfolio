@@ -1,5 +1,7 @@
 .container {
   padding: 0 1rem;
+  padding-left: calc(1rem + env(safe-area-inset-left));
+  padding-right: calc(1rem + env(safe-area-inset-right));
   max-width: 60rem;
   margin: 0 auto;
   padding-bottom: 5rem;

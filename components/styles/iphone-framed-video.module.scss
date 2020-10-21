@@ -1,0 +1,30 @@
+.container {
+  position: relative;
+  width: 13rem;
+  height: 26rem;
+
+  img, .videoContainer {
+    position: absolute;
+    width: 100%;
+  }
+
+  .videoContainer {
+    padding: 15px;
+
+    .background {
+      position: absolute;
+      margin: 12px;
+      border-radius: 10px;
+      background: black;
+      top: 0;
+      bottom: 0;
+      left: 0;
+      right: 0;
+    }
+  }
+
+  video {
+    position: relative;
+    width: 100%;
+  }
+}

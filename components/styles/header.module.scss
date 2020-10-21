@@ -1,0 +1,26 @@
+@use '../../styles/variables';
+
+.header {
+  color: mix(variables.$white, variables.$black, 5%);
+  margin: 0;
+  transition-duration: variables.$theme-transition-duration;
+}
+
+h1.header {
+  font-size: 5rem;
+}
+
+h2.header {
+  font-size: 2.5rem;
+  font-weight: 900;
+
+  &.topMargin {
+    margin-top: 3rem;
+  }
+}
+
+body:global(.dark-mode) {
+  .header {
+    color: mix(variables.$white, variables.$black, 95%);
+  }
+}
