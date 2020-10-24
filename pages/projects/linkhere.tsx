@@ -1,0 +1,36 @@
+import React from 'react';
+import Header from '../../components/header';
+import Links from '../../components/projects/links';
+import TextLink from '../../components/text-link';
+import commonStyles from './styles/common.module.scss';
+import Demo from '../../public/linkhere/demo.gif';
+
+export default function LinkHere() {
+	return (
+		<div>
+			<div className={commonStyles.textSection}>
+				<Header size="h1">linkhere</Header>
+
+				<Links year="2020" github="https://github.com/link-here/extension" chrome="https://chrome.google.com/webstore/detail/linkhere/menbmobndejfbajdplodpfojcanodobh" firefox="https://addons.mozilla.org/en-US/firefox/addon/link_here/"/>
+
+				<img src={Demo} className={`${commonStyles.media} ${commonStyles.mediaRounded} ${commonStyles.mediaFullWidth}`}/>
+
+				<p>
+					linkhere was built to solve a real-world problem. I often find an interesting article or website when browsing on my phone, but would rather read it / research it further later on a larger screen. Although there are some services like Pocket that do something similar, linkhere is unique in how it presents saved sites. They are displayed in grayscale every time a new tab is opened, providing a gentle nudge to open them while not being overly aggressive.
+				</p>
+
+				<p>
+					linkhere is comprised of 3 parts: a browser extension, a server, and a share shortcut on iOS.
+				</p>
+
+				<p>
+					I&apos;ve used linkhere daily since I made it over a weekend. It&apos;s been extremely stable, with no bugfixes or other updates needed.
+				</p>
+			</div>
+
+			<div style={{marginTop: '5rem'}}>
+				<TextLink href="/">return to home</TextLink>
+			</div>
+		</div>
+	);
+}

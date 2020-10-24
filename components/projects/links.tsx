@@ -1,10 +1,10 @@
 import React from 'react';
 import {faLink} from '@fortawesome/free-solid-svg-icons';
-import {faApple, faGithub} from '@fortawesome/free-brands-svg-icons';
+import {faApple, faGithub, faChrome, faFirefox} from '@fortawesome/free-brands-svg-icons';
 import styles from './styles/links.module.scss';
 import IconLink from '../icon-link';
 
-export default function Links({year, website, apple, github}: {year: string; website?: string; apple?: string; github?: string}) {
+export default function Links({year, website, apple, github, firefox, chrome}: {year: string; website?: string; apple?: string; github?: string; firefox?: string; chrome?: string}) {
 	return (
 		<div className={styles.container}>
 			<span className={styles.year}>{year}</span>
@@ -15,6 +15,10 @@ export default function Links({year, website, apple, github}: {year: string; web
 				{github && <IconLink href={github} icon={faGithub}/>}
 
 				{website && <IconLink href={website} icon={faLink}/>}
+
+				{firefox && <IconLink href={firefox} icon={faFirefox}/>}
+
+				{chrome && <IconLink href={chrome} icon={faChrome}/>}
 			</div>
 		</div>
 	);

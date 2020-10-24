@@ -15,5 +15,9 @@
 body:global(.dark-mode) {
   .icon {
     color: mix(variables.$white, variables.$black, 40%);
+
+    &:hover, &:active {
+      color: variables.$primary-accent;
+    }
   }
 }
