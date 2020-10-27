@@ -1,5 +1,4 @@
 import React from 'react';
-// eslint-disable-next-line @typescript-eslint/no-unused-vars
 import {AppProps} from 'next/app';
 import Head from 'next/head';
 import {config} from '@fortawesome/fontawesome-svg-core';
