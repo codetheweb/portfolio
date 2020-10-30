@@ -14,7 +14,7 @@ body {
   min-height: 100vh;
 }
 
-.dark-mode {
+html.dark-mode, html.dark-mode body {
   background-color: variables.$black;
   color: variables.$white;
 }

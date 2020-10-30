@@ -14,7 +14,7 @@
      1px 1px 0 variables.$primary-accent;
 }
 
-body:global(.dark-mode) {
+html:global(.dark-mode) {
   .title {
     color: variables.$black;
   }

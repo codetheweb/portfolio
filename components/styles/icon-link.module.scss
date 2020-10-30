@@ -12,7 +12,7 @@
   }
 }
 
-body:global(.dark-mode) {
+html:global(.dark-mode) {
   .icon {
     color: mix(variables.$white, variables.$black, 40%);
 

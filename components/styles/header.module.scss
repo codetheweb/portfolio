@@ -19,7 +19,7 @@ h2.header {
   }
 }
 
-body:global(.dark-mode) {
+html:global(.dark-mode) {
   .header {
     color: mix(variables.$white, variables.$black, 95%);
   }

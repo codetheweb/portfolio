@@ -24,8 +24,7 @@ $offset: 15px;
     bottom: 0;
     left: 0;
     right: 0;
-    background: linear-gradient(to bottom right, #b827fc 0%, #2c90fc 25%, #b8fd33 50%, #fec837 75%, #fd1892 100%);
-    // background: linear-gradient(to bottom right, mix(variables.$primary-accent, white, 10%) 0%, mix(variables.$primary-accent, white, 90%) 100%);
+    background: variables.rainbow-gradient(0%);
     opacity: 0;
     transition-duration: variables.$transition-duration;
     background-size: 200% 200%;
@@ -36,7 +35,6 @@ $offset: 15px;
   &:hover {
     &:before {
       opacity: 0.2;
-      // opacity: 0.6;
     }
   }
 
@@ -157,13 +155,13 @@ $offset: 15px;
   }
 }
 
-body:global(.dark-mode) {
+html:global(.dark-mode) {
   .container {
     background: black;
     color: variables.$white;
 
     &:before {
-      background: linear-gradient(to top left, mix(variables.$primary-accent, black, 10%) 0%, mix(variables.$primary-accent, black, 90%) 100%);
+      background: variables.$primary-gradient;
     }
 
     &:hover {

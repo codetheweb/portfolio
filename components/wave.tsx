@@ -3,7 +3,13 @@ import useDarkMode from 'use-dark-mode';
 import styles from './styles/wave.module.scss';
 
 export default function Wave() {
-	const darkMode = useDarkMode(true);
+	const config: any = {};
+
+	if (global.document?.documentElement) {
+		config.element = global.document.documentElement;
+	}
+
+	const darkMode = useDarkMode(true, config);
 
 	return (
 		<div className={styles.container}>

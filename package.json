@@ -18,6 +18,7 @@
     "next": "10.0.0",
     "react": "17.0.1",
     "react-dom": "17.0.1",
+    "react-parallax-tilt": "^1.4.66",
     "use-dark-mode": "^2.3.1"
   },
   "devDependencies": {

@@ -46,7 +46,7 @@
   }
 }
 
-body:global(.dark-mode) {
+html:global(.dark-mode) {
   .container {
     &:before {
       background-color: variables.$primary-accent;

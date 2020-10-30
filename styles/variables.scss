@@ -8,3 +8,9 @@ $radius: 10px;
 
 $transition-duration: 0.2s;
 $theme-transition-duration: $transition-duration * 4;
+
+$primary-gradient: linear-gradient(to top left, mix($primary-accent, black, 10%) 0%, mix($primary-accent, black, 90%) 100%);
+
+@function rainbow-gradient($lightness) {
+  @return linear-gradient(to bottom right, lighten(#b827fc, $lightness) 0%, lighten(#2c90fc, $lightness) 25%, lighten(#b8fd33, $lightness) 50%, lighten(#fec837, $lightness) 75%, lighten(#fd1892, $lightness) 100%)
+}
