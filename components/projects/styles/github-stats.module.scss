@@ -9,6 +9,8 @@
   display: inline-block;
   transition-duration: variables.$theme-transition-duration;
   transition-property: background;
+  animation: rainbow 3s ease infinite;
+  animation-direction: alternate;
 
   .icon {
     opacity: 0.4;
@@ -28,5 +30,16 @@
 html:global(.dark-mode) {
   .container {
     background: variables.$primary-gradient;
+    animation: none;
+  }
+}
+
+@keyframes rainbow {
+  from {
+    background-position: 0 50%;
+  }
+
+  to {
+    background-position: 100% 50%;
   }
 }
