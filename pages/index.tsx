@@ -30,8 +30,6 @@ const PROJECTS = [
 		technologies: ['React', 'Typescript']
 	},
 	{
-		video: '/muse/promo.mov',
-		shouldVideoHaveShadow: true,
 		image: MuseLogo,
 		name: 'Muse',
 		year: '2020',

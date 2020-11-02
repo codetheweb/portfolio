@@ -29,10 +29,16 @@ a {
 }
 
 p {
-  max-width: 30rem;
+  max-width: 65ch;
   line-height: 1.5;
 }
 
 h2 {
   font-size: 180%;
+}
+
+blockquote {
+  margin-left: 0;
+  border-left: 3px solid variables.$primary-accent;
+  padding-left: 1rem;
 }
