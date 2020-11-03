@@ -19,7 +19,9 @@ export default function LinkHere() {
 				<p>
 					The Film Board at Michigan Tech is a club that shows weekly movies to campus and the wider community. I was looking for a project to expand my web development skills, and creating a non-trival website from scratch seemed like it&apos;d be a good start.
 				</p>
+			</div>
 
+			<div className={commonStyles.textSection}>
 				<EmbeddedImg size="medium" src="/filmboard/movies.png"/>
 			</div>
 

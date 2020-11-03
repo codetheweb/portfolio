@@ -4,6 +4,7 @@
   color: mix(variables.$white, variables.$black, 5%);
   margin: 0;
   transition-duration: variables.$theme-transition-duration;
+  transition-property: color;
 }
 
 h1.header {
