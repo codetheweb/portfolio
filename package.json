@@ -48,7 +48,10 @@
     "extends": "xo-react",
     "rules": {
       "react/function-component-definition": "off"
-    }
+    },
+    "ignore": [
+      "public/noflash.js"
+    ]
   },
   "husky": {
     "hooks": {
