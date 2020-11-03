@@ -46,10 +46,17 @@ $offset: 15px;
     position: relative;
     padding: 1rem;
 
-    img {
+    picture {
       filter: grayscale(100%);
       height: 100%;
-      margin: 0 auto;
+      width: 100%;
+      display: flex;
+
+      img {
+        width: auto;
+        height: 100%;
+        margin: 0 auto;
+      }
     }
 
     .videoContainer {
@@ -155,7 +162,7 @@ $offset: 15px;
       }
     }
 
-    img {
+    picture {
       filter: none !important;
     }
 

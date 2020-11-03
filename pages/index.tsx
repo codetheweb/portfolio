@@ -33,7 +33,7 @@ const PROJECTS = [
 		technologies: ['Typescript', 'Discord.js']
 	},
 	{
-		video: '/filmboard/promo.mov',
+		video: '/filmboard/promo.mp4',
 		roundedVideo: true,
 		shouldVideoHaveShadow: true,
 		name: 'Film Board',
