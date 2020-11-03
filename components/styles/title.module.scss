@@ -5,6 +5,7 @@
   font-size: 6rem;
   color: variables.$white;
   transition-duration: variables.$theme-transition-duration;
+  transition-property: color;
   letter-spacing: 3px;
   text-shadow:
     3px  3px 0 variables.$primary-accent,
