@@ -6,10 +6,23 @@
 
 .medium {
   max-width: 30vw;
+
+  @media only screen and (max-width: 650px) {
+    // Bump up to large
+    max-width: 90vw;
+    margin-left: 0;
+    float: none;
+  }
 }
 
 .large {
   max-width: 90vw;
+  margin-bottom: 16px;
+
+  @media only screen and (max-width: 650px) {
+    float: none;
+    margin-left: 0;
+  }
 }
 
 .rounded {

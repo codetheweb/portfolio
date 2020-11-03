@@ -2,7 +2,9 @@ import React from 'react';
 import Header from '../../components/header';
 import Links from '../../components/projects/links';
 import TextLink from '../../components/text-link';
+import Footer from '../../components/projects/footer';
 import commonStyles from './styles/common.module.scss';
+import styles from './styles/tuyapi.module.scss';
 import GitHubStats from '../../components/projects/github-stats';
 
 export default function LinkHere() {
@@ -13,7 +15,7 @@ export default function LinkHere() {
 
 				<Links year="2017 → present" github="https://github.com/TuyaAPI" website="https://github.com/codetheweb/tuyapi"/>
 
-				<div style={{float: 'right', marginLeft: '2rem', marginBottom: '2rem'}}>
+				<div className={styles.githubStats}>
 					<GitHubStats stars={900} issues={265} contributors={14} commits={500} installs="100k"/>
 				</div>
 
@@ -34,9 +36,7 @@ export default function LinkHere() {
 				</p>
 			</div>
 
-			<div style={{marginTop: '5rem'}}>
-				<TextLink href="/">return to home</TextLink>
-			</div>
+			<Footer/>
 		</div>
 	);
 }

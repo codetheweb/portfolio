@@ -1,0 +1,10 @@
+.githubStats {
+  float: right;
+  margin-left: 2rem;
+  margin-bottom: 2rem;
+
+  @media only screen and (max-width: 500px) {
+    float: none;
+    margin-left: 0;
+  }
+}

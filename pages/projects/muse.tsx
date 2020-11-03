@@ -3,6 +3,7 @@ import Header from '../../components/header';
 import Links from '../../components/projects/links';
 import EmbeddedVideo from '../../components/embedded-video';
 import TextLink from '../../components/text-link';
+import Footer from '../../components/projects/footer';
 import commonStyles from './styles/common.module.scss';
 
 export default function Muse() {
@@ -56,9 +57,7 @@ export default function Muse() {
 				</p>
 			</div>
 
-			<div style={{marginTop: '5rem'}}>
-				<TextLink href="/">return to home</TextLink>
-			</div>
+			<Footer/>
 		</div>
 	);
 }
