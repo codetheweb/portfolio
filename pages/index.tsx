@@ -61,9 +61,12 @@ const APPEAR = {
 
 export default function Home() {
 	return (
-		<div>
+		<div className={styles.container}>
 			<Title label="Hi, I'm Max."/>
-			<SocialButtons/>
+
+			<div style={{marginTop: '1rem'}}>
+				<SocialButtons/>
+			</div>
 
 			<div>
 				<p>
