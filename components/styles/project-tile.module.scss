@@ -71,10 +71,20 @@ $offset: 15px;
 
     .withShadow {
       video {
-        border-radius: variables.$radius;
-        box-shadow: 0px 5px 10px 2px rgba(mix(variables.$white, variables.$black, 30%), 50%);
+        box-shadow: 0px 3px 8px 2px rgba(mix(variables.$white, variables.$black, 30%), 50%);
         width: auto;
         height: 100%;
+      }
+    }
+
+    .roundedVideo {
+      video {
+        border-radius: 3px;
+
+        // iOS bug :(
+        @supports (-webkit-touch-callout: none) {
+          box-shadow: none;
+        }        
       }
     }
   }
@@ -168,6 +178,14 @@ html:global(.dark-mode) {
       background-color: mix(black, variables.$white, 80%);
       &:before {
         opacity: 0.5;
+      }
+    }
+
+    .imageContainer {
+      .withShadow {
+        video {
+          box-shadow: none;
+        }
       }
     }
   }

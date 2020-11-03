@@ -1,18 +1,9 @@
-.media {
-  max-width: 13rem;
-  margin-left: 1.5rem;
-  float: right;
-}
-
-.mediaRounded {
-  border-radius: 4px;
-}
-
-.mediaFullWidth {
-  max-width: 90vw;
-}
-
 .textSection {
   margin-bottom: 3rem;
   overflow: auto;
+  margin-top: 16px;
+
+  & > p:first-of-type {
+    margin-top: 0;
+  }
 }

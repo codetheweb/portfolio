@@ -13,7 +13,7 @@ export default function LinkHere() {
 
 				<Links year="2017 → present" github="https://github.com/TuyaAPI" website="https://github.com/codetheweb/tuyapi"/>
 
-				<div className={commonStyles.media} style={{maxWidth: 'unset'}}>
+				<div style={{float: 'right', marginLeft: '2rem', marginBottom: '2rem'}}>
 					<GitHubStats stars={900} issues={265} contributors={14} commits={500} installs="100k"/>
 				</div>
 

@@ -1,5 +1,5 @@
 import React from 'react';
-import iPhoneFrame from '../public/iphone-frame.png';
+import Img from 'react-optimized-image';
 import styles from './styles/iphone-framed-video.module.scss';
 
 export default function PhoneFramedVideo({src}: {src: string}) {
@@ -9,7 +9,7 @@ export default function PhoneFramedVideo({src}: {src: string}) {
 				<div className={styles.background}/>
 				<video loop muted autoPlay src={src}/>
 			</div>
-			<img src={iPhoneFrame} draggable={false}/>
+			<Img src={require('../images/iphone-frame.png')} sizes={[500]} draggable={false}/>
 		</div>
 	);
 }

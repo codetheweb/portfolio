@@ -2,9 +2,8 @@ import React from 'react';
 import Header from '../../components/header';
 import Links from '../../components/projects/links';
 import TextLink from '../../components/text-link';
+import EmbeddedImg from '../../components/embedded-img';
 import PhoneFramedVideo from '../../components/iphone-framed-video';
-import HomeFramed from '../../images/xkcdy/home.png';
-import iPadFramed from '../../images/xkcdy/ipad.png';
 import commonStyles from './styles/common.module.scss';
 
 export default function XKCDY() {
@@ -15,7 +14,7 @@ export default function XKCDY() {
 
 				<Links year="2020" website="https://xkcdy.com" apple="https://apps.apple.com/us/app/xkcdy/id1520259318" github="https://github.com/XKCDY/app"/>
 
-				<img src={HomeFramed} className={commonStyles.media}/>
+				<EmbeddedImg size="small" src="/xkcdy/home.png"/>
 
 				<p>
 					In the summer of 2020, I decided to learn Swift & SwiftUI by making an app.
@@ -31,7 +30,7 @@ export default function XKCDY() {
 			<Header size="h2">Design</Header>
 
 			<div className={commonStyles.textSection}>
-				<img src={iPadFramed} className={commonStyles.media}/>
+				<EmbeddedImg size="small" src="/xkcdy/ipad.png"/>
 
 				<p>
 					When designing the app, I tried to keep UX principles in mind. For example, the main actions for most screens are located at the bottom; where it&apos;s easiest to reach with your thumbs. On bigger screens, like iPads, the button bars automatically resize to provide a better experience. Since this was a side project and I had no deadline, I always prioritized polishing exising functionality to perfection instead of adding new functionality.
@@ -54,7 +53,7 @@ export default function XKCDY() {
 
 			<Header size="h2">Problems Encountered</Header>
 			<div className={commonStyles.textSection}>
-				<div className={commonStyles.media}>
+				<div style={{float: 'right'}}>
 					<PhoneFramedVideo src="/xkcdy/swipe.mp4"/>
 				</div>
 

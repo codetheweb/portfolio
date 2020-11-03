@@ -1,10 +1,11 @@
 import React, {useRef, useState} from 'react';
+import Img from 'react-optimized-image';
 import Link from 'next/link';
 import {FontAwesomeIcon} from '@fortawesome/react-fontawesome';
 import {faChevronRight} from '@fortawesome/free-solid-svg-icons';
 import styles from './styles/project-tile.module.scss';
 
-export default function ProjectTile({image, video, shouldVideoHaveShadow = false, alignImageWithBottom = false, name, year, description, technologies}: {image?: any; video?: string; shouldVideoHaveShadow: boolean; alignImageWithBottom: boolean; name: string; year: string; description: string; technologies: string[]}) {
+export default function ProjectTile({image, video, shouldVideoHaveShadow = false, alignImageWithBottom = false, name, year, description, technologies, roundedVideo = false}: {image?: string; video?: string; shouldVideoHaveShadow: boolean; alignImageWithBottom: boolean; name: string; year: string; description: string; technologies: string[]; roundedVideo?: boolean}) {
 	const videoRef = useRef<HTMLVideoElement>(null);
 	const [videoIsPlaying, setVideoIsPlaying] = useState(false);
 
@@ -25,12 +26,12 @@ export default function ProjectTile({image, video, shouldVideoHaveShadow = false
 	};
 
 	return (
-		<Link href={`/projects/${name.toLowerCase()}`}>
+		<Link href={`/projects/${name.toLowerCase().split(' ').join('')}`}>
 			<a className={styles.container} onMouseEnter={playVideoPreview} onMouseLeave={resetVideoPreview}>
 				<div className={styles.imageContainer} style={{paddingBottom: alignImageWithBottom ? 0 : '1rem'}}>
-					{image && <img src={image} style={{opacity: videoIsPlaying ? 0 : 1, marginTop: alignImageWithBottom ? 'auto' : '0'}}/>}
+					{image && <Img src={require(`../images${image}`)} style={{opacity: videoIsPlaying ? 0 : 1, marginTop: alignImageWithBottom ? 'auto' : '0'}} sizes={[500]}/>}
 
-					{video && <div className={`${styles.videoContainer} ${shouldVideoHaveShadow ? styles.withShadow : ''}`} style={{opacity: videoIsPlaying ? 1 : 0}}><video ref={videoRef} muted loop src={video} preload="auto"/></div>}
+					{video && <div className={`${styles.videoContainer} ${roundedVideo ? styles.roundedVideo : ''} ${shouldVideoHaveShadow ? styles.withShadow : ''}`} style={{opacity: videoIsPlaying || !image ? 1 : 0}}><video ref={videoRef} muted loop src={`${video}#t=0.001`} preload="auto"/></div>}
 				</div>
 
 				<div className={styles.details}>
