@@ -5,4 +5,6 @@ module.exports = withPlugins([
 	[optimizedImages, {
 		/* Config for next-optimized-images */
 	}]
-]);
+], {
+	trailingSlash: true
+});

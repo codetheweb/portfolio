@@ -7,7 +7,8 @@
     "build": "next build",
     "start": "next start",
     "lint": "xo",
-    "lint-fix": "xo --fix"
+    "lint-fix": "xo --fix",
+    "deploy": "next build && next export && rsync -avP -r out/* root@maxisom.me:/home/user-data/www/default && rm -rf out"
   },
   "dependencies": {
     "@fortawesome/fontawesome-svg-core": "^1.2.32",
