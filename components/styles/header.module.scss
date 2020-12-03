@@ -20,6 +20,10 @@ h2.header {
   }
 }
 
+h3.header {
+  font-size: 1.75rem;
+}
+
 html:global(.dark-mode) {
   .header {
     color: mix(variables.$white, variables.$black, 95%);

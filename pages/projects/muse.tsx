@@ -51,10 +51,23 @@ export default function Muse() {
 			</div>
 
 			<Header size="h2">Results</Header>
-			<div className={commonStyles.textSection}>
+			<div className={commonStyles.textSection} style={{marginBottom: '1rem'}}>
 				<p>
 					Muse has been in use for the last few months and it&apos;s been working great. We&apos;ve discovered a few minor bugs, but all were easily fixed. The highly-modular architecture also makes it easy to add new functionality in the future if necessary.
 				</p>
+			</div>
+
+			<Header size="h3">Testimonials</Header>
+			<div className={commonStyles.textSection}>
+				<blockquote>
+					it works.
+				</blockquote>
+				- nickw
+
+				<blockquote>
+					this is the way commrade
+				</blockquote>
+				- The_Administrator
 			</div>
 
 			<Footer/>

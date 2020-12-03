@@ -1,7 +1,7 @@
 import React from 'react';
 import styles from './styles/header.module.scss';
 
-export default function Header({size, children, topMargin = false}: {size: 'h1' | 'h2'; children: React.ReactNode; topMargin?: boolean}) {
+export default function Header({size, children, topMargin = false}: {size: 'h1' | 'h2' | 'h3'; children: React.ReactNode; topMargin?: boolean}) {
 	const H = size;
 
 	return (
