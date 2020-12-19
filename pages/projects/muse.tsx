@@ -65,7 +65,7 @@ export default function Muse() {
 				- nickw
 
 				<blockquote>
-					this is the way commrade
+					this is the way comrade
 				</blockquote>
 				- The_Administrator
 			</div>
