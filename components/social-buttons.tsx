@@ -1,6 +1,6 @@
 import React from 'react';
 import {faCoffee} from '@fortawesome/free-solid-svg-icons';
-import {faGithub, faReddit, faKeybase, faLinkedin} from '@fortawesome/free-brands-svg-icons';
+import {faGithub, faReddit, faKeybase, faLinkedin, faHackerNewsSquare} from '@fortawesome/free-brands-svg-icons';
 import {motion} from 'framer-motion';
 import styles from './styles/social-buttons.module.scss';
 import IconLink from './icon-link';
@@ -21,6 +21,10 @@ const ACCOUNTS = [
 	{
 		link: 'https://www.reddit.com/user/codyweby/',
 		icon: faReddit
+	},
+	{
+		link: 'https://news.ycombinator.com/user?id=codetheweb',
+		icon: faHackerNewsSquare
 	},
 	{
 		link: 'https://www.buymeacoffee.com/maxisom',
