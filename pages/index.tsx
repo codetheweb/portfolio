@@ -93,7 +93,7 @@ export default function Home() {
 			<h2>Want to talk?</h2>
 
 			<p>
-				Feel free to email me if you have feedback on one of my projects, you&apos;re looking for a developer, or you just want to connect: <TextLink href="mailto:hi@maxisom.me">hi@maxisom.me</TextLink>. You might also want to check out my <TextLink href="/resume.pdf">résumé</TextLink>.
+				Feel free to email me if you have feedback on something, you&apos;re looking for a developer, or you just want to connect: <TextLink href="mailto:hi@maxisom.me">hi@maxisom.me</TextLink>. You might also want to check out my <TextLink href="/resume.pdf">résumé</TextLink>.
 			</p>
 		</div>
 	);

@@ -16,15 +16,15 @@ export default function LinkHere() {
 				<Links year="2017 → present" github="https://github.com/TuyaAPI" website="https://github.com/codetheweb/tuyapi"/>
 
 				<div className={styles.githubStats}>
-					<GitHubStats stars={900} issues={265} contributors={14} commits={500} installs="100k"/>
+					<GitHubStats stars={1000} issues={265} contributors={14} commits={500} installs="300k"/>
 				</div>
 
 				<p>
-					TuyAPI was my first major, published entry into the world of open source. It&apos;s a collection of packages that enable the control of thousands of cheap IoT devices. Smart plugs, robot vaccums, and washing machines - TuyAPI can control them all. Although other projects exist that allow you to flash custom firmware on Tuya devices, TuyAPI implements a reverse-engineered version of the manufacturer&apos;s protocol.
+					TuyAPI was my first major, published entry into the world of open source. It&apos;s a collection of packages that enable the control of thousands of cheap IoT devices. Smart plugs, robot vaccums, and washing machines - TuyAPI can control them all. Although other scripts exist that allow you to flash custom firmware on Tuya devices, TuyAPI implements a reverse-engineered version of the manufacturer&apos;s protocol.
 				</p>
 
 				<p>
-					I originally created TuyAPI to allow <TextLink href="https://homebridge.io/">Homebridge</TextLink> to control smart plugs, and decided to open-source it so other people could use it too. It&apos;s now by far my most popular project
+					I originally created TuyAPI to allow <TextLink href="https://homebridge.io/">Homebridge</TextLink> to control smart plugs, and decided to open-source it so other people could use it too. It&apos;s now by far my most popular project.
 				</p>
 
 				<p>
