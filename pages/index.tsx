@@ -70,7 +70,7 @@ export default function Home() {
 
 			<div>
 				<p>
-					I&apos;m currently a third-year CS student at <TextLink href="https://mtu.edu">Michigan Tech</TextLink>.
+					I&apos;m currently a fourth-year CS student at <TextLink href="https://mtu.edu">Michigan Tech</TextLink>.
 				</p>
 
 				<h2>A few things I&apos;ve worked on recently</h2>
