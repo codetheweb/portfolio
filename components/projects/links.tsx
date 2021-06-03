@@ -1,8 +1,8 @@
 import React from 'react';
 import {faLink} from '@fortawesome/free-solid-svg-icons';
 import {faApple, faGithub, faChrome, faFirefox} from '@fortawesome/free-brands-svg-icons';
-import styles from './styles/links.module.scss';
 import IconLink from '../icon-link';
+import styles from './styles/links.module.scss';
 
 export default function Links({year, website, apple, github, firefox, chrome}: {year: string; website?: string; apple?: string; github?: string; firefox?: string; chrome?: string}) {
 	return (

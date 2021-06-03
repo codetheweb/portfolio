@@ -8,10 +8,10 @@ const EmbeddedImg = ({size, src, rounded = false, padding = false}: {size: Size;
 	const className = `${styles.media} ${styles[size]} ${rounded ? styles.rounded : ''} ${padding ? styles.padding : ''}`;
 
 	if (src.includes('gif')) {
-		return <Img className={className} src={require(`../images${src}`)} sizes={[200, 500]} webp={false}/>;
+		return <Img className={className} src={require(`../images${src}`) as ImgSrc} sizes={[200, 500]} webp={false}/>;
 	}
 
-	return <Img className={className} src={require(`../images${src}`)} sizes={[200, 500, 1000]}/>;
+	return <Img className={className} src={require(`../images${src}`) as ImgSrc} sizes={[200, 500, 1000]}/>;
 };
 
 export default EmbeddedImg;

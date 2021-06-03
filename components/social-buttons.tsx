@@ -4,7 +4,7 @@ import {faGithub, faReddit, faKeybase, faLinkedin, faHackerNewsSquare} from '@fo
 import {motion} from 'framer-motion';
 import styles from './styles/social-buttons.module.scss';
 import IconLink from './icon-link';
-
+// TODO: reduce bundle size by importing m
 const ACCOUNTS = [
 	{
 		link: 'https://github.com/codetheweb',

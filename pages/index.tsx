@@ -2,11 +2,18 @@ import React from 'react';
 import {motion} from 'framer-motion';
 import Title from '../components/title';
 import ProjectTile from '../components/project-tile';
-import styles from './styles/index.module.scss';
 import SocialButtons from '../components/social-buttons';
 import TextLink from '../components/text-link';
+import styles from './styles/index.module.scss';
 
 const PROJECTS = [
+	{
+		image: '/aoede/logo.png',
+		name: 'Aoede',
+		year: '2021',
+		description: 'A self-hosted Discord music bot that directly streams from Spotify to Discord.',
+		technologies: ['Rust']
+	},
 	{
 		video: '/xkcdy/promo.mp4',
 		roundedVideo: true,

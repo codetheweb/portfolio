@@ -29,7 +29,7 @@ export default function ProjectTile({image, video, shouldVideoHaveShadow = false
 		<Link href={`/projects/${name.toLowerCase().split(' ').join('')}`}>
 			<a className={styles.container} onMouseEnter={playVideoPreview} onMouseLeave={resetVideoPreview}>
 				<div className={styles.imageContainer} style={{paddingBottom: alignImageWithBottom ? 0 : '1rem'}}>
-					{image && <Img src={require(`../images${image}`)} style={{opacity: videoIsPlaying ? 0 : 1, marginTop: alignImageWithBottom ? 'auto' : '0'}} sizes={[500]}/>}
+					{image && <Img src={require(`../images${image}`) as ImgSrc} style={{opacity: videoIsPlaying ? 0 : 1, marginTop: alignImageWithBottom ? 'auto' : '0'}} sizes={[500]}/>}
 
 					{video && <div className={`${styles.videoContainer} ${roundedVideo ? styles.roundedVideo : ''} ${shouldVideoHaveShadow ? styles.withShadow : ''}`} style={{opacity: videoIsPlaying || !image ? 1 : 0}}><video ref={videoRef} muted loop src={`${video}#t=0.001`} preload="auto"/></div>}
 				</div>

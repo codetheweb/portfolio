@@ -3,9 +3,9 @@ import Header from '../../components/header';
 import Links from '../../components/projects/links';
 import TextLink from '../../components/text-link';
 import Footer from '../../components/projects/footer';
+import GitHubStats from '../../components/projects/github-stats';
 import commonStyles from './styles/common.module.scss';
 import styles from './styles/tuyapi.module.scss';
-import GitHubStats from '../../components/projects/github-stats';
 
 export default function LinkHere() {
 	return (

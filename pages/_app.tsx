@@ -2,10 +2,8 @@ import React from 'react';
 import {AppProps} from 'next/app';
 import Head from 'next/head';
 import {config} from '@fortawesome/fontawesome-svg-core';
-// eslint-disable-next-line import/no-unassigned-import
 import '@fortawesome/fontawesome-svg-core/styles.css';
 import Wave from '../components/wave';
-// eslint-disable-next-line import/no-unassigned-import
 import '../styles/globals.scss';
 import styles from './styles/app.module.scss';
 

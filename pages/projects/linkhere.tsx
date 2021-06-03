@@ -1,7 +1,6 @@
 import React from 'react';
 import Header from '../../components/header';
 import Links from '../../components/projects/links';
-import TextLink from '../../components/text-link';
 import EmbeddedImg from '../../components/embedded-img';
 import Footer from '../../components/projects/footer';
 import commonStyles from './styles/common.module.scss';

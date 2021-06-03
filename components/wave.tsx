@@ -1,9 +1,9 @@
 import React from 'react';
-import useDarkMode from 'use-dark-mode';
+import useDarkMode, {DarkModeConfig} from 'use-dark-mode';
 import styles from './styles/wave.module.scss';
 
 export default function Wave() {
-	const config: any = {};
+	const config: DarkModeConfig = {};
 
 	if (global.document?.documentElement) {
 		config.element = global.document.documentElement;
