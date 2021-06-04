@@ -46,17 +46,11 @@ $offset: 15px;
     position: relative;
     padding: 1rem;
 
-    picture {
-      filter: grayscale(100%);
-      height: 100%;
+    .imageWrapper {
+      position: relative;
       width: 100%;
-      display: flex;
-
-      img {
-        width: auto;
-        height: 100%;
-        margin: 0 auto;
-      }
+      height: 100%;
+      filter: grayscale(100%);
     }
 
     .videoContainer {
@@ -91,7 +85,7 @@ $offset: 15px;
         // iOS bug :(
         @supports (-webkit-touch-callout: none) {
           box-shadow: none;
-        }        
+        }
       }
     }
   }
@@ -162,7 +156,7 @@ $offset: 15px;
       }
     }
 
-    picture {
+    .imageWrapper {
       filter: none !important;
     }
 

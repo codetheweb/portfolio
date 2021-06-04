@@ -1,7 +1,13 @@
+@use '../../styles/variables';
+
 .media {
   max-width: 13rem;
   margin-left: 1.5rem;
   float: right;
+}
+
+.small {
+  max-width: 13rem;
 }
 
 .medium {
@@ -26,7 +32,9 @@
 }
 
 .rounded {
-  border-radius: 5px;
+  img {
+    border-radius: variables.$radius;
+  }
 }
 
 .padding {

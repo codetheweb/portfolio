@@ -14,7 +14,7 @@ export default function LinkHere() {
 
 				<Links year="2019" github="https://github.com/Film-Board/filmboard" website="https://filmboard.mtu.edu/"/>
 
-				<EmbeddedImg size="medium" src="/filmboard/showtimes.png"/>
+				<EmbeddedImg hasPriority size="medium" src="/images/filmboard/showtimes.png" width={1547} height={1141}/>
 
 				<p>
 					The Film Board at Michigan Tech is a club that shows weekly movies to campus and the wider community. I was looking for a project to expand my web development skills, and creating a non-trival website from scratch seemed like it&apos;d be a good start.
@@ -22,12 +22,12 @@ export default function LinkHere() {
 			</div>
 
 			<div className={commonStyles.textSection}>
-				<EmbeddedImg size="medium" src="/filmboard/movies.png"/>
+				<EmbeddedImg size="medium" src="/images/filmboard/movies.png" width={1547} height={1141}/>
 			</div>
 
 			<Header size="h2">Development Process</Header>
 			<div className={commonStyles.textSection}>
-				<EmbeddedImg rounded padding size="medium" src="/filmboard/mockup.png"/>
+				<EmbeddedImg isRounded hasPadding size="medium" src="/images/filmboard/mockup.png" width={3840} height={2160}/>
 
 				<p>
 					I started by approaching them with a mockup of a possible redesign to see if they&apos;d be interested. They were, and after some initial discussion I started development. The entire process was client-driven; we met regularly to discuss progress and what needed to be changed. I tracked tasks using Trello.
@@ -40,14 +40,14 @@ export default function LinkHere() {
 
 			<Header size="h2">Adding & Editing Media</Header>
 			<div className={commonStyles.textSection}>
-				<EmbeddedImg size="medium" src="/filmboard/edit-page.png"/>
+				<EmbeddedImg size="medium" src="/images/filmboard/edit-page.png" width={1547} height={1141}/>
 				<p>
 					I ended up making a simple CMS to add / edit / delete pages (they wanted something easy to use, since the old site used WordPress).
 				</p>
 			</div>
 
 			<div className={commonStyles.textSection}>
-				<EmbeddedImg size="medium" src="/filmboard/edit-movie.png"/>
+				<EmbeddedImg size="medium" src="/images/filmboard/edit-movie.png" width={1547} height={1141}/>
 
 				<p>
 					Adding movies is supercharged on the new site. <TextLink href="https://www.youtube.com/watch?v=E2WV9h8Ulh8">As a comparision</TextLink>, adding the same movie on the WordPress site took ~180 seconds vs. ~45 on my redesign. I was able to accomplish this by auto-filling almost all the required fields (description, ratings, actors, poster, showtimes, etc.). The trailer is also now automatically downloaded and processed, something that wasn&apos;t possible before.

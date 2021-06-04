@@ -1,11 +1,28 @@
 import React, {useRef, useState} from 'react';
-import Img from 'react-optimized-image';
+import Image from 'next/image';
 import Link from 'next/link';
 import {FontAwesomeIcon} from '@fortawesome/react-fontawesome';
 import {faChevronRight} from '@fortawesome/free-solid-svg-icons';
 import styles from './styles/project-tile.module.scss';
 
-export default function ProjectTile({image, video, shouldVideoHaveShadow = false, alignImageWithBottom = false, name, year, description, technologies, roundedVideo = false}: {image?: string; video?: string; shouldVideoHaveShadow: boolean; alignImageWithBottom: boolean; name: string; year: string; description: string; technologies: string[]; roundedVideo?: boolean}) {
+export type ProjectTileProps = {
+	image?: {
+		src: string;
+		width: number;
+		height: number;
+		hasPriority?: boolean;
+	};
+	video?: string;
+	isVideoShadowed?: boolean;
+	isImageAlignedWithBottom?: boolean;
+	name: string;
+	year: string;
+	description: string;
+	technologies: string[];
+	isVideoRounded?: boolean;
+};
+
+export default function ProjectTile({image, video, isVideoShadowed: shouldVideoHaveShadow = false, isImageAlignedWithBottom: alignImageWithBottom = false, name, year, description, technologies, isVideoRounded: roundedVideo = false}: ProjectTileProps) {
 	const videoRef = useRef<HTMLVideoElement>(null);
 	const [videoIsPlaying, setVideoIsPlaying] = useState(false);
 
@@ -29,7 +46,14 @@ export default function ProjectTile({image, video, shouldVideoHaveShadow = false
 		<Link href={`/projects/${name.toLowerCase().split(' ').join('')}`}>
 			<a className={styles.container} onMouseEnter={playVideoPreview} onMouseLeave={resetVideoPreview}>
 				<div className={styles.imageContainer} style={{paddingBottom: alignImageWithBottom ? 0 : '1rem'}}>
-					{image && <Img src={require(`../images${image}`) as ImgSrc} style={{opacity: videoIsPlaying ? 0 : 1, marginTop: alignImageWithBottom ? 'auto' : '0'}} sizes={[500]}/>}
+
+					{
+						image && (
+							<div className={styles.imageWrapper} style={{opacity: videoIsPlaying ? 0 : 1, marginTop: alignImageWithBottom ? 'auto' : '0'}}>
+								<Image src={image.src} layout="fill" objectFit="contain" priority={image.hasPriority}/>
+							</div>
+						)
+					}
 
 					{video && <div className={`${styles.videoContainer} ${roundedVideo ? styles.roundedVideo : ''} ${shouldVideoHaveShadow ? styles.withShadow : ''}`} style={{opacity: videoIsPlaying || !image ? 1 : 0}}><video ref={videoRef} muted loop src={`${video}#t=0.001`} preload="auto"/></div>}
 				</div>

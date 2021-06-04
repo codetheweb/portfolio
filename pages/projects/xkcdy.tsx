@@ -15,7 +15,7 @@ export default function XKCDY() {
 
 				<Links year="2020" website="https://xkcdy.com" apple="https://apps.apple.com/us/app/xkcdy/id1520259318" github="https://github.com/XKCDY/app"/>
 
-				<EmbeddedImg size="small" src="/xkcdy/home.png"/>
+				<EmbeddedImg size="small" src="/images/xkcdy/home.png" width={1443} height={2867}/>
 
 				<p>
 					In the summer of 2020, I decided to learn Swift & SwiftUI by making an app.
@@ -31,7 +31,7 @@ export default function XKCDY() {
 			<Header size="h2">Design</Header>
 
 			<div className={commonStyles.textSection}>
-				<EmbeddedImg size="small" src="/xkcdy/ipad.png"/>
+				<EmbeddedImg size="medium" src="/images/xkcdy/ipad.png" width={1909} height={2630}/>
 
 				<p>
 					When designing the app, I tried to keep UX principles in mind. For example, the main actions for most screens are located at the bottom; where it&apos;s easiest to reach with your thumbs. On bigger screens, like iPads, the button bars automatically resize to provide a better experience. Since this was a side project and I had no deadline, I always prioritized polishing exising functionality to perfection instead of adding new functionality.

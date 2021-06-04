@@ -13,7 +13,7 @@ export default function LinkHere() {
 
 				<Links year="2020" github="https://github.com/link-here/extension" chrome="https://chrome.google.com/webstore/detail/linkhere/menbmobndejfbajdplodpfojcanodobh" firefox="https://addons.mozilla.org/en-US/firefox/addon/link_here/"/>
 
-				<EmbeddedImg rounded size="large" src="/linkhere/demo.gif"/>
+				<EmbeddedImg hasPriority size="large" src="/images/linkhere/demo.gif" width={600} height={502}/>
 
 				<p>
 					linkhere was built to solve a real-world problem. I often find an interesting article or website when browsing on my phone, but would rather read it / research it further later on a larger screen. Although there are some services like Pocket that do something similar, linkhere is unique in how it presents saved sites. They are displayed in grayscale every time a new tab is opened, providing a gentle nudge to open them while not being overly aggressive.

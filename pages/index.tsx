@@ -1,14 +1,19 @@
 import React from 'react';
 import {motion} from 'framer-motion';
 import Title from '../components/title';
-import ProjectTile from '../components/project-tile';
+import ProjectTile, {ProjectTileProps} from '../components/project-tile';
 import SocialButtons from '../components/social-buttons';
 import TextLink from '../components/text-link';
 import styles from './styles/index.module.scss';
 
-const PROJECTS = [
+const PROJECTS: ProjectTileProps[] = [
 	{
-		image: '/aoede/logo.png',
+		image: {
+			src: '/images/aoede/logo.png',
+			width: 1024,
+			height: 1024,
+			hasPriority: true
+		},
 		name: 'Aoede',
 		year: '2021',
 		description: 'A self-hosted Discord music bot that directly streams from Spotify to Discord.',
@@ -16,24 +21,37 @@ const PROJECTS = [
 	},
 	{
 		video: '/xkcdy/promo.mp4',
-		roundedVideo: true,
-		shouldVideoHaveShadow: true,
-		alignImageWithBottom: true,
-		image: '/xkcdy/hero.png',
+		isVideoRounded: true,
+		isVideoShadowed: true,
+		isImageAlignedWithBottom: true,
+		image: {
+			src: '/images/xkcdy/hero.png',
+			width: 0,
+			height: 0,
+			hasPriority: true
+		},
 		name: 'XKCDY',
 		year: '2020',
 		description: 'A modern, open source iOS client for XKCD.',
 		technologies: ['Swift', 'SwiftUI', 'Typescript']
 	},
 	{
-		image: '/linkhere/placeholder.png',
+		image: {
+			src: '/images/linkhere/placeholder.png',
+			width: 0,
+			height: 0
+		},
 		name: 'linkhere',
 		year: '2020',
 		description: 'A simple web extension that unobtrusively shows websites saved from your mobile device in new tabs.',
 		technologies: ['React', 'Typescript']
 	},
 	{
-		image: '/muse/logo.png',
+		image: {
+			src: '/images/muse/logo.png',
+			width: 0,
+			height: 0
+		},
 		name: 'Muse',
 		year: '2020',
 		description: 'A self-hosted midwestern Discord music bot that doesn\'t suck.',
@@ -41,15 +59,19 @@ const PROJECTS = [
 	},
 	{
 		video: '/filmboard/promo.mp4',
-		roundedVideo: true,
-		shouldVideoHaveShadow: true,
+		isVideoRounded: true,
+		isVideoShadowed: true,
 		name: 'Film Board',
 		year: '2019',
 		description: 'A modern & beautiful site for the Film Board at Michigan Tech.',
 		technologies: ['React', 'JavaScript', 'Next.js']
 	},
 	{
-		image: '/tuyapi/logo.png',
+		image: {
+			src: '/images/tuyapi/logo.png',
+			width: 200,
+			height: 200
+		},
 		name: 'TuyAPI',
 		year: '2017 → present',
 		description: 'A collection of projects that enable local control of thousands of low-cost IoT devices.',
@@ -91,7 +113,7 @@ export default function Home() {
 				{
 					PROJECTS.map(project => (
 						<motion.div key={project.name} variants={APPEAR} transition={{duration: 0.8}}>
-							<ProjectTile image={project.image} video={project.video} name={project.name} year={project.year} description={project.description} technologies={project.technologies} shouldVideoHaveShadow={project.shouldVideoHaveShadow ?? false} alignImageWithBottom={project.alignImageWithBottom ?? false} roundedVideo={project.roundedVideo}/>
+							<ProjectTile image={project.image} video={project.video} name={project.name} year={project.year} description={project.description} technologies={project.technologies} isVideoShadowed={project.isVideoShadowed ?? false} isImageAlignedWithBottom={project.isImageAlignedWithBottom ?? false} isVideoRounded={project.isVideoRounded}/>
 						</motion.div>
 					))
 				}

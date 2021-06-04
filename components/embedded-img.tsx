@@ -1,17 +1,27 @@
 import React from 'react';
-import Img from 'react-optimized-image';
+import Image from 'next/image';
 import styles from './styles/embedded-img.module.scss';
 
 type Size = 'large' | 'medium' | 'small';
 
-const EmbeddedImg = ({size, src, rounded = false, padding = false}: {size: Size; src: string; rounded?: boolean; padding?: boolean}) => {
+type Props = {
+	size: Size;
+	src: string;
+	isRounded?: boolean;
+	hasPadding?: boolean;
+	width: number;
+	height: number;
+	hasPriority?: boolean;
+};
+
+const EmbeddedImg = ({size, src, isRounded: rounded = false, hasPadding: padding = false, hasPriority: priority = false, width, height}: Props) => {
 	const className = `${styles.media} ${styles[size]} ${rounded ? styles.rounded : ''} ${padding ? styles.padding : ''}`;
 
-	if (src.includes('gif')) {
-		return <Img className={className} src={require(`../images${src}`) as ImgSrc} sizes={[200, 500]} webp={false}/>;
-	}
-
-	return <Img className={className} src={require(`../images${src}`) as ImgSrc} sizes={[200, 500, 1000]}/>;
+	return (
+		<div className={className}>
+			<Image src={src} width={width} height={height} priority={priority}/>
+		</div>
+	);
 };
 
 export default EmbeddedImg;
