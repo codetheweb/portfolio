@@ -46,13 +46,12 @@ export default function XKCDY() {
 
 				<p>
 					I made the intentional decision to integrate XKCDY with iOS-specific features as much as possible. As a result, the app supports:
-
-					<ul>
-						<li>3 different homescreen widgets (introduced in iOS 14)</li>
-						<li>Custom automations via the built-in Shortcuts.app</li>
-						<li><TextLink href="https://apps.apple.com/us/app/opener-open-links-in-apps/id989565871">Opener</TextLink>, a popular way to open native apps from the web browser</li>
-					</ul>
 				</p>
+				<ul>
+					<li>3 different homescreen widgets (introduced in iOS 14)</li>
+					<li>Custom automations via the built-in Shortcuts.app</li>
+					<li><TextLink href="https://apps.apple.com/us/app/opener-open-links-in-apps/id989565871">Opener</TextLink>, a popular way to open native apps from the web browser</li>
+				</ul>
 			</div>
 
 			<Header size="h2">Problems Encountered</Header>

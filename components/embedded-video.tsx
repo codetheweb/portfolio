@@ -87,11 +87,12 @@ const EmbeddedVideo = React.forwardRef<HTMLVideoElement, Props>(({
 				left: 0,
 				paddingTop: `${(height / width) * 100}%`,
 				height: 0,
-				width: '100%'
+				width: '100%',
+				zIndex: -1
 			}}/>
 			<video
 				ref={ref ?? thisVideo}
-				playsInline={autoPlay}
+				playsInline
 				muted={syncWith ? true : isMuted}
 				controls={syncWith ? false : !autoPlay}
 				autoPlay={syncWith ? undefined : autoPlay}

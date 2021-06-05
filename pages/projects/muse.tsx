@@ -23,11 +23,10 @@ export default function Muse() {
 					Muse is a self-hosted music bot for <TextLink href="https://discord.com/">Discord</TextLink>. It can connect to voice channels and play audio from most YouTube videos.
 
 					In the words of the README:
-
-					<blockquote>
-						Muse is a highly-opinionated midwestern self-hosted Discord music bot that doesn&apos;t suck. It&apos;s made for small to medium-sized Discord servers/guilds (think about a group the size of you, your friends, and your friend&apos;s friends).
-					</blockquote>
 				</p>
+				<blockquote>
+					Muse is a highly-opinionated midwestern self-hosted Discord music bot that doesn&apos;t suck. It&apos;s made for small to medium-sized Discord servers/guilds (think about a group the size of you, your friends, and your friend&apos;s friends).
+				</blockquote>
 
 				<p>
 					Other self-hosted music bots exist; but they were either too complex, over-engineered, or were <TextLink href="https://github.com/jagrosh/MusicBot/issues/258">missing Spotify support</TextLink> (and none were midwestern). Muse was built to fill the gap between extremely basic bots and bots made for much larger Discord servers.
@@ -42,15 +41,13 @@ export default function Muse() {
 			<div className={commonStyles.textSection}>
 				<p>
 					Muse supports all the expected commands like play, skip, seek, queue, etc. It can also auto-translate Spotify artists / albums / playlists / songs to equivalent tracks from YouTube:
-
-					<EmbeddedVideo wrapVertically src="/videos/muse/demos/spotify.mp4" width={1014} height={546}/>
 				</p>
+				<EmbeddedVideo wrapVertically src="/videos/muse/demos/spotify.mp4" width={1014} height={546}/>
 
 				<p>
 					There&apos;s a few easter eggs:
-
-					<EmbeddedVideo wrapVertically src="/videos/muse/demos/packers.mp4" width={1014} height={546}/>
 				</p>
+				<EmbeddedVideo wrapVertically src="/videos/muse/demos/packers.mp4" width={1014} height={546}/>
 			</div>
 
 			<Header size="h2">Results</Header>
@@ -61,17 +58,15 @@ export default function Muse() {
 			</div>
 
 			<Header size="h3">Testimonials</Header>
-			<div className={commonStyles.textSection}>
-				<blockquote>
-					it works.
-				</blockquote>
-				- nickw
+			<blockquote>
+				it works.
+			</blockquote>
+			- nickw
 
-				<blockquote>
-					this is the way comrade
-				</blockquote>
-				- The_Administrator
-			</div>
+			<blockquote>
+				this is the way comrade
+			</blockquote>
+			- The_Administrator
 
 			<Footer/>
 		</div>

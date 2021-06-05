@@ -28,7 +28,7 @@ a {
   box-sizing: border-box;
 }
 
-p {
+p, blockquote, ul {
   max-width: 65ch;
   line-height: 1.5;
 }

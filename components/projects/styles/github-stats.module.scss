@@ -35,10 +35,10 @@ html:global(.dark-mode) {
 
 @keyframes rainbow {
   from {
-    background-position: 0 50%;
+    background-position: 0 0;
   }
 
   to {
-    background-position: 100% 50%;
+    background-position: 100% 100%;
   }
 }

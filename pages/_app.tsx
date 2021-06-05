@@ -25,7 +25,7 @@ const MyApp = ({Component, pageProps}: AppProps) => {
 				<link rel="shortcut icon" href="/images/favicon/favicon.ico"/>
 				<meta name="msapplication-TileColor" content="#000000"/>
 				<meta name="msapplication-config" content="/images/favicon/browserconfig.xml"/>
-				<meta name="theme-color" content="#ffffff"/>
+				<meta name="theme-color" content="#000000"/>
 
 			</Head>
 

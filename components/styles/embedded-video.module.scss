@@ -25,6 +25,7 @@
   display: block;
   border-radius: variables.$radius;
   border: 4px solid transparent;
+  z-index: 10;
 
   &:focus {
     border-color: rgba(variables.$primary-accent, 0.5);
