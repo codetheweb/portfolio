@@ -19,7 +19,7 @@ const PROJECTS: ProjectTileProps[] = [
 		technologies: ['Rust']
 	},
 	{
-		video: '/xkcdy/promo.mp4',
+		video: '/videos/xkcdy/promo.mp4',
 		isVideoRounded: true,
 		isVideoShadowed: true,
 		isImageAlignedWithBottom: true,
@@ -57,7 +57,7 @@ const PROJECTS: ProjectTileProps[] = [
 		technologies: ['Typescript', 'Discord.js']
 	},
 	{
-		video: '/filmboard/promo.mp4',
+		video: '/videos/filmboard/promo.mp4',
 		isVideoRounded: true,
 		isVideoShadowed: true,
 		name: 'Film Board',

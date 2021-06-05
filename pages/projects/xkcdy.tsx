@@ -58,7 +58,7 @@ export default function XKCDY() {
 			<Header size="h2">Problems Encountered</Header>
 			<div className={commonStyles.textSection}>
 				<div style={{float: 'right'}}>
-					<PhoneFramedVideo src="/xkcdy/swipe.mp4"/>
+					<PhoneFramedVideo src="/videos/xkcdy/swipe.mp4"/>
 				</div>
 
 				<p>
