@@ -25,8 +25,8 @@ export default function Aoede() {
 					Aoede is a Discord music bot that directly streams from Spotify to Discord. The only interface is Spotify itself.
 				</blockquote>
 
-				<EmbeddedVideo ref={videoRef} macOSStyle autoPlay loop src="/aoede/demo/discord.mp4"/>
-				<EmbeddedVideo macOSStyle src="/aoede/demo/spotify.mp4" syncWith={videoRef}/>
+				<EmbeddedVideo ref={videoRef} macOSStyle autoPlay loop src="/aoede/demo/discord.mp4" width={990} height={670}/>
+				<EmbeddedVideo macOSStyle src="/aoede/demo/spotify.mp4" syncWith={videoRef} width={990} height={672}/>
 
 				<p>
 					Aoede is a self-hosted music bot for <TextLink href="https://discord.com/">Discord</TextLink> that connects to your Spotify Premium account. If it sees you in a voice channel, Aoede will automatically enable Spotify Connect for itself and appear in your casting menu. If you start casting to Aoede, it&apos;ll connect to your voice channel and play the casted audio.

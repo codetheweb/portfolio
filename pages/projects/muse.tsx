@@ -17,7 +17,7 @@ export default function Muse() {
 
 				<Links year="2020" github="https://github.com/codetheweb/muse"/>
 
-				<EmbeddedVideo src="/muse/demos/youtube.mp4"/>
+				<EmbeddedVideo src="/muse/demos/youtube.mp4" width={1014} height={546}/>
 
 				<p>
 					Muse is a self-hosted music bot for <TextLink href="https://discord.com/">Discord</TextLink>. It can connect to voice channels and play audio from most YouTube videos.
@@ -43,13 +43,13 @@ export default function Muse() {
 				<p>
 					Muse supports all the expected commands like play, skip, seek, queue, etc. It can also auto-translate Spotify artists / albums / playlists / songs to equivalent tracks from YouTube:
 
-					<EmbeddedVideo wrapVertically src="/muse/demos/spotify.mp4"/>
+					<EmbeddedVideo wrapVertically src="/muse/demos/spotify.mp4" width={1014} height={546}/>
 				</p>
 
 				<p>
 					There&apos;s a few easter eggs:
 
-					<EmbeddedVideo wrapVertically src="/muse/demos/packers.mp4"/>
+					<EmbeddedVideo wrapVertically src="/muse/demos/packers.mp4" width={1014} height={546}/>
 				</p>
 			</div>
 

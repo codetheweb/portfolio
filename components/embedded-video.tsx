@@ -5,6 +5,8 @@ import styles from './styles/embedded-video.module.scss';
 
 type Props = {
 	src: string;
+	width: number;
+	height: number;
 	wrapVertically?: boolean;
 	macOSStyle?: boolean;
 	autoPlay?: boolean;
@@ -15,6 +17,8 @@ type Props = {
 
 const EmbeddedVideo = React.forwardRef<HTMLVideoElement, Props>(({
 	src,
+	width,
+	height,
 	wrapVertically = false,
 	macOSStyle = false,
 	autoPlay = false,
@@ -77,6 +81,14 @@ const EmbeddedVideo = React.forwardRef<HTMLVideoElement, Props>(({
 
 	return (
 		<div className={`${styles.container} ${wrapVertically ? styles.wrapVertically : ''} ${macOSStyle ? styles.macOS : ''}`} style={style}>
+			<div style={{
+				position: 'absolute',
+				top: 0,
+				left: 0,
+				paddingTop: `${(height / width) * 100}%`,
+				height: 0,
+				width: '100%'
+			}}/>
 			<video
 				ref={ref ?? thisVideo}
 				playsInline
