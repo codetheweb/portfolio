@@ -1,4 +1,5 @@
 import React, {useRef} from 'react';
+import {NextSeo} from 'next-seo';
 import Header from '../../components/header';
 import Links from '../../components/projects/links';
 import EmbeddedVideo from '../../components/embedded-video';
@@ -11,6 +12,10 @@ export default function Aoede() {
 
 	return (
 		<div>
+			<NextSeo
+				title="Aoede | Max Isom"
+				description="Aoede is a Discord music bot that directly streams from Spotify to Discord. The only interface is Spotify itself."/>
+
 			<div className={commonStyles.textSection} style={{overflow: 'unset'}}>
 				<Header size="h1">Aoede</Header>
 

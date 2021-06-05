@@ -1,4 +1,5 @@
 import React from 'react';
+import {NextSeo} from 'next-seo';
 import Header from '../../components/header';
 import Links from '../../components/projects/links';
 import EmbeddedImg from '../../components/embedded-img';
@@ -8,6 +9,8 @@ import commonStyles from './styles/common.module.scss';
 export default function LinkHere() {
 	return (
 		<div>
+			<NextSeo title="linkhere | Max Isom"/>
+
 			<div className={commonStyles.textSection}>
 				<Header size="h1">linkhere</Header>
 

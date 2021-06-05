@@ -1,4 +1,5 @@
 import React from 'react';
+import {NextSeo} from 'next-seo';
 import Header from '../../components/header';
 import Links from '../../components/projects/links';
 import EmbeddedVideo from '../../components/embedded-video';
@@ -9,6 +10,8 @@ import commonStyles from './styles/common.module.scss';
 export default function Muse() {
 	return (
 		<div>
+			<NextSeo title="Muse | Max Isom"/>
+
 			<div className={commonStyles.textSection}>
 				<Header size="h1">Muse</Header>
 

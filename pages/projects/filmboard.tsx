@@ -1,4 +1,5 @@
 import React from 'react';
+import {NextSeo} from 'next-seo';
 import Header from '../../components/header';
 import Links from '../../components/projects/links';
 import TextLink from '../../components/text-link';
@@ -9,6 +10,10 @@ import commonStyles from './styles/common.module.scss';
 export default function LinkHere() {
 	return (
 		<div>
+			<NextSeo
+				title="The Film Board | Max Isom"
+				description="How I redesigned the Film Board's website to make it more modern and easier to use."/>
+
 			<div className={commonStyles.textSection}>
 				<Header size="h1">Film Board</Header>
 

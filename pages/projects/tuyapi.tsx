@@ -1,4 +1,5 @@
 import React from 'react';
+import {NextSeo} from 'next-seo';
 import Header from '../../components/header';
 import Links from '../../components/projects/links';
 import TextLink from '../../components/text-link';
@@ -10,6 +11,8 @@ import styles from './styles/tuyapi.module.scss';
 export default function LinkHere() {
 	return (
 		<div>
+			<NextSeo title="TuyAPI | Max Isom"/>
+
 			<div className={commonStyles.textSection}>
 				<Header size="h1">TuyAPI</Header>
 
