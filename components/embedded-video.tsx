@@ -79,9 +79,9 @@ const EmbeddedVideo = React.forwardRef<HTMLVideoElement, Props>(({
 		<div className={`${styles.container} ${wrapVertically ? styles.wrapVertically : ''} ${macOSStyle ? styles.macOS : ''}`} style={style}>
 			<video
 				ref={ref ?? thisVideo}
+				playsInline
 				muted={syncWith ? true : isMuted}
 				controls={syncWith ? false : !autoPlay}
-				playsInline={autoPlay}
 				autoPlay={syncWith ? undefined : autoPlay}
 				src={`${src}#t=0.001`}
 				loop={syncWith ? undefined : loop}
