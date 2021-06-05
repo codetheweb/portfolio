@@ -92,7 +92,7 @@ export default function Home() {
 					I&apos;m currently a fourth-year CS student at <TextLink href="https://mtu.edu">Michigan Tech</TextLink>.
 				</p>
 
-				<h2>A few things I&apos;ve worked on recently</h2>
+				<h2 className={styles.marginForSectionTop}>A few things I&apos;ve worked on recently</h2>
 
 				<p>
 					I like to keep busy with side projects. My rule of thumb when starting a new project is to learn at least one thing; whether that&apos;s a framework, technology, language, or dev-ops methodology.
@@ -109,7 +109,7 @@ export default function Home() {
 				}
 			</div>
 
-			<h2>Want to talk?</h2>
+			<h2 className={styles.marginForSectionTop}>Want to talk?</h2>
 
 			<p>
 				Feel free to email me if you have feedback on something, you&apos;re looking for a developer, or you just want to connect: <TextLink href="mailto:hi@maxisom.me">hi@maxisom.me</TextLink>. You might also want to check out my <TextLink href="/resume.pdf">résumé</TextLink>.

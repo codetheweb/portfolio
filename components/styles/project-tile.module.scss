@@ -15,6 +15,7 @@ $offset: 15px;
   overflow: hidden;
   position: relative;
   z-index: 0;
+  will-change: transform;
 
   &:before {
     content: '';
@@ -34,7 +35,7 @@ $offset: 15px;
 
   &:hover {
     &:before {
-      opacity: 0.2;
+      opacity: 0.4;
     }
   }
 
@@ -195,10 +196,10 @@ html:global(.dark-mode) {
 
 @keyframes rainbow {
   from {
-    background-position: 0 50%;
+    background-position: 0 0%;
   }
 
   to {
-    background-position: 100% 50%;
+    background-position: 100% 100%;
   }
 }
