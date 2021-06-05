@@ -107,6 +107,7 @@ $offset: 15px;
       color: variables.$primary-accent;
       transition-duration: variables.$transition-duration;
       margin-left: -1rem;
+      z-index: -1;
     }
   }
 

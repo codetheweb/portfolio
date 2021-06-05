@@ -2,4 +2,31 @@
 
 .container {
   display: flex;
+
+  & > * {
+    @for $i from 1 through 10 {
+      &:nth-child(#{$i}) {
+        $delay: 200ms * $i;
+        animation: wait $delay 0s, fade-in 800ms ease-in-out $delay;
+      }
+    }
+  }
+}
+
+@keyframes wait {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 0;
+  }
+}
+
+@keyframes fade-in {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
 }

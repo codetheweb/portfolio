@@ -1,5 +1,4 @@
 import React from 'react';
-import {motion} from 'framer-motion';
 import Title from '../components/title';
 import ProjectTile, {ProjectTileProps} from '../components/project-tile';
 import SocialButtons from '../components/social-buttons';
@@ -79,15 +78,6 @@ const PROJECTS: ProjectTileProps[] = [
 	}
 ];
 
-const APPEAR = {
-	hidden: {
-		opacity: 0
-	},
-	show: {
-		opacity: 1
-	}
-};
-
 export default function Home() {
 	return (
 		<div className={styles.container}>
@@ -109,15 +99,15 @@ export default function Home() {
 				</p>
 			</div>
 
-			<motion.div className={styles.projectTiles} variants={{show: {transition: {staggerChildren: 0.2, delayChildren: 0}}}} initial="hidden" animate="show">
+			<div className={styles.projectTiles}>
 				{
 					PROJECTS.map(project => (
-						<motion.div key={project.name} variants={APPEAR} transition={{duration: 0.8}}>
+						<div key={project.name}>
 							<ProjectTile image={project.image} video={project.video} name={project.name} year={project.year} description={project.description} technologies={project.technologies} isVideoShadowed={project.isVideoShadowed ?? false} isImageAlignedWithBottom={project.isImageAlignedWithBottom ?? false} isVideoRounded={project.isVideoRounded}/>
-						</motion.div>
+						</div>
 					))
 				}
-			</motion.div>
+			</div>
 
 			<h2>Want to talk?</h2>
 
