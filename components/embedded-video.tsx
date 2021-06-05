@@ -91,7 +91,7 @@ const EmbeddedVideo = React.forwardRef<HTMLVideoElement, Props>(({
 			}}/>
 			<video
 				ref={ref ?? thisVideo}
-				playsInline
+				playsInline={autoPlay}
 				muted={syncWith ? true : isMuted}
 				controls={syncWith ? false : !autoPlay}
 				autoPlay={syncWith ? undefined : autoPlay}
