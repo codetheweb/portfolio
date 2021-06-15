@@ -1,15 +1,12 @@
 import React, {useRef, useState} from 'react';
-import Image from 'next/image';
+import Image, {ImageProps} from 'next/image';
 import Link from 'next/link';
 import {FontAwesomeIcon} from '@fortawesome/react-fontawesome';
 import {faChevronRight} from '@fortawesome/free-solid-svg-icons';
 import styles from './styles/project-tile.module.scss';
 
 export type ProjectTileProps = {
-	image?: {
-		src: string;
-		width: number;
-		height: number;
+	image?: ImageProps & {
 		hasPriority?: boolean;
 	};
 	video?: string;
@@ -49,8 +46,16 @@ export default function ProjectTile({image, video, isVideoShadowed: shouldVideoH
 
 					{
 						image && (
-							<div className={styles.imageWrapper} style={{opacity: videoIsPlaying ? 0 : 1, marginTop: alignImageWithBottom ? 'auto' : '0'}}>
-								<Image src={image.src} layout="fill" objectFit="contain" priority={image.hasPriority}/>
+							<div
+								className={styles.imageWrapper}
+								style={{opacity: videoIsPlaying ? 0 : 1, marginTop: alignImageWithBottom ? 'auto' : '0'}}
+							>
+								<Image
+									src={image.src as StaticImageData}
+									layout="fill"
+									sizes="512px"
+									objectFit="contain"
+									priority={image.hasPriority}/>
 							</div>
 						)
 					}

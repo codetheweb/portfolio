@@ -1,6 +1,7 @@
 import React from 'react';
 import Image from 'next/image';
 import styles from './styles/iphone-framed-video.module.scss';
+import frameImg from '/public/images/iphone-frame.png';
 
 export default function PhoneFramedVideo({src}: {src: string}) {
 	return (
@@ -9,7 +10,7 @@ export default function PhoneFramedVideo({src}: {src: string}) {
 				<div className={styles.background}/>
 				<video loop muted autoPlay playsInline src={src}/>
 			</div>
-			<Image src="/images/iphone-frame.png" layout="fill"/>
+			<Image src={frameImg} layout="fill"/>
 		</div>
 	);
 }

@@ -15,7 +15,7 @@
     "@fortawesome/free-brands-svg-icons": "^5.15.3",
     "@fortawesome/free-solid-svg-icons": "^5.15.3",
     "@fortawesome/react-fontawesome": "^0.1.14",
-    "next": "10.2.3",
+    "next": "11.0.0",
     "next-seo": "^4.24.0",
     "react": "17.0.2",
     "react-dom": "17.0.2",
@@ -35,8 +35,7 @@
     "husky": "^4.3.0",
     "next-compose-plugins": "^2.2.1",
     "sass": "^1.32.13",
-    "typescript": "^4.2.4",
-    "webpack": "^5.37.0",
+    "typescript": "^4.3.2",
     "xo": "^0.40.1"
   },
   "xo": {
@@ -46,7 +45,8 @@
       "react/prop-types": "off",
       "unicorn/prefer-module": "off",
       "@typescript-eslint/no-require-imports": "off",
-      "@typescript-eslint/no-var-requires": "off"
+      "@typescript-eslint/no-var-requires": "off",
+      "import/no-absolute-path": "off"
     },
     "ignore": [
       "public/noflash.js"

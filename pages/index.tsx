@@ -5,12 +5,16 @@ import SocialButtons from '../components/social-buttons';
 import TextLink from '../components/text-link';
 import styles from './styles/index.module.scss';
 
+import aoedeLogoImg from '/public/images/aoede/logo.png';
+import xkcdyHeroImg from '/public/images/xkcdy/hero.png';
+import linkhereImg from '/public/images/linkhere/placeholder.png';
+import museLogoImg from '/public/images/muse/logo.png';
+import tuyapiLogoImg from '/public/images/tuyapi/logo.png';
+
 const PROJECTS: ProjectTileProps[] = [
 	{
 		image: {
-			src: '/images/aoede/logo.png',
-			width: 1024,
-			height: 1024,
+			src: aoedeLogoImg,
 			hasPriority: true
 		},
 		name: 'Aoede',
@@ -24,9 +28,7 @@ const PROJECTS: ProjectTileProps[] = [
 		isVideoShadowed: true,
 		isImageAlignedWithBottom: true,
 		image: {
-			src: '/images/xkcdy/hero.png',
-			width: 0,
-			height: 0,
+			src: xkcdyHeroImg,
 			hasPriority: true
 		},
 		name: 'XKCDY',
@@ -36,9 +38,7 @@ const PROJECTS: ProjectTileProps[] = [
 	},
 	{
 		image: {
-			src: '/images/linkhere/placeholder.png',
-			width: 0,
-			height: 0
+			src: linkhereImg
 		},
 		name: 'linkhere',
 		year: '2020',
@@ -47,9 +47,7 @@ const PROJECTS: ProjectTileProps[] = [
 	},
 	{
 		image: {
-			src: '/images/muse/logo.png',
-			width: 0,
-			height: 0
+			src: museLogoImg
 		},
 		name: 'Muse',
 		year: '2020',
@@ -67,9 +65,7 @@ const PROJECTS: ProjectTileProps[] = [
 	},
 	{
 		image: {
-			src: '/images/tuyapi/logo.png',
-			width: 200,
-			height: 200
+			src: tuyapiLogoImg
 		},
 		name: 'TuyAPI',
 		year: '2017 → present',
