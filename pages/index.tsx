@@ -3,6 +3,7 @@ import Title from '../components/title';
 import ProjectTile, {ProjectTileProps} from '../components/project-tile';
 import SocialButtons from '../components/social-buttons';
 import TextLink from '../components/text-link';
+import {useFirstLoad} from '../lib/first-load';
 import styles from './styles/index.module.scss';
 
 import aoedeLogoImg from '/public/images/aoede/logo.png';
@@ -75,6 +76,8 @@ const PROJECTS: ProjectTileProps[] = [
 ];
 
 export default function Home() {
+	const isFirstLoad = useFirstLoad();
+
 	return (
 		<div className={styles.container}>
 			<Title label="Hi, I'm Max."/>
@@ -95,7 +98,7 @@ export default function Home() {
 				</p>
 			</div>
 
-			<div className={styles.projectTiles}>
+			<div className={`${styles.projectTiles} ${isFirstLoad ? styles.projectTilesAnimate : ''}`}>
 				{
 					PROJECTS.map(project => (
 						<div key={project.name}>

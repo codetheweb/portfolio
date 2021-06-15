@@ -2,7 +2,9 @@
 
 .container {
   display: flex;
+}
 
+.animate {
   & > * {
     @for $i from 1 through 10 {
       &:nth-child(#{$i}) {

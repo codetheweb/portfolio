@@ -3,6 +3,7 @@ import {AppProps} from 'next/app';
 import Head from 'next/head';
 import {config} from '@fortawesome/fontawesome-svg-core';
 import '@fortawesome/fontawesome-svg-core/styles.css';
+import {FirstLoadProvider} from '../lib/first-load';
 import Wave from '../components/wave';
 import '../styles/globals.scss';
 import styles from './styles/app.module.scss';
@@ -11,7 +12,7 @@ config.autoAddCss = false;
 
 const MyApp = ({Component, pageProps}: AppProps) => {
 	return (
-		<>
+		<FirstLoadProvider>
 			<Head>
 				<title>Max Isom</title>
 				<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover"/>
@@ -34,7 +35,7 @@ const MyApp = ({Component, pageProps}: AppProps) => {
 			<div className={styles.container}>
 				<Component {...pageProps}/>
 			</div>
-		</>
+		</FirstLoadProvider>
 	);
 };
 

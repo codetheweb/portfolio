@@ -1,6 +1,7 @@
 import React from 'react';
 import {faCoffee} from '@fortawesome/free-solid-svg-icons';
 import {faGithub, faReddit, faKeybase, faLinkedin, faHackerNewsSquare} from '@fortawesome/free-brands-svg-icons';
+import {useFirstLoad} from '../lib/first-load';
 import styles from './styles/social-buttons.module.scss';
 import IconLink from './icon-link';
 
@@ -32,8 +33,10 @@ const ACCOUNTS = [
 ];
 
 export default function SocialButtons() {
+	const isFirstLoad = useFirstLoad();
+
 	return (
-		<div className={styles.container}>
+		<div className={`${styles.container} ${isFirstLoad ? styles.animate : ''}`}>
 			{
 				ACCOUNTS.map(account => (
 					<div key={account.link}>
