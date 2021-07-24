@@ -1,26 +1,33 @@
 @use '../../styles/variables';
 
+$dark-bg: mix(variables.$white, variables.$primary-accent, 15%);
+
 .container {
+  --body-size: calc(1vh + 1vw);
+  --wave-container-height: calc(0.22 * 100vw);
   position: relative;
   overflow: hidden;
-
-  &:before {
-    content: '';
-    position: fixed;
-    z-index: -1;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 50vh;
-    background-color: mix(variables.$white, variables.$primary-accent, 15%);
-  }
+  height: calc(0.22 * 100vw);
+  clip-path: url(#wave);
+  width: 100vw;
+  background-color: $dark-bg;
 
   .themeSelector {
+    --body-size: calc(1vh + 1vw);
+    --container-size: calc(var(--wave-container-height));
     position: absolute;
-    top: calc(1vh + 1vw);
-    right: calc(1vh + 1vw);
+    top: calc(var(--body-size) * 2);
+    right: calc(var(--body-size) * 2);
+    height: var(--container-size);
+    width: var(--container-size);
+    transform: rotate(40deg);
+    animation-duration: variables.$theme-transition-duration * 3;
 
     .body {
+      position: absolute;
+      top: calc((var(--body-size) * 4) / -2);
+      left: calc((var(--container-size) / 2) - ((var(--body-size) * 4) / 2));
+
       margin-top: env(safe-area-inset-right);
       margin-right: env(safe-area-inset-right);
       width: calc((1vh + 1vw) * 4);
@@ -30,37 +37,63 @@
       transition-duration: variables.$theme-transition-duration;
       background-color: variables.$yellow;
       box-shadow: 0px 0px 20px 0px rgba(variables.$yellow, 0.5);
+      z-index: 100;
+    }
+
+    &.isDark.wasChanged {
+      animation-name: toMoon;
+    }
+
+    &.isLight.wasChanged {
+      animation-name: toSun;
     }
   }
 
-  svg {
-    max-height: 30rem;
-    width: 100%;
-  }
-
-  svg path {
-    fill: variables.$white;
-    fill: mix(variables.$white, variables.$primary-accent, 15%);
+  .particlesContainer {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
     transition-duration: variables.$theme-transition-duration;
-    fill-opacity: 1;
+    opacity: 0;
+    transition-property: opacity;
+
+    .particles {
+      height: 100%;
+    }
+
+    &.active {
+      opacity: 1;
+    }
   }
 }
 
 html:global(.dark-mode) {
   .container {
-    &:before {
-      background-color: variables.$primary-accent;
-      opacity: 0.05;
-    }
+    background-color: rgba(variables.$primary-accent, 0.05);
 
     .body {
-      background-color: rgba(variables.$white, 0.8);
+      background-color: mix($dark-bg, variables.$white, 0.8);
       box-shadow: 0px 0px 20px 0px rgba(variables.$white, 0.3);
     }
+  }
+}
 
-    svg path {
-      fill: variables.$primary-accent;
-      fill-opacity: 0.05;
-    }
+@keyframes toMoon {
+  from {
+    transform: rotate(40deg);
+  }
+  to {
+    transform: rotate(400deg);
+  }
+}
+
+@keyframes toSun {
+  from {
+    transform: rotate(40deg);
+  }
+  to {
+    transform: rotate(400deg);
   }
 }

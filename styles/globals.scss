@@ -19,6 +19,26 @@ html.dark-mode, html.dark-mode body {
   color: variables.$white;
 }
 
+// TODO: figure out correct stacking / positioning order so this can live in wave.module.scss instead.
+html body {
+  &:before {
+    content: '';
+    position: fixed;
+    background-color: mix(variables.$white, variables.$primary-accent, 15%);
+    width: 100vw;
+    height: 100vh;
+    top: -50vh;
+    left: 0;
+    z-index: -1;
+  }
+}
+
+html.dark-mode body {
+  &:before {
+    background-color: rgba(variables.$primary-accent, 0.05);
+  }
+}
+
 a {
   color: inherit;
   text-decoration: none;
