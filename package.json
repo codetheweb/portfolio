@@ -14,11 +14,15 @@
     "@fortawesome/free-brands-svg-icons": "^5.15.3",
     "@fortawesome/free-solid-svg-icons": "^5.15.3",
     "@fortawesome/react-fontawesome": "^0.1.14",
-    "next": "11.0.0",
+    "next": "^11.0.1",
+    "next-plugin-preact": "^3.0.6",
     "next-seo": "^4.24.0",
-    "react": "17.0.2",
-    "react-dom": "17.0.2",
+    "preact": "^10.5.14",
+    "preact-render-to-string": "^5.1.19",
+    "react": "npm:@preact/compat",
+    "react-dom": "npm:@preact/compat",
     "react-parallax-tilt": "^1.5.11",
+    "react-ssr-prepass": "npm:preact-ssr-prepass",
     "react-tsparticles": "^1.32.0",
     "react-use": "^17.2.4",
     "use-dark-mode": "^2.3.1"
@@ -50,7 +54,8 @@
       "import/no-absolute-path": "off"
     },
     "ignore": [
-      "public/noflash.js"
+      "public/noflash.js",
+      "next-env.d.ts"
     ]
   },
   "husky": {
