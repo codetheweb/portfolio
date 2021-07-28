@@ -94,7 +94,7 @@ export default function Home() {
 				<h2 className={styles.marginForSectionTop}>A few things I&apos;ve worked on recently</h2>
 
 				<p>
-					I like to keep busy with side projects. My rule of thumb when starting a new project is to learn at least one thing; whether that&apos;s a framework, technology, language, or dev-ops methodology.
+					I like to keep busy with side projects. My rule of thumb when starting a new project is to learn at least one thing, whether that&apos;s a framework, technology, language, or dev-ops methodology.
 				</p>
 			</div>
 
