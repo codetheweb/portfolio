@@ -15,28 +15,28 @@ const particlesConfig: ParticlesProps['params'] = {
 			value: 100,
 			density: {
 				enable: true,
-				value_area: 800
-			}
+				value_area: 800,
+			},
 		},
 		line_linked: {
-			enable: false
+			enable: false,
 		},
 		move: {
 			direction: 'right',
-			speed: 0.05
+			speed: 0.05,
 		},
 		size: {
-			value: 2
+			value: 2,
 		},
 		opacity: {
 			anim: {
 				enable: true,
 				speed: 0.7,
-				opacity_min: 0.05
-			}
-		}
+				opacity_min: 0.05,
+			},
+		},
 	},
-	retina_detect: true
+	retina_detect: true,
 };
 
 export default function Wave() {

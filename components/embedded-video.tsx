@@ -88,7 +88,7 @@ const EmbeddedVideo = React.forwardRef<HTMLVideoElement, Props>(({
 				paddingTop: `${(height / width) * 100}%`,
 				height: 0,
 				width: '100%',
-				zIndex: -1
+				zIndex: -1,
 			}}/>
 			<video
 				ref={ref ?? thisVideo}
