@@ -5,6 +5,14 @@
   margin: 0;
   transition-duration: variables.$theme-transition-duration;
   transition-property: color;
+  position: relative;
+
+  &::before {
+    content: '#';
+    position: absolute;
+    left: -1.2rem;
+    color: variables.$primary-accent;
+  }
 }
 
 h1.header {
