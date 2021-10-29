@@ -1,12 +1,26 @@
 .container {
   display: flex;
   align-items: center;
-  margin-bottom: 16px;
+  margin-bottom: 1rem;
 
   .year {
     margin: 0;
     font-weight: bold;
     font-size: 1.5rem;
     margin-right: 1rem;
+  }
+
+  &.vertical {
+    flex-direction: column;
+    align-items: flex-start;
+
+    .year {
+      margin-bottom: 1rem;
+      font-size: 2.5rem;
+    }
+
+    .linkWrapper {
+      margin-bottom: 1rem;
+    }
   }
 }

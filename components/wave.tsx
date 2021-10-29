@@ -2,7 +2,7 @@ import React, {useState, useEffect} from 'react';
 import dynamic from 'next/dynamic';
 import {ParticlesProps} from 'react-tsparticles';
 import usePrevious from 'react-use/lib/usePrevious';
-import useDarkMode, {DarkModeConfig} from 'use-dark-mode';
+import useColorMode from '../lib/use-color-mode';
 import styles from './styles/wave.module.scss';
 
 // TODO: upgrade to v2.0.0 of this library as soon as possible.
@@ -40,17 +40,12 @@ const particlesConfig: ParticlesProps['params'] = {
 };
 
 export default function Wave() {
-	const config: DarkModeConfig = {};
+	const {colorMode, toggleColorMode} = useColorMode();
 	const [isReady, setIsReady] = useState(false);
 
-	if (global.document?.documentElement) {
-		config.element = global.document.documentElement;
-	}
-
-	const {toggle, value} = useDarkMode(false, config);
-	const previousValue = usePrevious(value);
-
-	const wasChanged = (previousValue !== undefined) && (previousValue !== value);
+	const previousValue = usePrevious(colorMode);
+	const wasChanged = (previousValue !== undefined) && (previousValue !== colorMode);
+	const isDark = colorMode === 'dark';
 
 	useEffect(() => {
 		setIsReady(true);
@@ -66,16 +61,16 @@ export default function Wave() {
 				</defs>
 			</svg>
 
-			<div className={`${styles.particlesContainer} ${(value && isReady) ? styles.active : ''}`}>
+			<div className={`${styles.particlesContainer} ${(isDark && isReady) ? styles.active : ''}`}>
 				{
-					value && (
+					isDark && (
 						<Particles className={styles.particles} params={particlesConfig}/>
 					)
 				}
 			</div>
 
-			<div className={`${styles.themeSelector} ${value ? styles.isDark : styles.isLight} ${wasChanged ? styles.wasChanged : ''}`}>
-				<div className={styles.body} onClick={toggle}/>
+			<div className={`${styles.themeSelector} ${isDark ? styles.isDark : styles.isLight} ${wasChanged ? styles.wasChanged : ''}`}>
+				<div className={styles.body} onClick={toggleColorMode}/>
 			</div>
 		</div>
 	);

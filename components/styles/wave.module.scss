@@ -7,9 +7,8 @@ $dark-bg: mix(variables.$white, variables.$primary-accent, 15%);
   --wave-container-height: calc(0.22 * 100vw);
   position: relative;
   overflow: hidden;
-  height: calc(0.22 * 100vw);
+  height: min(22rem, 22vw);
   clip-path: url(#wave);
-  width: 100vw;
   background-color: $dark-bg;
 
   .themeSelector {

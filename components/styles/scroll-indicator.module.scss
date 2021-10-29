@@ -1,0 +1,39 @@
+@use '../../styles/variables';
+
+.container {
+  position: fixed;
+  bottom: 1rem;
+  left: 0;
+  display: flex;
+  width: 100vw;
+  z-index: 1000;
+}
+
+.icon {
+  margin-left: auto;
+  margin-right: auto;
+  font-size: 2rem;
+  animation: breathe 1.5s ease-in-out infinite;
+  animation-direction: alternate-reverse;
+  filter: drop-shadow(0px 2px 4px rgba(mix(variables.$white, variables.$black, 30%), 30%));
+  cursor: pointer;
+  color: rgba(variables.$black, 0.9);
+  transition-property: color, opacity;
+  transition-duration: variables.$transition-duration;
+}
+
+html:global(.dark-mode) {
+  .icon {
+    color: variables.$white;
+  }
+}
+
+@keyframes breathe {
+  0% {
+    transform: translateY(0);
+  }
+
+  100% {
+    transform: translateY(-0.8rem);
+  }
+}

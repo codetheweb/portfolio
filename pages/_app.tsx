@@ -31,7 +31,7 @@ const MyApp = ({Component, pageProps}: AppProps) => (
 
 		<Wave/>
 
-		<div className={styles.container}>
+		<div className={styles.wrapper}>
 			<Component {...pageProps}/>
 		</div>
 	</FirstLoadProvider>

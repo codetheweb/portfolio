@@ -25,10 +25,10 @@ html body {
     content: '';
     position: fixed;
     background-color: mix(variables.$white, variables.$primary-accent, 15%);
-    width: 100vw;
     height: 100vh;
     top: -50vh;
     left: 0;
+    right: 0;
     z-index: -1;
   }
 }

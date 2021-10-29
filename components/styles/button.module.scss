@@ -1,0 +1,22 @@
+@use "../../styles/variables.scss";
+
+.button {
+  outline: none;
+  border: none;
+  border-radius: variables.$radius / 2;
+  background-color: variables.$black;
+  color: variables.$white;
+  font-size: 1.5rem;
+  box-shadow: 0px 3px 8px 2px rgba(#000, 0.2);
+  cursor: pointer;
+  transition: box-shadow;
+  transition-duration: variables.$transition-duration;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 0.3rem 0.6rem;
+
+  &:hover {
+    box-shadow: 0px 3px 8px 2px rgba(#000, 0.4);
+  }
+}

@@ -1,10 +1,15 @@
-.container {
-  padding: 0 1rem;
-  padding-left: calc(1rem + env(safe-area-inset-left));
-  padding-right: calc(1rem + env(safe-area-inset-right));
-  max-width: 60rem;
-  margin: 0 auto;
+.wrapper {
+  display: grid;
+  grid-template-columns: 1fr min(65ch, 100%) 1fr;
+  max-width: 100rem;
+  margin-left: auto;
+  margin-right: auto;
+
+  & > * {
+    grid-column: 2;
+    padding-left: calc(1rem + env(safe-area-inset-left));
+    padding-right: calc(1rem + env(safe-area-inset-right));
+  }
+
   padding-bottom: 5rem;
-  display: flex;
-  flex-direction: column;
 }

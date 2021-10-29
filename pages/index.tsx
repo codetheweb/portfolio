@@ -6,13 +6,32 @@ import TextLink from '../components/text-link';
 import {useFirstLoad} from '../lib/first-load';
 import styles from './styles/index.module.scss';
 
+import courseHeroLightImg from '/public/images/courses/promo-light.png';
+import courseHeroDarkImg from '/public/images/courses/promo-dark.png';
 import aoedeLogoImg from '/public/images/aoede/logo.png';
 import xkcdyHeroImg from '/public/images/xkcdy/hero.png';
-import linkhereImg from '/public/images/linkhere/placeholder.png';
+import linkhereLightImg from '/public/images/linkhere/promo-light.png';
+import linkhereDarkImg from '/public/images/linkhere/promo-dark.png';
 import museLogoImg from '/public/images/muse/logo.png';
 import tuyapiLogoImg from '/public/images/tuyapi/logo.png';
 
 const PROJECTS: ProjectTileProps[] = [
+	{
+		name: 'MTU Courses',
+		year: '2021',
+		description: 'Find courses. Plan your semester.',
+		technologies: ['Next.js', 'NestJS', 'Kubernetes'],
+		image: {
+			src: courseHeroLightImg,
+			// Seems to be a bug with Next.js/Image where if `priority={true}`
+			// is set it doesn't re-render when source changes?
+			hasPriority: false,
+			dark: {
+				src: courseHeroDarkImg,
+				hasPriority: false,
+			},
+		},
+	},
 	{
 		image: {
 			src: aoedeLogoImg,
@@ -39,7 +58,10 @@ const PROJECTS: ProjectTileProps[] = [
 	},
 	{
 		image: {
-			src: linkhereImg,
+			src: linkhereLightImg,
+			dark: {
+				src: linkhereDarkImg,
+			},
 		},
 		name: 'linkhere',
 		year: '2020',

@@ -1,0 +1,54 @@
+@use "../../styles/variables.scss";
+
+.container {
+  grid-column: 1 / 4;
+  display: flex;
+  width: 100%;
+  position: relative;
+
+  video {
+    height: auto;
+    width: 100%;
+    flex: 1;
+    flex-basis: 0;
+    filter: brightness(60%);
+    box-shadow: 0 22px 70px 4px rgba(0, 0, 0, 0.2);
+    border-radius: 6px;
+    overflow: hidden;
+    transition-property: filter;
+    transition-duration: variables.$transition-duration;
+
+    &:nth-child(2) {
+      margin-left: 1rem;
+    }
+  }
+
+  .startWrapper {
+    position: absolute;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    right: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition-property: opacity;
+    transition-duration: variables.$transition-duration;
+
+    button {
+      height: 3rem;
+      width: 3rem;
+    }
+  }
+
+  &.playing {
+    video {
+      filter: none;
+    }
+
+    .startWrapper {
+      opacity: 0;
+      pointer-events: none;
+    }
+  }
+}
