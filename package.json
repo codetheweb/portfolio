@@ -54,7 +54,8 @@
       "@typescript-eslint/no-require-imports": "off",
       "@typescript-eslint/no-var-requires": "off",
       "import/no-absolute-path": "off",
-      "@typescript-eslint/naming-convention": "off"
+      "@typescript-eslint/naming-convention": "off",
+      "react/no-unused-prop-types": "off"
     },
     "ignore": [
       "public/noflash.js",

@@ -12,6 +12,12 @@
     position: absolute;
     left: -1.2rem;
     color: variables.$primary-accent;
+
+    @media only screen and (max-width: variables.$mobile-max-width) {
+      position: relative;
+      left: revert;
+      margin-right: 0.5rem;
+    }
   }
 }
 

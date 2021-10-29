@@ -58,10 +58,15 @@ const CoursesPage = () => {
 
 			<ScrollIndicator className={classNames(styles.scrollIndicator, didVideoStart ? styles.videoHasStarted : false)}/>
 
-			<Links areVertical year="2021" github="https://github.com/Michigan-Tech-Courses?type=source" website="https://michigantechcourses.com/"/>
+			<Links
+				areVertical
+				year="2021"
+				github="https://github.com/Michigan-Tech-Courses"
+				website="https://michigantechcourses.com/"
+				className={styles.links}/>
 
 			<Header size="h2">Background</Header>
-			<div className={classNames(commonStyles.textSection, styles.firstTextSection)}>
+			<div className={commonStyles.textSection}>
 				<p>
 					In early 2020 I and a few other students worked on <TextLink href="https://github.com/Kiro47/MTU-Transfer-Course-Gatherer">a website</TextLink> that allowed you to easily see courses that are pre-approved for transfer to Michigan Tech since it&apos;s a real pain to find them manually. We originally planned to add support for showing Tech-offered courses to the same tool, but not everyone was available.
 				</p>
@@ -77,7 +82,7 @@ const CoursesPage = () => {
 
 			<Header size="h2">Design</Header>
 
-			<div className={commonStyles.textSection}>
+			<div className={commonStyles.textSection} style={{marginBottom: '1rem'}}>
 				<p>Inspired by tools like Spotlight, Alfred, Raycast, and even GitHub Issues, the primary interface to finding courses is a free-form search field. You can enter keywords, and then narrow your search by using filters of the form <code>token:value</code>. For example, <code>intro subject:cs</code> might return Intro to Programming.</p>
 
 				<p>The app&#39;s UI is primarily designed around reducing the number of clicks required for any particular action. Just compare how long it takes to view a course description on my app vs. Banweb (Tech&#39;s course system):</p>
@@ -85,17 +90,14 @@ const CoursesPage = () => {
 
 			<VideoComparision
 				src1={{
-					src: '/videos/courses/banweb.mov',
+					src: '/videos/courses/banweb.mov#t=0.1',
 					type: 'video/mp4',
 				}} src2={{
-					src: '/videos/courses/app.mov',
+					src: '/videos/courses/app.mov#t=0.1',
 					type: 'video/mp4',
 				}}/>
 
-			<div className={commonStyles.textSection}>
-				<p>Since this is a mostly STEM school, a not-insignificant portion of the student body uses ultrawide monitors. Owning one myself—and wanting to improve the overall workflow if extra screen space was available—I added a 2-column layout that&#39;s activated when the browser window is wide enough:</p>
-
-			</div>
+			<p style={{marginTop: '2rem'}}>Since this is a mostly STEM school, a not-insignificant portion of the student body uses ultrawide monitors. Owning one myself—and wanting to improve the overall workflow if extra screen space was available—I added a 2-column layout that&#39;s activated when the browser window is wide enough:</p>
 
 			<div style={{gridColumn: '1/4'}}>
 				<Image src={UltrawideDemoImg} placeholder="blur"/>
@@ -138,7 +140,7 @@ const CoursesPage = () => {
 			<Header size="h2">Results</Header>
 
 			<div className={commonStyles.textSection}>
-				<p>Over <TextLink href="https://plause.maxisom.me/michigantechcourses.com">1.7k unique people</TextLink> have visited the app as of October 2021. Users have caught <TextLink href="https://github.com/Michigan-Tech-Courses/frontend/issues/37">one</TextLink> or <TextLink href="https://github.com/Michigan-Tech-Courses/scraper/issues/10">two</TextLink> bugs that slipped through testing, all of which were promptly fixed.</p>
+				<p>Almost <TextLink href="https://plause.maxisom.me/michigantechcourses.com">2k unique people</TextLink> have visited the app as of October 2021. Users have caught <TextLink href="https://github.com/Michigan-Tech-Courses/frontend/issues/37">one</TextLink> or <TextLink href="https://github.com/Michigan-Tech-Courses/scraper/issues/10">two</TextLink> bugs that slipped through testing, all of which were promptly fixed.</p>
 
 				<p>I learned a ton during the development process. In particular, I ended up extensively using <TextLink href="https://mobx.js.org/README.html">MobX</TextLink> and Kubernetes, two major technologies that I had previously never touched. MobX handles all state management in the app, from loading data to handling basket states. And the backend (along with a few supporting services) is deployed automatically upon every push to <code>main</code> using GitHub Actions + Kubernetes. </p>
 

@@ -6,11 +6,15 @@
   width: 100%;
   position: relative;
 
+  @media only screen and (max-width: variables.$mobile-max-width) {
+    flex-direction: column;
+  }
+
   video {
     height: auto;
     width: 100%;
     flex: 1;
-    flex-basis: 0;
+    flex-basis: 1;
     filter: brightness(60%);
     box-shadow: 0 22px 70px 4px rgba(0, 0, 0, 0.2);
     border-radius: 6px;
@@ -20,6 +24,19 @@
 
     &:nth-child(2) {
       margin-left: 1rem;
+
+      @media only screen and (max-width: variables.$mobile-max-width) {
+        margin-left: auto;
+        margin-top: 1rem;
+      }
+    }
+
+    @media only screen and (max-width: variables.$mobile-max-width) {
+      max-height: 30vh;
+      max-width: 100%;
+      width: auto;
+      margin-left: auto;
+      margin-right: auto;
     }
   }
 

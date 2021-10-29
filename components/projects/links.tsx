@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {useMemo} from 'react';
 import {faLink, IconDefinition} from '@fortawesome/free-solid-svg-icons';
 import {faApple, faGithub, faChrome, faFirefox} from '@fortawesome/free-brands-svg-icons';
 import classNames from 'classnames';
@@ -14,9 +14,10 @@ interface LinksProps {
 	firefox?: string;
 	chrome?: string;
 	areVertical?: boolean;
+	className?: string;
 }
 
-type Options = keyof Except<LinksProps, 'year' | 'areVertical'>;
+type Options = keyof Except<LinksProps, 'year' | 'areVertical' | 'className'>;
 
 const ITEM_TYPE_TO_ICON: Record<Options, IconDefinition> = {
 	apple: faApple,
@@ -27,10 +28,23 @@ const ITEM_TYPE_TO_ICON: Record<Options, IconDefinition> = {
 };
 
 export default function Links(props: LinksProps) {
-	const {year, areVertical, ...links} = props;
+	const {year, areVertical, className} = props;
+
+	// Preact seems to add some props
+	const links = useMemo(() => {
+		const l: Partial<Record<Options, string>> = {};
+
+		for (const [key, value] of Object.entries(props)) {
+			if (Object.keys(ITEM_TYPE_TO_ICON).includes(key)) {
+				l[key as Options] = value as string;
+			}
+		}
+
+		return l;
+	}, [props]);
 
 	return (
-		<div className={classNames(styles.container, areVertical ? styles.vertical : false)}>
+		<div className={classNames(styles.container, areVertical ? styles.vertical : false, className)}>
 			<span className={styles.year}>{year}</span>
 
 			<div>
