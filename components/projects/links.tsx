@@ -47,7 +47,7 @@ export default function Links(props: LinksProps) {
 		<div className={classNames(styles.container, areVertical ? styles.vertical : false, className)}>
 			<span className={styles.year}>{year}</span>
 
-			<div>
+			<div className={styles.links}>
 				{Object.keys(links).map(linkType => {
 					const unwrappedUrl = links[linkType as keyof typeof links]!;
 

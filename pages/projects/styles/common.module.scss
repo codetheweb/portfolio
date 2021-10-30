@@ -13,3 +13,9 @@
     margin-top: 0;
   }
 }
+
+.largerContainer {
+  grid-column: 1 / 4;
+  width: min(60rem, 90vw);
+  justify-self: center;
+}

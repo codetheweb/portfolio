@@ -7,10 +7,10 @@
   transition-property: color;
   position: relative;
 
-  &::before {
+  &:not(h1)::before {
     content: '#';
     position: absolute;
-    left: -1.2rem;
+    left: -1em;
     color: variables.$primary-accent;
 
     @media only screen and (max-width: variables.$mobile-max-width) {
