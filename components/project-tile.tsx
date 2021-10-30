@@ -77,7 +77,7 @@ export default function ProjectTile({image, video, isVideoShadowed: shouldVideoH
 									sizes="512px"
 									objectFit="contain"
 									priority={imageToUse.hasPriority}
-									placeholder="blur"/>
+									placeholder={typeof image?.dark === 'undefined' ? 'blur' : undefined}/>
 							</div>
 						)
 					}
