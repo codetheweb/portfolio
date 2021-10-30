@@ -71,11 +71,11 @@ const CoursesPage = () => {
 					In early 2020 I and a few other students worked on <TextLink href="https://github.com/Kiro47/MTU-Transfer-Course-Gatherer">a website</TextLink> that allowed you to easily see courses that are pre-approved for transfer to Michigan Tech since it&apos;s a real pain to find them manually. We originally planned to add support for showing Tech-offered courses to the same tool, but not everyone was available.
 				</p>
 
-				<p>I ended up building it as a separate project over the next few months. I planned to release it in two parts; first a MVP and then a more feature-rich application.</p>
+				<p>I ended up building it as a separate project over the next few months. I planned to release it in two parts: first a MVP and then a more feature-rich application.</p>
 
 				<p>I launched the initial version in March of 2021. Even though it was fairly basic, the tool still <TextLink href="https://www.reddit.com/r/MTU/comments/lygw7x/launch_of_michigantechcoursescom/">received a very positive reception</TextLink>.</p>
 
-				<p>I launched the feature-rich v2 seven months later; again to a <TextLink href="https://www.reddit.com/r/MTU/comments/qa2die/v2_launch_of_michigantechcoursescom/">very positive reception</TextLink>.</p>
+				<p>I launched the feature-rich v2 seven months later, again to a <TextLink href="https://www.reddit.com/r/MTU/comments/qa2die/v2_launch_of_michigantechcoursescom/">very positive reception</TextLink>.</p>
 
 				<p>This is my biggest open-source project to date with well over 13k lines of code. I really enjoyed watching it slowly grow to match my original vision and I&#39;m super happy with how it turned out.</p>
 			</div>
@@ -115,18 +115,18 @@ const CoursesPage = () => {
 				<p>Baskets allow you to save any number of courses to a table for reference. A few features include:</p>
 
 				<ul>
-					<li>Export the basket as an image or .csv file</li>
-					<li>Generate an importable calendar</li>
-					<li>Shows a realtime-preview of your schedule with monthly and weekly views</li>
-					<li>Filter by sections schedule-compatible with your basket with the <code>is:compatible</code> search filter</li>
-					<li>Correctly handles edge cases, like warning you if a section was deleted from Banweb</li>
+					<li>Exporting the basket as an image or .csv file</li>
+					<li>Generating an importable calendar</li>
+					<li>Showing a realtime-preview of your schedule with monthly and weekly views</li>
+					<li>Filtering by sections schedule-compatible with your basket with the <code>is:compatible</code> search filter</li>
+					<li>Correctly handling edge cases, like warning you if a section was deleted from Banweb</li>
 				</ul>
 			</div>
 
 			<Header size="h2">Problems Encountered</Header>
 
 			<div className={commonStyles.textSection}>
-				<p>I spent a few days looking at moving much of the core logic to Web Workers to keep the main UI thread responsive, but ultimately the complexity trade-off didn&#39;t seem worth it. After some experimentation, I was able to greatly reduce loading time and increase general responsiveness by moving expensive tasks into several <TextLink href="https://developer.mozilla.org/en-US/docs/Web/API/Window/requestIdleCallback">requestIdleCallback()</TextLink> calls: this allows for better utilization of the the main single thread.</p>
+				<p>I spent a few days looking at moving much of the core logic to Web Workers to keep the main UI thread responsive, but ultimately the complexity trade-off didn&#39;t seem worth it. After some experimentation, I was able to greatly reduce loading time and increase general responsiveness by moving expensive tasks into several <TextLink href="https://developer.mozilla.org/en-US/docs/Web/API/Window/requestIdleCallback">requestIdleCallback()</TextLink> calls, which allows for better utilization of the main single thread.</p>
 
 				<p>As another example of an optimization necessary for this specific application, I moved from <TextLink href="https://gitlab.com/john.carroll.p/rschedule/-/issues/61">a more elegant comparison of schedules</TextLink> to <TextLink href="https://github.com/Michigan-Tech-Courses/frontend/blob/dev/src/lib/do-schedules-conflict.ts">more of a static analysis approach that makes a few assumptions</TextLink>, shaving several seconds off filtering sections by those schedule-compatible with the current basket.</p>
 
