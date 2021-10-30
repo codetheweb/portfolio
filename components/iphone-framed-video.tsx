@@ -8,7 +8,9 @@ export default function PhoneFramedVideo({src}: {src: string}) {
 		<div className={styles.container}>
 			<div className={styles.videoContainer}>
 				<div className={styles.background}/>
-				<video loop muted autoPlay playsInline src={src}/>
+				<video loop muted autoPlay playsInline>
+					<source src={src}/>
+				</video>
 			</div>
 			<Image src={frameImg} layout="fill"/>
 		</div>

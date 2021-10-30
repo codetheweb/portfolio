@@ -1,10 +1,11 @@
 $black: #161616;
 $white: #FAFAFA;
 $primary-accent: #7A81FF;
-$neutral-accent: lighten($black, 1%);
 $yellow: #f7f640;
 
 $radius: 10px;
+
+$mobile-max-width: 650px;
 
 $transition-duration: 0.2s;
 $theme-transition-duration: $transition-duration * 4;

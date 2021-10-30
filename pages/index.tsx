@@ -6,22 +6,41 @@ import TextLink from '../components/text-link';
 import {useFirstLoad} from '../lib/first-load';
 import styles from './styles/index.module.scss';
 
+import courseHeroLightImg from '/public/images/courses/promo-light.png';
+import courseHeroDarkImg from '/public/images/courses/promo-dark.png';
 import aoedeLogoImg from '/public/images/aoede/logo.png';
 import xkcdyHeroImg from '/public/images/xkcdy/hero.png';
-import linkhereImg from '/public/images/linkhere/placeholder.png';
+import linkhereLightImg from '/public/images/linkhere/promo-light.png';
+import linkhereDarkImg from '/public/images/linkhere/promo-dark.png';
 import museLogoImg from '/public/images/muse/logo.png';
 import tuyapiLogoImg from '/public/images/tuyapi/logo.png';
 
 const PROJECTS: ProjectTileProps[] = [
 	{
+		name: 'MTU Courses',
+		year: '2021',
+		description: 'Find courses. Plan your semester.',
+		technologies: ['Next.js', 'NestJS', 'Kubernetes'],
+		image: {
+			src: courseHeroLightImg,
+			// Seems to be a bug with Next.js/Image where if `priority={true}`
+			// is set it doesn't re-render when source changes?
+			hasPriority: false,
+			dark: {
+				src: courseHeroDarkImg,
+				hasPriority: false,
+			},
+		},
+	},
+	{
 		image: {
 			src: aoedeLogoImg,
-			hasPriority: true
+			hasPriority: true,
 		},
 		name: 'Aoede',
 		year: '2021',
 		description: 'A self-hosted Discord music bot that directly streams from Spotify to Discord.',
-		technologies: ['Rust']
+		technologies: ['Rust'],
 	},
 	{
 		video: '/videos/xkcdy/promo.mp4',
@@ -30,30 +49,33 @@ const PROJECTS: ProjectTileProps[] = [
 		isImageAlignedWithBottom: true,
 		image: {
 			src: xkcdyHeroImg,
-			hasPriority: true
+			hasPriority: true,
 		},
 		name: 'XKCDY',
 		year: '2020',
 		description: 'A modern, open source iOS client for XKCD.',
-		technologies: ['Swift', 'SwiftUI', 'Typescript']
+		technologies: ['Swift', 'SwiftUI', 'Typescript'],
 	},
 	{
 		image: {
-			src: linkhereImg
+			src: linkhereLightImg,
+			dark: {
+				src: linkhereDarkImg,
+			},
 		},
 		name: 'linkhere',
 		year: '2020',
 		description: 'A simple web extension that unobtrusively shows websites saved from your mobile device in new tabs.',
-		technologies: ['React', 'Typescript']
+		technologies: ['React', 'Typescript'],
 	},
 	{
 		image: {
-			src: museLogoImg
+			src: museLogoImg,
 		},
 		name: 'Muse',
 		year: '2020',
 		description: 'A self-hosted midwestern Discord music bot that doesn\'t suck.',
-		technologies: ['Typescript', 'Discord.js']
+		technologies: ['Typescript', 'Discord.js'],
 	},
 	{
 		video: '/videos/filmboard/promo.mp4',
@@ -62,17 +84,17 @@ const PROJECTS: ProjectTileProps[] = [
 		name: 'Film Board',
 		year: '2019',
 		description: 'A modern & beautiful site for the Film Board at Michigan Tech.',
-		technologies: ['React', 'JavaScript', 'Next.js']
+		technologies: ['React', 'JavaScript', 'Next.js'],
 	},
 	{
 		image: {
-			src: tuyapiLogoImg
+			src: tuyapiLogoImg,
 		},
 		name: 'TuyAPI',
 		year: '2017 → present',
 		description: 'A collection of projects that enable local control of thousands of low-cost IoT devices.',
-		technologies: ['Typescript', 'JavaScript']
-	}
+		technologies: ['Typescript', 'JavaScript'],
+	},
 ];
 
 export default function Home() {

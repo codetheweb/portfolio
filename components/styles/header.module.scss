@@ -5,6 +5,20 @@
   margin: 0;
   transition-duration: variables.$theme-transition-duration;
   transition-property: color;
+  position: relative;
+
+  &:not(h1)::before {
+    content: '#';
+    position: absolute;
+    left: -1em;
+    color: variables.$primary-accent;
+
+    @media only screen and (max-width: variables.$mobile-max-width) {
+      position: relative;
+      left: revert;
+      margin-right: 0.5rem;
+    }
+  }
 }
 
 h1.header {

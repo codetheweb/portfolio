@@ -1,9 +1,21 @@
+@use "../../../styles/variables.scss";
+
 .textSection {
   margin-bottom: 3rem;
   overflow: auto;
-  margin-top: 16px;
+  margin-top: 1rem;
+
+  @media only screen and (max-width: variables.$mobile-max-width) {
+    margin-bottom: 1rem;
+  }
 
   & > p:first-of-type {
     margin-top: 0;
   }
+}
+
+.largerContainer {
+  grid-column: 1 / 4;
+  width: min(60rem, 90vw);
+  justify-self: center;
 }

@@ -8,28 +8,28 @@ import IconLink from './icon-link';
 const ACCOUNTS = [
 	{
 		link: 'https://github.com/codetheweb',
-		icon: faGithub
+		icon: faGithub,
 	},
 	{
 		link: 'https://www.linkedin.com/in/max-isom-43678315a/',
-		icon: faLinkedin
+		icon: faLinkedin,
 	},
 	{
 		link: 'https://keybase.io/maxisom',
-		icon: faKeybase
+		icon: faKeybase,
 	},
 	{
 		link: 'https://www.reddit.com/user/codyweby/',
-		icon: faReddit
+		icon: faReddit,
 	},
 	{
 		link: 'https://news.ycombinator.com/user?id=codetheweb',
-		icon: faHackerNewsSquare
+		icon: faHackerNewsSquare,
 	},
 	{
 		link: 'https://www.buymeacoffee.com/maxisom',
-		icon: faCoffee
-	}
+		icon: faCoffee,
+	},
 ];
 
 export default function SocialButtons() {

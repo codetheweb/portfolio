@@ -1,7 +1,9 @@
-import React, {CSSProperties, RefObject, useEffect, useRef, useState} from 'react';
+import React, {CSSProperties, RefObject, useRef, useState} from 'react';
 import {faVolumeMute, faVolumeUp} from '@fortawesome/free-solid-svg-icons';
 import {FontAwesomeIcon} from '@fortawesome/react-fontawesome';
+import useSyncedVideos from '../lib/use-synced-videos';
 import styles from './styles/embedded-video.module.scss';
+import Button from './button';
 
 type Props = {
 	src: string;
@@ -28,56 +30,7 @@ const EmbeddedVideo = React.forwardRef<HTMLVideoElement, Props>(({
 	const [isMuted, setIsMuted] = useState(autoPlay);
 	const thisVideo = useRef<HTMLVideoElement>(null);
 
-	useEffect(() => {
-		if (syncWith?.current) {
-			const current = syncWith.current;
-
-			// Handle race condition
-			if (!current.paused) {
-				thisVideo.current?.play();
-			}
-
-			const onPlay = () => {
-				thisVideo.current?.play();
-			};
-
-			const onPause = () => {
-				thisVideo.current?.pause();
-			};
-
-			const onVolumeChange = () => {
-				if (thisVideo.current) {
-					thisVideo.current.volume = current?.volume ?? 0;
-				}
-			};
-
-			const onSeeking = () => {
-				if (thisVideo.current) {
-					thisVideo.current.currentTime = current?.currentTime ?? 0;
-				}
-			};
-
-			current.addEventListener('play', onPlay);
-			current.addEventListener('pause', onPause);
-			current.addEventListener('volumechange', onVolumeChange);
-			current.addEventListener('seeking', onSeeking);
-
-			const timerId = setInterval(() => {
-				if (thisVideo.current?.readyState === 4) {
-					thisVideo.current.currentTime = current.currentTime ?? 0;
-				}
-			}, 5000);
-
-			return () => {
-				current.removeEventListener('play', onPlay);
-				current.removeEventListener('pause', onPlay);
-				current.removeEventListener('volumechange', onPlay);
-				current.removeEventListener('seeking', onPlay);
-
-				clearInterval(timerId);
-			};
-		}
-	}, [syncWith]);
+	useSyncedVideos(syncWith, thisVideo);
 
 	return (
 		<div className={`${styles.container} ${wrapVertically ? styles.wrapVertically : ''} ${macOSStyle ? styles.macOS : ''}`} style={style}>
@@ -88,7 +41,7 @@ const EmbeddedVideo = React.forwardRef<HTMLVideoElement, Props>(({
 				paddingTop: `${(height / width) * 100}%`,
 				height: 0,
 				width: '100%',
-				zIndex: -1
+				zIndex: -1,
 			}}/>
 			<video
 				ref={ref ?? thisVideo}
@@ -101,7 +54,7 @@ const EmbeddedVideo = React.forwardRef<HTMLVideoElement, Props>(({
 				className={styles.video}/>
 
 			{autoPlay && (
-				<button
+				<Button
 					className={styles.unmuteButton}
 					type="button"
 					onClick={() => {
@@ -109,7 +62,7 @@ const EmbeddedVideo = React.forwardRef<HTMLVideoElement, Props>(({
 					}}
 				>
 					<FontAwesomeIcon icon={isMuted ? faVolumeMute : faVolumeUp}/>
-				</button>
+				</Button>
 			)}
 		</div>
 	);

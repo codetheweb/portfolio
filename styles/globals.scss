@@ -25,10 +25,10 @@ html body {
     content: '';
     position: fixed;
     background-color: mix(variables.$white, variables.$primary-accent, 15%);
-    width: 100vw;
     height: 100vh;
     top: -50vh;
     left: 0;
+    right: 0;
     z-index: -1;
   }
 }
@@ -61,4 +61,19 @@ blockquote {
   margin-left: 0;
   border-left: 3px solid variables.$primary-accent;
   padding-left: 1rem;
+}
+
+code {
+  background-color: variables.$black;
+  color: variables.$white;
+  transition-property: background-color, color;
+  transition-duration: variables.$transition-duration;
+  border-radius: calc(variables.$radius / 2);
+  padding: 0.1rem 0.2rem;
+  white-space: nowrap;
+}
+
+html.dark-mode code {
+  background-color: variables.$white;
+  color: variables.$black;
 }

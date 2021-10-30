@@ -1,14 +1,21 @@
-import React, {useRef, useState} from 'react';
+import React, {useMemo, useRef, useState} from 'react';
 import Image, {ImageProps} from 'next/image';
 import Link from 'next/link';
 import {FontAwesomeIcon} from '@fortawesome/react-fontawesome';
 import {faChevronRight} from '@fortawesome/free-solid-svg-icons';
+import useColorMode from '../lib/use-color-mode';
 import styles from './styles/project-tile.module.scss';
 
+type ExtendedImageProps = ImageProps & {
+	hasPriority?: boolean;
+};
+
+type ImageOptions = ExtendedImageProps & {
+	dark?: ExtendedImageProps;
+};
+
 export type ProjectTileProps = {
-	image?: ImageProps & {
-		hasPriority?: boolean;
-	};
+	image?: ImageOptions;
 	video?: string;
 	isVideoShadowed?: boolean;
 	isImageAlignedWithBottom?: boolean;
@@ -22,6 +29,8 @@ export type ProjectTileProps = {
 export default function ProjectTile({image, video, isVideoShadowed: shouldVideoHaveShadow = false, isImageAlignedWithBottom: alignImageWithBottom = false, name, year, description, technologies, isVideoRounded: roundedVideo = false}: ProjectTileProps) {
 	const videoRef = useRef<HTMLVideoElement>(null);
 	const [videoIsPlaying, setVideoIsPlaying] = useState(false);
+
+	const {colorMode} = useColorMode();
 
 	const playVideoPreview = async () => {
 		if (videoRef.current) {
@@ -39,28 +48,41 @@ export default function ProjectTile({image, video, isVideoShadowed: shouldVideoH
 		}
 	};
 
+	const imageToUse = useMemo(() => {
+		if (!image) {
+			return image;
+		}
+
+		if (colorMode === 'dark' && typeof image.dark !== 'undefined') {
+			return image.dark;
+		}
+
+		return image;
+	}, [colorMode, image]);
+
 	return (
-		<Link href={`/projects/${name.toLowerCase().split(' ').join('')}`}>
+		<Link href={`/projects/${name.toLowerCase().split(' ').join('-')}`}>
 			<a className={styles.container} onMouseEnter={playVideoPreview} onMouseLeave={resetVideoPreview}>
 				<div className={styles.imageContainer} style={{paddingBottom: alignImageWithBottom ? 0 : '1rem'}}>
 
 					{
-						image && (
+						imageToUse && (
 							<div
 								className={styles.imageWrapper}
 								style={{opacity: videoIsPlaying ? 0 : 1, marginTop: alignImageWithBottom ? 'auto' : '0'}}
 							>
 								<Image
-									src={image.src as StaticImageData}
+									src={imageToUse.src as StaticImageData}
 									layout="fill"
 									sizes="512px"
 									objectFit="contain"
-									priority={image.hasPriority}/>
+									priority={imageToUse.hasPriority}
+									placeholder={typeof image?.dark === 'undefined' ? 'blur' : undefined}/>
 							</div>
 						)
 					}
 
-					{video && <div className={`${styles.videoContainer} ${roundedVideo ? styles.roundedVideo : ''} ${shouldVideoHaveShadow ? styles.withShadow : ''}`} style={{opacity: videoIsPlaying || !image ? 1 : 0}}><video ref={videoRef} muted loop src={`${video}#t=0.001`} preload="auto"/></div>}
+					{video && <div className={`${styles.videoContainer} ${roundedVideo ? styles.roundedVideo : ''} ${shouldVideoHaveShadow ? styles.withShadow : ''}`} style={{opacity: videoIsPlaying || !imageToUse ? 1 : 0}}><video ref={videoRef} muted loop playsInline src={`${video}#t=0.001`} preload="auto"/></div>}
 				</div>
 
 				<div className={styles.details}>

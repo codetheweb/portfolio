@@ -1,0 +1,98 @@
+@use "../../../styles/variables.scss";
+
+.videoContainer {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  grid-column: 1 / 4 !important;
+  height: 80vh;
+  justify-content: center;
+
+  .overlayText {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    --shadow-color: #FF9E9E;
+    --shadow-color-light: white;
+
+    h3 {
+      font-size: 6rem;
+      margin-top: 0;
+      margin-bottom: 0;
+      z-index: 0;
+      position: relative;
+      mix-blend-mode: difference;
+      opacity: 0;
+      text-align: center;
+
+      @media only screen and (max-width: variables.$mobile-max-width) {
+        font-size: 4rem;
+      }
+    }
+  }
+
+  &.videoHasStarted {
+    .overlayText {
+      h3 {
+        @for $i from 1 through 3 {
+          &:nth-child(#{$i}) {
+            animation: slide-up 1.2s ease-in-out calc(2s + (0.3s * #{$i})) forwards;
+            color: white;
+          }
+        }
+      }
+    }
+  }
+
+  .heroVideo {
+    object-fit: contain;
+    width: auto;
+    height: 100%;
+    margin-top: -2rem;
+
+    @media only screen and (max-width: variables.$mobile-max-width) {
+      margin-top: 0;
+    }
+  }
+}
+
+.innerVideoContainer {
+  position: relative;
+  height: 50vw;
+  max-height: 60vh;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.scrollIndicator {
+  opacity: 0;
+  transition-duration: variables.$transition-duration;
+  transition-delay: 4s;
+  transition-property: opacity;
+
+  &.videoHasStarted {
+    opacity: 1;
+  }
+}
+
+.links {
+  margin-top: -3rem;
+  margin-bottom: 7rem;
+
+  @media only screen and (max-width: variables.$mobile-max-width) {
+    margin-top: 10vh;
+    margin-bottom: 4rem;
+  }
+}
+
+@keyframes slide-up {
+  0% {
+    opacity: 0;
+    transform: translateY(5rem);
+  }
+
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
