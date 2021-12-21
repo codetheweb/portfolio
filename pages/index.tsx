@@ -110,7 +110,7 @@ export default function Home() {
 
 			<div>
 				<p>
-					I&apos;m currently a fourth-year CS student at <TextLink href="https://mtu.edu">Michigan Tech</TextLink>.
+					I&apos;m a recent graduate of <TextLink href="https://mtu.edu">Michigan Tech</TextLink> (majored in CS and minored in math).
 				</p>
 
 				<h2 className={styles.marginForSectionTop}>A few things I&apos;ve worked on recently</h2>
