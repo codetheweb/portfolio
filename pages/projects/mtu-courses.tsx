@@ -140,7 +140,7 @@ const CoursesPage = () => {
 			<Header size="h2">Results</Header>
 
 			<div className={commonStyles.textSection}>
-				<p>Almost <TextLink href="https://plause.maxisom.me/michigantechcourses.com">2k unique people</TextLink> have visited the app as of October 2021. Users have caught <TextLink href="https://github.com/Michigan-Tech-Courses/frontend/issues/37">one</TextLink> or <TextLink href="https://github.com/Michigan-Tech-Courses/scraper/issues/10">two</TextLink> bugs that slipped through testing, all of which were promptly fixed.</p>
+				<p>Over 4k unique people have visited the app as of December 2021. Users have caught <TextLink href="https://github.com/Michigan-Tech-Courses/frontend/issues/37">one</TextLink> or <TextLink href="https://github.com/Michigan-Tech-Courses/scraper/issues/10">two</TextLink> bugs that slipped through testing, all of which were promptly fixed.</p>
 
 				<p>I learned a ton during the development process. In particular, I ended up extensively using <TextLink href="https://mobx.js.org/README.html">MobX</TextLink> and Kubernetes, two major technologies that I had previously never touched. MobX handles all state management in the app, from loading data to handling basket states. And the backend (along with a few supporting services) is deployed automatically upon every push to <code>main</code> using GitHub Actions + Kubernetes. </p>
 
