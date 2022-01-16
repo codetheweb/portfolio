@@ -110,9 +110,12 @@ export default function Home() {
 
 			<div>
 				<p>
-					I&apos;m a recent graduate of <TextLink href="https://mtu.edu">Michigan Tech</TextLink> (majored in CS and minored in math).
+					I recently graduated from <TextLink href="https://mtu.edu">Michigan Tech</TextLink> (majored in CS and minored in math).
 				</p>
 
+				<p>
+					I&apos;m currently building an API to the physical world at <TextLink href="https://www.getseam.com/">Seam</TextLink>.
+				</p>
 				<h2 className={styles.marginForSectionTop}>A few things I&apos;ve worked on recently</h2>
 
 				<p>
