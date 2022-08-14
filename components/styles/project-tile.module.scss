@@ -96,7 +96,7 @@ $offset: 15px;
     font-size: 1.5rem;
     margin: 0;
     margin-right: 0.3rem;
-    transition-property: color;
+    transition-property: color, text-decoration-color;
     transition-duration: variables.$transition-duration;
     display: flex;
     align-items: center;
@@ -121,6 +121,12 @@ $offset: 15px;
       display: flex;
       align-items: center;
       justify-content: space-between;
+
+      h3 {
+        text-decoration: underline;
+        text-decoration-color: rgba(variables.$primary-accent, 0.8);
+        text-underline-offset: 0.3rem;
+      }
 
       .year {
         font-weight: bold;
@@ -151,6 +157,7 @@ $offset: 15px;
   &:hover {
     h3 {
       color: variables.$primary-accent;
+      text-decoration-color: transparent !important;
 
       .arrow {
         opacity: 1;
