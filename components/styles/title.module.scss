@@ -1,22 +1,24 @@
 @use '../../styles/variables';
 
 .title {
+  --title-color: #{variables.$black};
   margin: 0;
   font-size: 6rem;
   color: variables.$white;
   transition-duration: variables.$theme-transition-duration;
-  transition-property: color;
+  transition-property: color, text-shadow;
   letter-spacing: 3px;
   text-shadow:
-    3px  3px 0 variables.$primary-accent,
-   -1px -1px 0 variables.$primary-accent,
-    1px -1px 0 variables.$primary-accent,
-    -1px 1px 0 variables.$primary-accent,
-     1px 1px 0 variables.$primary-accent;
+    3px  3px 0 var(--title-color),
+   -1px -1px 0 var(--title-color),
+    1px -1px 0 var(--title-color),
+    -1px 1px 0 var(--title-color),
+     1px 1px 0 var(--title-color)
 }
 
 html:global(.dark-mode) {
   .title {
     color: variables.$black;
+    --title-color: #{variables.$white};
   }
 }
