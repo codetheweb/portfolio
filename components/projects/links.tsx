@@ -1,8 +1,7 @@
 import React, {useMemo} from 'react';
-import {faLink, IconDefinition} from '@fortawesome/free-solid-svg-icons';
-import {faApple, faGithub, faChrome, faFirefox} from '@fortawesome/free-brands-svg-icons';
 import classNames from 'classnames';
 import {Except} from 'type-fest';
+import {Chrome, ExternalLink, GitHub, Globe, Smartphone} from 'react-feather';
 import IconLink from '../icon-link';
 import styles from './styles/links.module.scss';
 
@@ -19,12 +18,12 @@ interface LinksProps {
 
 type Options = keyof Except<LinksProps, 'year' | 'areVertical' | 'className'>;
 
-const ITEM_TYPE_TO_ICON: Record<Options, IconDefinition> = {
-	apple: faApple,
-	github: faGithub,
-	website: faLink,
-	firefox: faFirefox,
-	chrome: faChrome,
+const ITEM_TYPE_TO_ICON: Record<Options, React.ReactElement> = {
+	apple: <Smartphone/>,
+	github: <GitHub/>,
+	website: <ExternalLink/>,
+	firefox: <Globe/>,
+	chrome: <Chrome/>,
 };
 
 export default function Links(props: LinksProps) {

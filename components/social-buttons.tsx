@@ -1,6 +1,5 @@
 import React from 'react';
-import {faCoffee} from '@fortawesome/free-solid-svg-icons';
-import {faGithub, faReddit, faKeybase, faLinkedin, faHackerNewsSquare, faTwitter} from '@fortawesome/free-brands-svg-icons';
+import {GitHub, Linkedin, Twitter} from 'react-feather';
 import {useFirstLoad} from '../lib/first-load';
 import styles from './styles/social-buttons.module.scss';
 import IconLink from './icon-link';
@@ -8,31 +7,15 @@ import IconLink from './icon-link';
 const ACCOUNTS = [
 	{
 		link: 'https://github.com/codetheweb',
-		icon: faGithub,
+		icon: <GitHub/>,
 	},
 	{
 		link: 'https://www.linkedin.com/in/max-isom-43678315a/',
-		icon: faLinkedin,
-	},
-	{
-		link: 'https://keybase.io/maxisom',
-		icon: faKeybase,
-	},
-	{
-		link: 'https://www.reddit.com/user/codyweby/',
-		icon: faReddit,
-	},
-	{
-		link: 'https://news.ycombinator.com/user?id=codetheweb',
-		icon: faHackerNewsSquare,
-	},
-	{
-		link: 'https://www.buymeacoffee.com/maxisom',
-		icon: faCoffee,
+		icon: <Linkedin/>,
 	},
 	{
 		link: 'https://twitter.com/mtisom',
-		icon: faTwitter,
+		icon: <Twitter/>,
 	},
 ];
 

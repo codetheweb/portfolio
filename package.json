@@ -10,15 +10,12 @@
     "lint:fix": "xo --fix"
   },
   "dependencies": {
-    "@fortawesome/fontawesome-svg-core": "^6.1.2",
-    "@fortawesome/free-brands-svg-icons": "^6.1.2",
-    "@fortawesome/free-solid-svg-icons": "^6.1.2",
-    "@fortawesome/react-fontawesome": "^0.2.0",
     "classnames": "^2.3.1",
     "next": "^12.2.5",
     "next-seo": "^5.5.0",
     "react": "18.2.0",
     "react-dom": "18.2.0",
+    "react-feather": "2.0.10",
     "react-parallax-tilt": "^1.5.71",
     "react-tsparticles": "^1.36.0",
     "react-use": "^17.3.1",

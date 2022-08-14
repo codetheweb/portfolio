@@ -4,6 +4,8 @@
   margin-right: 0.5rem;
   font-size: 1.6rem;
   transition-duration: variables.$transition-duration;
+  display: flex;
+  align-items: center;
 
   color: mix(variables.$white, variables.$black, 10%);
 

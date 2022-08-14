@@ -1,8 +1,7 @@
 import React, {useMemo, useRef, useState} from 'react';
 import Image, {ImageProps} from 'next/image';
 import Link from 'next/link';
-import {FontAwesomeIcon} from '@fortawesome/react-fontawesome';
-import {faChevronRight} from '@fortawesome/free-solid-svg-icons';
+import {ChevronRight} from 'react-feather';
 import useColorMode from '../lib/use-color-mode';
 import styles from './styles/project-tile.module.scss';
 
@@ -87,7 +86,7 @@ export default function ProjectTile({image, video, isVideoShadowed: shouldVideoH
 
 				<div className={styles.details}>
 					<div className={styles.nameAndYear}>
-						<h3>{name} <FontAwesomeIcon icon={faChevronRight} className={styles.arrow}/></h3>
+						<h3>{name} <ChevronRight className={styles.arrow}/></h3>
 
 						<span className={styles.year}>{year}</span>
 					</div>

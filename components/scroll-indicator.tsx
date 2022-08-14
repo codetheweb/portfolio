@@ -1,6 +1,5 @@
 import React, {useCallback} from 'react';
-import {faChevronDown} from '@fortawesome/free-solid-svg-icons';
-import {FontAwesomeIcon} from '@fortawesome/react-fontawesome';
+import {ChevronDown} from 'react-feather';
 import classNames from 'classnames';
 import {useWindowScroll} from 'react-use';
 import styles from './styles/scroll-indicator.module.scss';
@@ -18,9 +17,9 @@ const ScrollIndicator = (props: ScrollIndicatorProps) => {
 
 	return (
 		<div className={classNames(styles.container, props.className)}>
-			<FontAwesomeIcon
-				icon={faChevronDown}
+			<ChevronDown
 				className={styles.icon}
+				size={40}
 				style={y === 0 ? {} : {opacity: 0}}
 				onClick={handleScroll}/>
 		</div>
