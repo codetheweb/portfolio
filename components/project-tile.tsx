@@ -72,7 +72,7 @@ export default function ProjectTile({image, video, isVideoShadowed: shouldVideoH
 								style={{opacity: videoIsPlaying ? 0 : 1, marginTop: alignImageWithBottom ? 'auto' : '0'}}
 							>
 								<Image
-									src={imageToUse.src as StaticImageData}
+									src={imageToUse.src}
 									layout="fill"
 									sizes="512px"
 									objectFit="contain"
