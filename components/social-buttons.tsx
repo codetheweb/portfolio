@@ -1,6 +1,6 @@
 import React from 'react';
 import {faCoffee} from '@fortawesome/free-solid-svg-icons';
-import {faGithub, faReddit, faKeybase, faLinkedin, faHackerNewsSquare} from '@fortawesome/free-brands-svg-icons';
+import {faGithub, faReddit, faKeybase, faLinkedin, faHackerNewsSquare, faTwitter} from '@fortawesome/free-brands-svg-icons';
 import {useFirstLoad} from '../lib/first-load';
 import styles from './styles/social-buttons.module.scss';
 import IconLink from './icon-link';
@@ -29,6 +29,10 @@ const ACCOUNTS = [
 	{
 		link: 'https://www.buymeacoffee.com/maxisom',
 		icon: faCoffee,
+	},
+	{
+		link: 'https://twitter.com/mtisom',
+		icon: faTwitter,
 	},
 ];
 
