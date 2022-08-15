@@ -116,6 +116,7 @@ $offset: 15px;
     display: flex;
     flex-direction: column;
     padding: 1rem;
+    will-change: transform;
 
     .nameAndYear {
       display: flex;
