@@ -5,12 +5,8 @@ import {ChevronRight} from 'react-feather';
 import useColorMode from '../lib/use-color-mode';
 import styles from './styles/project-tile.module.scss';
 
-type ExtendedImageProps = ImageProps & {
-	hasPriority?: boolean;
-};
-
-type ImageOptions = ExtendedImageProps & {
-	dark?: ExtendedImageProps;
+type ImageOptions = ImageProps & {
+	dark?: ImageProps;
 };
 
 export type ProjectTileProps = {
@@ -75,7 +71,7 @@ export default function ProjectTile({image, video, isVideoShadowed: shouldVideoH
 									layout="fill"
 									sizes="512px"
 									objectFit="contain"
-									priority={imageToUse.hasPriority}
+									priority={imageToUse.priority}
 									placeholder={typeof image?.dark === 'undefined' ? 'blur' : undefined}/>
 							</div>
 						)
