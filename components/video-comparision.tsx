@@ -1,5 +1,4 @@
-import {faPlay, faRedo} from '@fortawesome/free-solid-svg-icons';
-import {FontAwesomeIcon} from '@fortawesome/react-fontawesome';
+import {Play, Repeat} from 'react-feather';
 import classNames from 'classnames';
 import React, {DetailedHTMLProps, SourceHTMLAttributes, useRef, useState} from 'react';
 import {SetRequired} from 'type-fest';
@@ -65,7 +64,7 @@ const VideoComparision = (props: VideoComparisionProps) => {
 
 			<div className={styles.startWrapper}>
 				<Button onClick={handleStart}>
-					<FontAwesomeIcon icon={hasPlayedOnce ? faRedo : faPlay}/>
+					{hasPlayedOnce ? <Repeat/> : <Play/>}
 				</Button>
 			</div>
 		</div>

@@ -2,26 +2,21 @@
 
 .icon {
   margin-right: 0.5rem;
+  padding: 0.4rem;
+  border-radius: 1000px;
   font-size: 1.6rem;
   transition-duration: variables.$transition-duration;
+  display: flex;
+  align-items: center;
 
-  color: mix(variables.$white, variables.$black, 10%);
+  color: variables.$primary-accent;
 
   &:hover, &:active {
-    color: variables.$primary-accent;
+    color: variables.$white;
+    background-color: variables.$primary-accent;
   }
 
   .children {
     margin-left: 0.5rem;
-  }
-}
-
-html:global(.dark-mode) {
-  .icon {
-    color: mix(variables.$white, variables.$black, 40%);
-
-    &:hover, &:active {
-      color: variables.$primary-accent;
-    }
   }
 }

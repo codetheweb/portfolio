@@ -1,6 +1,5 @@
 import React, {CSSProperties, RefObject, useRef, useState} from 'react';
-import {faVolumeMute, faVolumeUp} from '@fortawesome/free-solid-svg-icons';
-import {FontAwesomeIcon} from '@fortawesome/react-fontawesome';
+import {VolumeX, Volume2} from 'react-feather';
 import useSyncedVideos from '../lib/use-synced-videos';
 import styles from './styles/embedded-video.module.scss';
 import Button from './button';
@@ -61,7 +60,7 @@ const EmbeddedVideo = React.forwardRef<HTMLVideoElement, Props>(({
 						setIsMuted(m => !m);
 					}}
 				>
-					<FontAwesomeIcon icon={isMuted ? faVolumeMute : faVolumeUp}/>
+					{isMuted ? <VolumeX/> : <Volume2/>}
 				</Button>
 			)}
 		</div>
