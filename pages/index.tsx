@@ -23,17 +23,19 @@ const PROJECTS: ProjectTileProps[] = [
 		technologies: ['Next.js', 'NestJS', 'Kubernetes'],
 		image: {
 			src: courseHeroLightImg,
-			priority: true,
+			// Seems to be a bug with Next.js/Image where if `priority={true}`
+			// is set it doesn't re-render when source changes?
+			hasPriority: false,
 			dark: {
 				src: courseHeroDarkImg,
-				priority: true,
+				hasPriority: false,
 			},
 		},
 	},
 	{
 		image: {
 			src: aoedeLogoImg,
-			priority: true,
+			hasPriority: true,
 		},
 		name: 'Aoede',
 		year: '2021',
@@ -47,7 +49,7 @@ const PROJECTS: ProjectTileProps[] = [
 		isImageAlignedWithBottom: true,
 		image: {
 			src: xkcdyHeroImg,
-			priority: true,
+			hasPriority: true,
 		},
 		name: 'XKCDY',
 		year: '2020',
