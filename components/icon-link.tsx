@@ -9,8 +9,10 @@ type IconLinkProps = {
 
 export default function IconLink({href, icon, children}: IconLinkProps) {
 	return (
-		<a href={href} target="_blank" rel="noreferrer" className={styles.icon}>
-			{icon}
+		<a href={href} target="_blank" rel="noreferrer" className={styles.iconWrapper}>
+			<span className={styles.icon}>
+				{icon}
+			</span>
 
 			{children && (
 				<span className={styles.children}>{children}</span>

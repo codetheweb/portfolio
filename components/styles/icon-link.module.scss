@@ -1,19 +1,32 @@
 @use '../../styles/variables';
 
-.icon {
+.iconWrapper {
   margin-right: 0.5rem;
-  padding: 0.4rem;
-  border-radius: 1000px;
   font-size: 1.6rem;
-  transition-duration: variables.$transition-duration;
+
   display: flex;
   align-items: center;
 
   color: variables.$primary-accent;
 
+  .icon {
+    transition-duration: variables.$transition-duration;
+    padding: 0.4rem;
+    height: 2.5rem;
+    width: 2.5rem;
+    border-radius: 1000px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
   &:hover, &:active {
-    color: variables.$white;
-    background-color: variables.$primary-accent;
+    .icon {
+      color: variables.$white;
+      background-color: variables.$primary-accent;
+    }
+
+    text-decoration: underline;
   }
 
   .children {
