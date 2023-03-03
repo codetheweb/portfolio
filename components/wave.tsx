@@ -1,13 +1,11 @@
-import React, {useState, useEffect} from 'react';
-import dynamic from 'next/dynamic';
-import {ParticlesProps} from 'react-tsparticles';
+import React, {useState, useEffect, useCallback} from 'react';
+import {Particles, ParticlesProps} from 'react-particles';
+import type {Engine} from 'tsparticles-engine';
+import {loadFull} from 'tsparticles';
 import usePrevious from 'react-use/lib/usePrevious';
 import useColorMode from '../lib/use-color-mode';
 import styles from './styles/wave.module.scss';
-
-// TODO: upgrade to v2.0.0 of this library as soon as possible.
-// Current version is really heavy.
-const Particles = dynamic(async () => import('react-tsparticles'));
+import NoSsr from './no-ssr';
 
 const particlesConfig: ParticlesProps['params'] = {
 	particles: {
@@ -51,6 +49,14 @@ export default function Wave() {
 		setIsReady(true);
 	}, []);
 
+	const particlesInit = useCallback(async (engine: Engine) => {
+		if (typeof window === 'undefined') {
+			return;
+		}
+
+		await loadFull(engine);
+	}, []);
+
 	return (
 		<div className={styles.container}>
 			<svg height="0" width="0">
@@ -62,11 +68,13 @@ export default function Wave() {
 			</svg>
 
 			<div className={`${styles.particlesContainer} ${(isDark && isReady) ? styles.active : ''}`}>
-				{
-					isDark && (
-						<Particles className={styles.particles} params={particlesConfig}/>
-					)
-				}
+				<NoSsr>
+					{
+						isDark && (
+							<Particles className={styles.particles} params={particlesConfig} init={particlesInit}/>
+						)
+					}
+				</NoSsr>
 			</div>
 
 			<div className={`${styles.themeSelector} ${isDark ? styles.isDark : styles.isLight} ${wasChanged ? styles.wasChanged : ''}`}>

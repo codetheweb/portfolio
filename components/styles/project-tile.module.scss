@@ -178,7 +178,7 @@ $offset: 15px;
 
 html:global(.dark-mode) {
   .container {
-    background: black;
+    background: transparent;
     color: variables.$white;
 
     &:before {
