@@ -100,7 +100,7 @@ const CoursesPage = () => {
 			<p style={{marginTop: '2rem'}}>Since this is a mostly STEM school, a not-insignificant portion of the student body uses ultrawide monitors. Owning one myself—and wanting to improve the overall workflow if extra screen space was available—I added a 2-column layout that&#39;s activated when the browser window is wide enough:</p>
 
 			<div style={{gridColumn: '1/4'}}>
-				<Image src={UltrawideDemoImg} placeholder="blur"/>
+				<Image src={UltrawideDemoImg} placeholder="blur" alt="demo on an ultrawide monitor" style={{maxWidth: '100%', height: 'auto'}}/>
 			</div>
 
 			<p>This works far better than having to hide parts of the interface behind a modal or drawer, as is sadly the case with smaller screens. Because ultrawide users often keep their browser window to half the width of their screen or less in day-to-day use, I also added a tip instructing users to resize their browser that appears if this 2-column layout is supported.</p>
@@ -134,7 +134,7 @@ const CoursesPage = () => {
 
 				<p>I also managed to accidentally DDoS the school&#39;s course system during development of the scraper:</p>
 
-				<Image src={DDoSImg} placeholder="blur"/>
+				<Image src={DDoSImg} placeholder="blur" alt="oops" style={{maxWidth: '100%', height: 'auto'}}/>
 			</div>
 
 			<Header size="h2">Results</Header>

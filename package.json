@@ -10,20 +10,23 @@
     "lint:fix": "xo --fix"
   },
   "dependencies": {
+    "@fisch0920/use-dark-mode": "^2.4.0",
+    "@mdx-js/loader": "^2.3.0",
+    "@mdx-js/react": "^2.3.0",
+    "@next/mdx": "^13.2.3",
     "classnames": "^2.3.1",
-    "next": "^12.2.5",
-    "next-seo": "^5.5.0",
+    "next": "^13.2.3",
+    "next-seo": "^5.15.0",
     "react": "18.2.0",
     "react-dom": "18.2.0",
     "react-feather": "2.0.10",
-    "react-parallax-tilt": "^1.5.71",
+    "react-parallax-tilt": "^1.7.109",
     "react-tsparticles": "^1.36.0",
-    "react-use": "^17.3.1",
-    "use-dark-mode": "^2.3.1"
+    "react-use": "^17.4.0"
   },
   "devDependencies": {
-    "@types/node": "^16.11.1",
-    "@types/react": "^17.0.30",
+    "@types/node": "^18.14.5",
+    "@types/react": "^18.0.28",
     "@typescript-eslint/eslint-plugin": "^5.1.0",
     "@typescript-eslint/parser": "^5.1.0",
     "eslint-config-xo-react": "^0.25.0",

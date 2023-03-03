@@ -22,9 +22,8 @@ const EmbeddedImg = ({
 	return (
 		<div className={className}>
 			<Image
-				// Bad union discrimination
-				// eslint-disable-next-line @typescript-eslint/no-unsafe-assignment
-				placeholder={typeof rest.src === 'string' ? 'empty' as any : 'blur' as any}
+				className={styles.nextImage}
+				placeholder={typeof rest.src === 'string' ? 'empty' : 'blur'}
 				priority={hasPriority}
 				{...rest as ImageProps}/>
 		</div>

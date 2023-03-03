@@ -17,8 +17,8 @@ export default function TextLink({href, onClick, children}: Props) {
 
 	if (href?.startsWith('/')) {
 		return (
-			<Link href={href}>
-				<a className={styles.link}>{children}</a>
+			<Link href={href} className={styles.link}>
+				{children}
 			</Link>
 		);
 	}
