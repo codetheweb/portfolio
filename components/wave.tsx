@@ -34,7 +34,8 @@ const particlesConfig: ParticlesProps['params'] = {
 			},
 		},
 	},
-	retina_detect: true,
+	detectRetina: true,
+	fullScreen: false,
 };
 
 export default function Wave() {
