@@ -1,9 +1,12 @@
 import React from 'react';
+import {DateTime} from 'luxon';
+import {GetStaticProps} from 'next';
 import Title from '../components/title';
 import ProjectTile, {ProjectTileProps} from '../components/project-tile';
 import SocialButtons from '../components/social-buttons';
 import TextLink from '../components/text-link';
 import {useFirstLoad} from '../lib/first-load';
+import {getPosts} from '../lib/get-posts';
 import styles from './styles/index.module.scss';
 
 import courseHeroLightImg from '/public/images/courses/promo-light.png';
@@ -103,7 +106,15 @@ const PROJECTS: ProjectTileProps[] = [
 	},
 ];
 
-export default function Home() {
+interface HomePageProps {
+	posts: Array<{
+		slug: string;
+		title: string;
+		publishedAt: string;
+	}>;
+}
+
+export default function Home({posts}: HomePageProps) {
 	const isFirstLoad = useFirstLoad();
 
 	return (
@@ -123,11 +134,18 @@ export default function Home() {
 					I&apos;m currently building an API to the physical world at <TextLink href="https://www.getseam.com/">Seam</TextLink>.
 				</p>
 
-				<p>
-					I just started a <TextLink href="/posts" className={styles.blogLink}>blog</TextLink>!
-				</p>
+				<h2 className={styles.marginForSectionTop}>a few things I&apos;ve written</h2>
 
-				<h2 className={styles.marginForSectionTop}>a few things I&apos;ve worked on recently</h2>
+				<ul className={styles.blogPostList}>
+					{posts.map(post => (
+						<li key={post.slug}>
+							<span className={styles.postPublishedAt}>{post.publishedAt}</span>
+							<TextLink href={`/posts/${post.slug}`}>{post.title}</TextLink>
+						</li>
+					))}
+				</ul>
+
+				<h2 className={styles.marginForSectionTop}>a few things I&apos;ve worked on</h2>
 
 				<p>
 					I like to keep busy with side projects. My rule of thumb when starting a new project is to learn at least one thing, whether that&apos;s a framework, technology, language, or dev-ops methodology.
@@ -152,3 +170,17 @@ export default function Home() {
 		</div>
 	);
 }
+
+export const getStaticProps: GetStaticProps = async () => {
+	const posts = getPosts();
+
+	return {
+		props: {
+			posts: posts.map(p => ({
+				slug: p!.slug,
+				title: p!.data.title as string,
+				publishedAt: DateTime.fromJSDate(p!.data.date).plus({hours: 12}).toLocaleString({month: 'long', day: 'numeric', year: 'numeric'}),
+			})),
+		},
+	};
+};

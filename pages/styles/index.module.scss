@@ -1,3 +1,5 @@
+@use '../../styles/variables';
+
 .container {
   width: min-content;
   margin-left: auto;
@@ -8,9 +10,16 @@
   margin-top: 3rem;
 }
 
-.blogLink {
-  font-weight: bold;
-  text-decoration-thickness: 2px;
+.blogPostList {
+  list-style: none;
+  padding-left: 0;
+  font-weight: 600;
+
+  .postPublishedAt {
+    color: lighten(variables.$black, 30%);
+    text-transform: lowercase;
+    margin-right: 1em;
+  }
 }
 
 .projectTiles {
