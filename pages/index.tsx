@@ -122,6 +122,11 @@ export default function Home() {
 				<p>
 					I&apos;m currently building an API to the physical world at <TextLink href="https://www.getseam.com/">Seam</TextLink>.
 				</p>
+
+				<p>
+					I just started a <TextLink href="/posts" className={styles.blogLink}>blog</TextLink>!
+				</p>
+
 				<h2 className={styles.marginForSectionTop}>a few things I&apos;ve worked on recently</h2>
 
 				<p>

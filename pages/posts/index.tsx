@@ -1,5 +1,8 @@
-const AllPostsPage = () => {
-  return 'Empty'
-}
+import React from 'react';
+import TextLink from '../../components/text-link';
 
-export default AllPostsPage
+const AllPostsPage = () => (
+	<TextLink href="/">return to home</TextLink>
+);
+
+export default AllPostsPage;
