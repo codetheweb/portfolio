@@ -1,5 +1,5 @@
 import React from 'react';
-import {DateTime} from 'luxon';
+import dayjs from 'dayjs';
 import {GetStaticProps} from 'next';
 import Title from '../components/title';
 import ProjectTile, {ProjectTileProps} from '../components/project-tile';
@@ -179,7 +179,7 @@ export const getStaticProps: GetStaticProps = async () => {
 			posts: posts.map(p => ({
 				slug: p.slug,
 				title: p.meta.title,
-				publishedAt: DateTime.fromISO(p.meta.date).toLocaleString({month: 'long', day: 'numeric', year: 'numeric'}),
+				publishedAt: dayjs(p.meta.date).format('MMMM D, YYYY'),
 			})),
 		},
 	};
