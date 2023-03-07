@@ -1,9 +1,12 @@
 import React from 'react';
+import {DateTime} from 'luxon';
+import {GetStaticProps} from 'next';
 import Title from '../components/title';
 import ProjectTile, {ProjectTileProps} from '../components/project-tile';
 import SocialButtons from '../components/social-buttons';
 import TextLink from '../components/text-link';
 import {useFirstLoad} from '../lib/first-load';
+import {getPosts} from '../lib/get-posts';
 import styles from './styles/index.module.scss';
 
 import courseHeroLightImg from '/public/images/courses/promo-light.png';
@@ -26,6 +29,7 @@ const PROJECTS: ProjectTileProps[] = [
 			// Seems to be a bug with Next.js/Image where if `priority={true}`
 			// is set it doesn't re-render when source changes?
 			hasPriority: false,
+			alt: 'Screenshot of MTU Courses',
 			dark: {
 				src: courseHeroDarkImg,
 				hasPriority: false,
@@ -35,6 +39,7 @@ const PROJECTS: ProjectTileProps[] = [
 	{
 		image: {
 			src: aoedeLogoImg,
+			alt: 'Aoede logo',
 			hasPriority: true,
 		},
 		name: 'Aoede',
@@ -49,6 +54,7 @@ const PROJECTS: ProjectTileProps[] = [
 		isImageAlignedWithBottom: true,
 		image: {
 			src: xkcdyHeroImg,
+			alt: 'XKCDY hero image',
 			hasPriority: true,
 		},
 		name: 'XKCDY',
@@ -59,6 +65,7 @@ const PROJECTS: ProjectTileProps[] = [
 	{
 		image: {
 			src: linkhereLightImg,
+			alt: 'screenshot of linkhere',
 			dark: {
 				src: linkhereDarkImg,
 			},
@@ -71,6 +78,7 @@ const PROJECTS: ProjectTileProps[] = [
 	{
 		image: {
 			src: museLogoImg,
+			alt: 'Muse logo',
 		},
 		name: 'Muse',
 		year: '2020',
@@ -89,6 +97,7 @@ const PROJECTS: ProjectTileProps[] = [
 	{
 		image: {
 			src: tuyapiLogoImg,
+			alt: 'TuyAPI logo',
 		},
 		name: 'TuyAPI',
 		year: '2017 → present',
@@ -97,7 +106,15 @@ const PROJECTS: ProjectTileProps[] = [
 	},
 ];
 
-export default function Home() {
+interface HomePageProps {
+	posts: Array<{
+		slug: string;
+		title: string;
+		publishedAt: string;
+	}>;
+}
+
+export default function Home({posts}: HomePageProps) {
 	const isFirstLoad = useFirstLoad();
 
 	return (
@@ -116,7 +133,19 @@ export default function Home() {
 				<p>
 					I&apos;m currently building an API to the physical world at <TextLink href="https://www.getseam.com/">Seam</TextLink>.
 				</p>
-				<h2 className={styles.marginForSectionTop}>A few things I&apos;ve worked on recently</h2>
+
+				<h2 className={styles.marginForSectionTop}>a few things I&apos;ve written</h2>
+
+				<ul className={styles.blogPostList}>
+					{posts.map(post => (
+						<li key={post.slug}>
+							<span className={styles.postPublishedAt}>{post.publishedAt}</span>
+							<TextLink href={`/posts/${post.slug}`}>{post.title}</TextLink>
+						</li>
+					))}
+				</ul>
+
+				<h2 className={styles.marginForSectionTop}>a few things I&apos;ve worked on</h2>
 
 				<p>
 					I like to keep busy with side projects. My rule of thumb when starting a new project is to learn at least one thing, whether that&apos;s a framework, technology, language, or dev-ops methodology.
@@ -133,7 +162,7 @@ export default function Home() {
 				}
 			</div>
 
-			<h2 className={styles.marginForSectionTop}>Want to talk?</h2>
+			<h2 className={styles.marginForSectionTop}>want to talk?</h2>
 
 			<p>
 				Feel free to email me if you have feedback on something, you&apos;re looking for a developer, or you just want to connect: <TextLink href="mailto:hi@maxisom.me">hi@maxisom.me</TextLink>. You might also want to check out my <TextLink href="/resume.pdf">résumé</TextLink>.
@@ -141,3 +170,17 @@ export default function Home() {
 		</div>
 	);
 }
+
+export const getStaticProps: GetStaticProps = async () => {
+	const posts = getPosts();
+
+	return {
+		props: {
+			posts: posts.map(p => ({
+				slug: p!.slug,
+				title: p!.data.title as string,
+				publishedAt: DateTime.fromJSDate(p!.data.date).plus({hours: 12}).toLocaleString({month: 'long', day: 'numeric', year: 'numeric'}),
+			})),
+		},
+	};
+};

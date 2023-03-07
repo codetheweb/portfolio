@@ -3,7 +3,7 @@ import Image from 'next/image';
 import styles from './styles/iphone-framed-video.module.scss';
 import frameImg from '/public/images/iphone-frame.png';
 
-export default function PhoneFramedVideo({src}: {src: string}) {
+export default function PhoneFramedVideo({src, alt}: {src: string; alt: string}) {
 	return (
 		<div className={styles.container}>
 			<div className={styles.videoContainer}>
@@ -12,7 +12,7 @@ export default function PhoneFramedVideo({src}: {src: string}) {
 					<source src={src}/>
 				</video>
 			</div>
-			<Image src={frameImg} layout="fill"/>
+			<Image fill src={frameImg} alt={alt}/>
 		</div>
 	);
 }

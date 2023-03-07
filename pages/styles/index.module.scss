@@ -1,3 +1,5 @@
+@use '../../styles/variables';
+
 .container {
   width: min-content;
   margin-left: auto;
@@ -5,7 +7,19 @@
 }
 
 .marginForSectionTop {
-  margin-top: 4rem;
+  margin-top: 3rem;
+}
+
+.blogPostList {
+  list-style: none;
+  padding-left: 0;
+  font-weight: 600;
+
+  .postPublishedAt {
+    color: lighten(variables.$black, 30%);
+    text-transform: lowercase;
+    margin-right: 1em;
+  }
 }
 
 .projectTiles {

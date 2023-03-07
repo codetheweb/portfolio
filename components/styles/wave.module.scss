@@ -49,11 +49,6 @@ $dark-bg: mix(variables.$white, variables.$primary-accent, 15%);
   }
 
   .particlesContainer {
-    position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
     transition-duration: variables.$theme-transition-duration;
     opacity: 0;
     transition-property: opacity;
