@@ -172,14 +172,14 @@ export default function Home({posts}: HomePageProps) {
 }
 
 export const getStaticProps: GetStaticProps = async () => {
-	const posts = getPosts();
+	const posts = await getPosts();
 
 	return {
 		props: {
 			posts: posts.map(p => ({
-				slug: p!.slug,
-				title: p!.data.title as string,
-				publishedAt: DateTime.fromJSDate(p!.data.date).plus({hours: 12}).toLocaleString({month: 'long', day: 'numeric', year: 'numeric'}),
+				slug: p.slug,
+				title: p.meta.title,
+				publishedAt: DateTime.fromISO(p.meta.date).toLocaleString({month: 'long', day: 'numeric', year: 'numeric'}),
 			})),
 		},
 	};

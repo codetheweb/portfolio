@@ -1,3 +1,19 @@
+import {MdxLayout} from '../../components/mdx/layout'
+import {ImageForMdx} from '../../components/mdx/image'
+import EmbeddedVideo from '../../components/embedded-video'
+import InvadersHtopPng from '../../public/posts/wgpu/invaders-htop.png'
+import InvadersFlamegraphPng from '../../public/posts/wgpu/invaders-flamegraph.png'
+import PartialUpdateFlamegraphPng from '../../public/posts/wgpu/partial-update-flamegraph.png'
+import Attempt3FlamegraphPng from '../../public/posts/wgpu/attempt-3-flamegraph.png'
+import CPUDecodeFrameRenderPng from '../../public/posts/wgpu/cpu-decode-frame-render.png'
+import Attempt3CPUUsagePng from '../../public/posts/wgpu/attempt-3-cpu-usage.png'
+import Attempt4CPUUsagePng from '../../public/posts/wgpu/attempt-4-cpu-usage.png'
+
+export const meta = {
+  title: 'Rendering 5 million pixel updates per second with wgpu',
+  date: '2019-01-01',
+}
+
 # Rendering 5 million pixel updates per second with wgpu
 
 *Note: code examples omit some steps for brevity. If you're interested building something similar, check out the [source](todo).*
@@ -21,20 +37,19 @@ Unfortunately I don't have any code from this period, but let's take a look at o
 
 Here's a simple clone of Space Invaders:
 
-<!-- todo: embed video -->
-![game play of space invaders example](./invaders-example.mp4)
+<EmbeddedVideo src="/posts/wgpu/invaders-example.mp4" loop autoPlay hideSoundControls/>
 
 I expanded the window size to 2000x2000 pixels, since that's the final size of /r/place's canvas. The example is otherwise unmodified.
 
 But popping open `htop`, we see that it's using... 60% of our CPU?!
 
-![htop of space invaders example, showing 60% CPU usage](./invaders-htop.png)
+<ImageForMdx src={InvadersHtopPng} alt="htop of space invaders example, showing 60% CPU usage" priority/>
 
 What's going on?
 
 Here's the output of a quick [cargo flamegraph](https://github.com/flamegraph-rs/flamegraph):
 
-![flamegraph of space invaders example](./invaders-flamegraph.png)
+<ImageForMdx src={InvadersFlamegraphPng} alt="flamegraph of space invaders example"/>
 
 Around 50% of CPU time is spent in `World::draw`, but we don't really care about that as it looks like the code loops over every pixel at least once--it could probably be optimized if necessary.
 
@@ -80,7 +95,7 @@ This works decently. However, at 1,000x playback speed, cracks start to show. Pl
 
 As expected, this is mainly due to the excessive number of calls to `copy_buffer_to_texture` (remember, each call is only updating a single pixel):
 
-![flamegraph of partial texture updates](./partial-update-flamegraph.png)
+<ImageForMdx src={PartialUpdateFlamegraphPng} alt="flamegraph of partial texture updates"/>
 
 Does 1,000x playback speed matter? No, but in theory we would run into similar issues at 1-2x playback speed towards the end of /r/place when there's more activity. Could I be bothered to test this out? Nope!
 
@@ -136,7 +151,7 @@ fn main(@builtin(global_invocation_id) id: vec3<u32>) {
   );
 }
 ```
-<!-- tile == pixel sooner? -->
+
 (In general, I call pixels "tiles" in code.)
 
 As far as shaders go, this is quite simple--it's just a function that takes a `CoordinateUpdate` and applies it to the texture.
@@ -178,7 +193,7 @@ What else can we try?
 
 This is the flamegraph for attempt 3:
 
-![flamegraph of attempt 3](./attempt-3-flamegraph.png)
+<ImageForMdx src={Attempt3FlamegraphPng} alt="flamegraph of attempt 3"/>
 
 To understand the current bottlenecks (why are there so many HashMap calls?), we'll have to dive a little into the architecture on the CPU side.
 
@@ -188,7 +203,7 @@ A major limitation of our current compute shader is that it's only deterministic
 
 Because of this, we dedupe updates by coordinates (using a HashMap) on the CPU before passing them to the GPU. The logic on the CPU side every frame looks something like this:
 
-![frame rendering with CPU decoding](./cpu-decode-frame-render.png)
+<ImageForMdx src={CPUDecodeFrameRenderPng} alt="frame rendering with CPU decoding"/>
 
 To unlock extreme performance, we need to move this logic entirely to the GPU.
 
@@ -302,11 +317,11 @@ At first? No. But through the power of prose and editing we can skip past a few 
 
 Here's a graph of CPU usage from attempt 3 (partially CPU, partially GPU) at 10,000x speed:
 
-![CPU usage graph for attempt 3](./attempt-3-cpu-usage.png)
+<ImageForMdx src={Attempt3CPUUsagePng} alt="CPU usage graph for attempt 3"/>
 
 And here's the same thing for attempt 4 (fully\* GPU):
 
-![CPU usage graph for attempt 4](./attempt-4-cpu-usage.png)
+<ImageForMdx src={Attempt4CPUUsagePng} alt="CPU usage graph for attempt 4"/>
 
 Not bad.
 
@@ -314,8 +329,7 @@ In fact, on my machine (using a M1 Max) we can go up to *30,000x* playback speed
 
 Ok, fine. The moment you've all been waiting for: the entirety of 2022's /r/place, compressed to 30s, rendered in real-time:
 
-<!-- todo: embed video -->
-![2022's /r/place rendering in 30s](./30s-playback.mp4)
+<EmbeddedVideo src="/posts/wgpu/30s-playback.mp4" />
 
 ## Addendum
 
@@ -347,3 +361,5 @@ struct StoredTilePlacement {
 
 - https://elyshaffir.github.io/Taiga-Blog/2022/08/27/two-dimentional-arrays-bank-conflicts-and-asynchronous-access-to-textures-in-wgsl.html
 - https://surma.dev/things/webgpu/
+
+export default ({children}) => <MdxLayout meta={meta}>{children}</MdxLayout>

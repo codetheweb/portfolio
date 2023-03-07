@@ -1,0 +1,12 @@
+@use "../../../styles/variables.scss";
+
+.container {
+  pre, code {
+    font-size: 1rem;
+    font-family: monospace, monospace;
+  }
+
+  pre {
+    border-radius: variables.$radius;
+  }
+}

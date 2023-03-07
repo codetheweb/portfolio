@@ -1,29 +1,31 @@
 import fs from 'node:fs';
 import path from 'node:path';
 import process from 'node:process';
-import matter from 'gray-matter';
 
-export const getPosts = () => {
+export interface Post {
+	meta: {
+		title: string;
+		date: `${number}-${number}-${number}`;
+	};
+	slug: string;
+}
+
+export const getPosts = async (): Promise<Post[]> => {
 	const dirFiles = fs.readdirSync(path.join(process.cwd(), 'pages', 'posts'), {
 		withFileTypes: true,
 	});
 
-	const posts = dirFiles
-		.map(file => {
+	const posts = await Promise.all(dirFiles
+		.map(async file => {
 			if (!file.name.endsWith('.mdx')) {
 				return;
 			}
 
-			const fileContent = fs.readFileSync(
-				path.join(process.cwd(), 'pages', 'posts', file.name),
-				'utf-8',
-			);
-			const {data, content} = matter(fileContent);
+			const {meta} = await import(`../pages/posts/${file.name}`) as {meta: Post['meta']};
 
 			const slug = file.name.replace(/.mdx$/, '');
-			return {data, content, slug};
-		})
-		.filter(post => post);
+			return {meta, slug};
+		}));
 
-	return posts;
+	return posts.filter(Boolean) as Post[];
 };
