@@ -43,7 +43,7 @@ export const MdxLayout = ({children, meta}: MdxLayoutProps) => {
 			<Header size="h3">{meta.title}</Header>
 
 			<p className={styles.date}>
-				{} ({dayjs(meta.date).fromNow()})
+				{publishedAt} ({dayjs(meta.date).fromNow()})
 			</p>
 
 			<main>

@@ -9,4 +9,14 @@
   pre {
     border-radius: variables.$radius;
   }
+
+  main {
+    margin-top: 3rem;
+  }
+}
+
+.date {
+  color: lighten(variables.$black, 30%);
+  font-weight: bold;
+  text-transform: lowercase;
 }
