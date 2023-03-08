@@ -26,16 +26,16 @@
   position: fixed;
   right: 0;
   bottom: 0;
-  width: 8rem;
-  height: 8rem;
+  width: 6rem;
+  height: 6rem;
   display: flex;
   align-items: end;
   justify-content: end;
-  padding-right: 1.4rem;
-  padding-bottom: 1.4rem;
+  padding-right: 0.8rem;
+  padding-bottom: 0.8rem;
   clip-path: polygon(100% 0, 0% 100%, 100% 100%);
   backdrop-filter: contrast(0.9) blur(10px);
-  transition-property: background;
+  transition-property: background, width, height, padding;
   transition-duration: variables.$transition-duration;
 
   .homeButtonIcon {
@@ -45,6 +45,10 @@
 
   &:hover {
     background: variables.$primary-accent;
+    width: 8rem;
+    height: 8rem;
+    padding-right: 1.4rem;
+    padding-bottom: 1.4rem;
   }
 }
 
