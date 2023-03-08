@@ -7,6 +7,7 @@ export interface Post {
 		title: string;
 		date: `${number}-${number}-${number}`;
 		tags: string[];
+		description: string;
 	};
 	slug: string;
 }

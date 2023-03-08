@@ -37,6 +37,7 @@ export const getFeed = async () => {
 			],
 			date: new Date(post.meta.date),
 			image: getOgImageUrlForPost(post.meta.title, post.meta.tags, post.meta.date),
+			description: post.meta.description,
 		});
 	}
 

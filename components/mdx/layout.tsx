@@ -20,6 +20,7 @@ interface MdxLayoutProps {
 		tags: string[];
 		date: string;
 		slug: string;
+		description: string;
 	};
 }
 
@@ -32,6 +33,8 @@ export const MdxLayout = ({children, meta}: MdxLayoutProps) => {
 			<Head>
 				<title>{meta.title}</title>
 
+				<meta property="og:title" content={meta.title}/>
+				<meta property="og:description" content={meta.description}/>
 				<meta property="og:image" content={getOgImageUrlForPost(meta.title, meta.tags, meta.date)}/>
 				<meta property="og:url" content={postUrl}/>
 				<meta property="og:type" content="website"/>
