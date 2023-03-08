@@ -8,6 +8,7 @@ import Link from 'next/link';
 import TextLink from '../text-link';
 import Header from '../header';
 import {getOgImageUrlForPost} from '../../lib/get-og-image-url-for-post';
+import {getPublicOrigin} from '../../lib/get-public-origin';
 import styles from './styles/layout.module.scss';
 
 dayjs.extend(relativeTime);
@@ -18,17 +19,26 @@ interface MdxLayoutProps {
 		title: string;
 		tags: string[];
 		date: string;
+		slug: string;
 	};
 }
 
 export const MdxLayout = ({children, meta}: MdxLayoutProps) => {
 	const publishedAt = dayjs(meta.date).format('MMMM D, YYYY');
+	const postUrl = new URL('/posts/' + meta.slug, getPublicOrigin()).toString();
+
 	return (
 		<div className={styles.container}>
 			<Head>
 				<title>{meta.title}</title>
 
 				<meta property="og:image" content={getOgImageUrlForPost(meta.title, meta.tags, meta.date)}/>
+				<meta property="og:url" content={postUrl}/>
+				<meta property="og:type" content="website"/>
+				<meta name="twitter:card" content="summary_large_image"/>
+				<meta property="twitter:domain" content={getPublicOrigin()}/>
+				<meta property="twitter:url" content={postUrl}/>
+				<meta name="twitter:image" content={getOgImageUrlForPost(meta.title, meta.tags, meta.date)}/>
 			</Head>
 
 			<Header size="h3">{meta.title}</Header>
