@@ -6,8 +6,8 @@ export const config = {
 	runtime: 'edge',
 };
 
-const arial = fetch(new URL('../../public/fonts/arial.ttf', import.meta.url)).then(async response => response.arrayBuffer());
-const arialBold = fetch(new URL('../../public/fonts/arial_bold.ttf', import.meta.url)).then(async response => response.arrayBuffer());
+const arial = fetch(new URL('../../public/fonts/arial.ttf', import.meta.url).toString()).then(async response => response.arrayBuffer());
+const arialBold = fetch(new URL('../../public/fonts/arial_bold.ttf', import.meta.url).toString()).then(async response => response.arrayBuffer());
 
 const handler = async (request: Request) => {
 	const url = new URL(request.url);
