@@ -20,3 +20,36 @@
   font-weight: bold;
   text-transform: lowercase;
 }
+
+.homeButtonContainer {
+  z-index: 1000;
+  position: fixed;
+  right: 0;
+  bottom: 0;
+  width: 8rem;
+  height: 8rem;
+  display: flex;
+  align-items: end;
+  justify-content: end;
+  padding-right: 1.4rem;
+  padding-bottom: 1.4rem;
+  clip-path: polygon(100% 0, 0% 100%, 100% 100%);
+  backdrop-filter: contrast(0.9) blur(10px);
+  transition-property: background;
+  transition-duration: variables.$transition-duration;
+
+  .homeButtonIcon {
+    color: variables.$black;
+    z-index: 1;
+  }
+
+  &:hover {
+    background: variables.$primary-accent;
+  }
+}
+
+html:global(.dark-mode) {
+  .homeButtonIcon {
+    color: variables.$white;
+  }
+}

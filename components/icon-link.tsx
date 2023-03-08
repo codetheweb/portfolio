@@ -1,3 +1,4 @@
+import Link from 'next/link';
 import React from 'react';
 import styles from './styles/icon-link.module.scss';
 
@@ -8,8 +9,10 @@ type IconLinkProps = {
 };
 
 export default function IconLink({href, icon, children}: IconLinkProps) {
+	const isExternal = !href.startsWith('/');
+
 	return (
-		<a href={href} target="_blank" rel="noreferrer" className={styles.iconWrapper}>
+		<Link href={href} target={isExternal ? '_blank' : undefined} rel={isExternal ? 'noreferrer' : undefined} className={styles.iconWrapper}>
 			<span className={styles.icon}>
 				{icon}
 			</span>
@@ -17,6 +20,6 @@ export default function IconLink({href, icon, children}: IconLinkProps) {
 			{children && (
 				<span className={styles.children}>{children}</span>
 			)}
-		</a>
+		</Link>
 	);
 }
