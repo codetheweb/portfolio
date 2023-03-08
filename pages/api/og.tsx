@@ -1,24 +1,23 @@
 import React from 'react';
 import dayjs from 'dayjs';
-import {ImageResponse} from '@vercel/og';
+import {Resvg} from '@resvg/resvg-js';
+import satori from 'satori';
+import axios from 'axios';
+import {NextApiHandler} from 'next';
+import {getPublicOrigin} from '../../lib/get-public-origin';
 
-export const config = {
-	runtime: 'edge',
-};
+const arial = axios<ArrayBuffer>(new URL('/fonts/arial.ttf', getPublicOrigin()).toString(), {responseType: 'arraybuffer'});
+const arialBold = axios<ArrayBuffer>(new URL('/fonts/arial_bold.ttf', getPublicOrigin()).toString(), {responseType: 'arraybuffer'});
 
-const arial = fetch(new URL('../../public/fonts/arial.ttf', import.meta.url).toString()).then(async response => response.arrayBuffer());
-const arialBold = fetch(new URL('../../public/fonts/arial_bold.ttf', import.meta.url).toString()).then(async response => response.arrayBuffer());
+const handler: NextApiHandler = async (request, response) => {
+	const {title, tags, publishedAt} = request.query;
+	const parsedTags = Array.isArray(tags) ? tags : [tags];
 
-const handler = async (request: Request) => {
-	const url = new URL(request.url);
-	const title = url.searchParams.get('title');
-	const tags = url.searchParams.getAll('tags');
-	const publishedAt = url.searchParams.get('publishedAt');
-	const formattedPublishedAt = dayjs(publishedAt).format('MMMM D, YYYY');
+	const formattedPublishedAt = dayjs(publishedAt as string).format('MMMM D, YYYY');
 
-	const [arialData, arialBoldData] = await Promise.all([arial, arialBold]);
+	const [{data: arialData}, {data: arialBoldData}] = await Promise.all([arial, arialBold]);
 
-	return new ImageResponse(
+	const svg = await satori(
 		(
 			<div style={{display: 'flex', backgroundColor: 'white', width: '100%', height: '100%', flexDirection: 'column', padding: '4rem',
 				fontWeight: 'bold'}}
@@ -29,7 +28,7 @@ const handler = async (request: Request) => {
 						alignItems: 'center',
 					}}
 				>
-					<img src={`${url.origin}/images/favicon/android-chrome-192x192.png`} width={64} height={64}/>
+					<img src={new URL('/images/favicon/android-chrome-192x192.png', getPublicOrigin()).toString()} width={64} height={64}/>
 					<span
 						style={{
 							marginLeft: 12,
@@ -46,7 +45,7 @@ const handler = async (request: Request) => {
 
 				<div style={{display: 'flex'}}>
 					<div style={{display: 'flex', marginTop: 'auto', fontSize: 26}}>
-						{tags.map(tag => (
+						{parsedTags.map(tag => (
 							<div key={tag} style={{display: 'flex', marginRight: '1rem'}}><span style={{color: 'gray', marginRight: '2ch'}}>#</span>{tag}</div>
 						))}
 					</div>
@@ -75,6 +74,13 @@ const handler = async (request: Request) => {
 			],
 		},
 	);
+
+	const resvg = new Resvg(svg, {});
+	const pngBuffer = resvg.render().asPng();
+
+	response.setHeader('Content-Type', 'image/png');
+	response.setHeader('Cache-Control', 'public, max-age=31536000, immutable');
+	response.end(pngBuffer);
 };
 
 export default handler;
