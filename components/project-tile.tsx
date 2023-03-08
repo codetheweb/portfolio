@@ -15,6 +15,7 @@ type ImageOptions = ExtendedImageProps & {
 };
 
 export type ProjectTileProps = {
+	slug: string;
 	image?: ImageOptions;
 	video?: string;
 	isVideoShadowed?: boolean;
@@ -26,7 +27,7 @@ export type ProjectTileProps = {
 	isVideoRounded?: boolean;
 };
 
-export default function ProjectTile({image, video, isVideoShadowed: shouldVideoHaveShadow = false, isImageAlignedWithBottom: alignImageWithBottom = false, name, year, description, technologies, isVideoRounded: roundedVideo = false}: ProjectTileProps) {
+export default function ProjectTile({image, video, isVideoShadowed: shouldVideoHaveShadow = false, isImageAlignedWithBottom: alignImageWithBottom = false, name, year, description, technologies, isVideoRounded: roundedVideo = false, slug}: ProjectTileProps) {
 	const videoRef = useRef<HTMLVideoElement>(null);
 	const [videoIsPlaying, setVideoIsPlaying] = useState(false);
 
@@ -64,7 +65,7 @@ export default function ProjectTile({image, video, isVideoShadowed: shouldVideoH
 	}, [colorMode, image]);
 
 	return (
-		<Link href={`/projects/${name.toLowerCase().split(' ').join('-')}`} className={styles.container} onMouseEnter={playVideoPreview} onMouseLeave={resetVideoPreview}>
+		<Link href={slug} className={styles.container} onMouseEnter={playVideoPreview} onMouseLeave={resetVideoPreview}>
 			<div className={styles.imageContainer} style={{paddingBottom: alignImageWithBottom ? 0 : '1rem'}}>
 
 				{
