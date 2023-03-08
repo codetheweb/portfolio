@@ -1,9 +1,10 @@
 import {Feed} from 'feed';
 import {getOgImageUrlForPost} from './get-og-image-url-for-post';
 import {getPosts} from './get-posts';
+import {getPublicOrigin} from './get-public-origin';
 
 export const getFeed = async () => {
-	const baseUrl = process.env.NEXT_PUBLIC_VERCEL_URL!;
+	const baseUrl = getPublicOrigin();
 
 	const feed = new Feed({
 		title: 'Max Isom',

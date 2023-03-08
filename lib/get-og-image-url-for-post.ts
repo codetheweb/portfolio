@@ -1,5 +1,7 @@
+import {getPublicOrigin} from './get-public-origin';
+
 export const getOgImageUrlForPost = (title: string, tags: string[], publishedAt: string) => {
-	const url = new URL('/api/og', process.env.NEXT_PUBLIC_VERCEL_URL);
+	const url = new URL('/api/og', getPublicOrigin());
 	url.searchParams.set('title', title);
 	url.searchParams.set('publishedAt', publishedAt);
 
