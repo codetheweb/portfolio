@@ -5,6 +5,7 @@ import 'prism-themes/themes/prism-vsc-dark-plus.css';
 import Head from 'next/head';
 import TextLink from '../text-link';
 import Header from '../header';
+import {getOgImageUrlForPost} from '../../lib/get-og-image-url-for-post';
 import styles from './styles/layout.module.scss';
 
 dayjs.extend(relativeTime);
@@ -18,18 +19,6 @@ interface MdxLayoutProps {
 	};
 }
 
-const getOgImagePath = (title: string, tags: string[], publishedAt: string) => {
-	const url = new URL('/api/og', process.env.NEXT_PUBLIC_VERCEL_URL);
-	url.searchParams.set('title', title);
-	url.searchParams.set('publishedAt', publishedAt);
-
-	for (const tag of tags) {
-		url.searchParams.append('tags', tag);
-	}
-
-	return url.toString();
-};
-
 export const MdxLayout = ({children, meta}: MdxLayoutProps) => {
 	const publishedAt = dayjs(meta.date).format('MMMM D, YYYY');
 	return (
@@ -37,7 +26,7 @@ export const MdxLayout = ({children, meta}: MdxLayoutProps) => {
 			<Head>
 				<title>{meta.title}</title>
 
-				<meta property="og:image" content={getOgImagePath(meta.title, meta.tags.slice(0, 3), publishedAt)}/>
+				<meta property="og:image" content={getOgImageUrlForPost(meta.title, meta.tags, meta.date)}/>
 			</Head>
 
 			<Header size="h3">{meta.title}</Header>
@@ -50,7 +39,11 @@ export const MdxLayout = ({children, meta}: MdxLayoutProps) => {
 				{children}
 			</main>
 
-			<TextLink href="/">return to home</TextLink>
+			<hr/>
+
+			<p>
+				interested in hearing about new posts? <TextLink href="https://twitter.com/mtisom">follow me</TextLink> or subscribe to a <TextLink href="/feed.rss">RSS</TextLink>, <TextLink href="/feed.atom">Atom</TextLink>, or <TextLink href="/feed.json">JSON</TextLink> feed.
+			</p>
 		</div>
 	);
 };

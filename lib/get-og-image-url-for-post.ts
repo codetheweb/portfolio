@@ -1,0 +1,11 @@
+export const getOgImageUrlForPost = (title: string, tags: string[], publishedAt: string) => {
+	const url = new URL('/api/og', process.env.NEXT_PUBLIC_VERCEL_URL);
+	url.searchParams.set('title', title);
+	url.searchParams.set('publishedAt', publishedAt);
+
+	for (const tag of tags.slice(0, 3)) {
+		url.searchParams.append('tags', tag);
+	}
+
+	return url.toString();
+};

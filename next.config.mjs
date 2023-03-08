@@ -20,6 +20,20 @@ const nextConfig = {
 	pageExtensions: ['ts', 'tsx', 'js', 'jsx', 'md', 'mdx'],
 	// Optionally, add any other Next.js config below
 	reactStrictMode: true,
+	rewrites: () => [
+		{
+			source: '/feed.json',
+			destination: '/api/feed.json',
+		},
+		{
+			source: '/feed.atom',
+			destination: '/api/feed.atom',
+		},
+		{
+			source: '/feed.rss',
+			destination: '/api/feed.rss',
+		},
+	],
 };
 
 export default withMDX(nextConfig);

@@ -1,4 +1,5 @@
 import React from 'react';
+import dayjs from 'dayjs';
 import {ImageResponse} from '@vercel/og';
 
 export const config = {
@@ -13,6 +14,7 @@ const handler = async (request: Request) => {
 	const title = url.searchParams.get('title');
 	const tags = url.searchParams.getAll('tags');
 	const publishedAt = url.searchParams.get('publishedAt');
+	const formattedPublishedAt = dayjs(publishedAt).format('MMMM D, YYYY');
 
 	const [arialData, arialBoldData] = await Promise.all([arial, arialBold]);
 
@@ -50,7 +52,7 @@ const handler = async (request: Request) => {
 					</div>
 
 					<div style={{marginLeft: 'auto', fontSize: 26, textTransform: 'lowercase'}}>
-						{publishedAt}
+						{formattedPublishedAt}
 					</div>
 				</div>
 			</div>

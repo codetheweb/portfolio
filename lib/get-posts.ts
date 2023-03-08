@@ -6,6 +6,7 @@ export interface Post {
 	meta: {
 		title: string;
 		date: `${number}-${number}-${number}`;
+		tags: string[];
 	};
 	slug: string;
 }
