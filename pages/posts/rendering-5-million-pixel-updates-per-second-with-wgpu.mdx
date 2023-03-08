@@ -58,6 +58,8 @@ More interesting is that `Queue::write_texture` accounts for ~35% of CPU time.
 
 As it turns out, `pixels` transfers the *entire* texture to the GPU every frame. This is fine for small canvas sizes, but a 2000x2000 texture is `2000 * 2000 * 4 = 16MB` per frame and `960MB/s` at 60 FPS. Modern GPUs can easily sustain this transfer rate, but it still takes a lot of CPU time to copy that much memory. [^1]
 
+[^1]: `wgpu` doesn't support direct mapped memory between CPU and GPU to avoid transfers as some architectures don't allow it
+
 **tl;dr**: `pixels` works great for small canvas sizes or when you don't care about performance, but it's not a good fit for a screensaver with a large canvas.
 
 ## Attempt 2: partial texture updates
@@ -335,7 +337,7 @@ fn update_texture(@builtin(global_invocation_id) id: vec3<u32>) {
 
 We don't need to use any atomic functions here, since we're just reading data rather than modifying it.
 
-(These two steps need to be split into separate compute functions because of [limitations in Metal](https://github.com/gpuweb/gpuweb/issues/3774)).
+(These two steps need to be split into separate compute functions because of [limitations in Metal](https://github.com/gpuweb/gpuweb/issues/3774).)
 
 ### Does it work?
 
@@ -359,11 +361,13 @@ Ok, fine. The moment you've all been waiting for: the entirety of 2022's /r/plac
 
 ## Addendum
 
-### 🖍️ Data encoding
+### Data encoding
 
 Reddit provides the history of 2022's /r/place as a gigantic 22GB CSV file. This is not really tenable to ship to end users, nor is it fast to iterate over. Instead, we encode the history into a packed binary format with [bincode](https://github.com/bincode-org/bincode), ending up with a ~1.6GB file.[^2]
 
-Here's the definition of a pixel update that we use to encode:
+[^2]: the data can be further compressed to under 1GB, but to prevent stuttering inflation needs to be handled on a separate thread and I haven't gotten around to implementing it yet
+
+Each pixel update gets turned into a 9-byte struct:
 
 ```rust
 struct StoredTilePlacement {
@@ -374,18 +378,12 @@ struct StoredTilePlacement {
 }
 ```
 
-- epoch is `0` at the first pixel update
-- because /r/place has a limited color palette, we store a list of colors separately and reference them by index.
-
-**Footnotes**
-
-[^1]: `wgpu` doesn't support direct mapped memory between CPU and GPU to avoid transfers as some architectures don't allow it
-[^2]: the data can be further compressed to under 1GB, but to prevent stuttering inflation needs to be handled on a separate thread and I haven't gotten around to implementing it yet
+The epoch is `0` at the first pixel update so we can fit it in a `u32`. And because /r/place has a limited color palette, we store a list of colors separately and reference them by index.
 
 
-**Useful Resources**
+## Useful Resources
 
-- https://elyshaffir.github.io/Taiga-Blog/2022/08/27/two-dimentional-arrays-bank-conflicts-and-asynchronous-access-to-textures-in-wgsl.html
-- https://surma.dev/things/webgpu/
+- [WebGPU — All of the cores, none of the canvas](https://surma.dev/things/webgpu/)
+- [Two Dimentional Arrays, Bank Conflicts and Asynchronous Access to Textures in WGSL](https://elyshaffir.github.io/Taiga-Blog/2022/08/27/two-dimentional-arrays-bank-conflicts-and-asynchronous-access-to-textures-in-wgsl.html)
 
 export default ({children}) => <MdxLayout meta={meta}>{children}</MdxLayout>
