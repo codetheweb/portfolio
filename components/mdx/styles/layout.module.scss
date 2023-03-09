@@ -8,14 +8,15 @@
   }
 
   main {
-    margin-top: 3rem;
+    margin-top: 1rem;
   }
 }
 
 .date {
   color: lighten(variables.$black, 30%);
   font-weight: bold;
-  text-transform: lowercase;
+  font-size: 1.1rem;
+  margin-top: 0.8rem;
 }
 
 .homeButtonContainer {

@@ -44,7 +44,7 @@ export const MdxLayout = ({children, meta}: MdxLayoutProps) => {
 				<meta name="twitter:image" content={getOgImageUrlForPost(meta.title, meta.tags, meta.date)}/>
 			</Head>
 
-			<Header size="h3">{meta.title}</Header>
+			<Header size="h2">{meta.title}</Header>
 
 			<p className={styles.date}>
 				{publishedAt} ({dayjs(meta.date).fromNow()})
@@ -57,7 +57,7 @@ export const MdxLayout = ({children, meta}: MdxLayoutProps) => {
 			<hr/>
 
 			<p>
-				interested in hearing about new posts? <TextLink href="https://twitter.com/mtisom">follow me</TextLink> or subscribe to a <TextLink href="/feed.rss">RSS</TextLink>, <TextLink href="/feed.atom">Atom</TextLink>, or <TextLink href="/feed.json">JSON</TextLink> feed.
+				Interested in hearing about new posts? <TextLink href="https://twitter.com/mtisom">Follow me</TextLink> or subscribe to a <TextLink href="/feed.rss">RSS</TextLink>, <TextLink href="/feed.atom">Atom</TextLink>, or <TextLink href="/feed.json">JSON</TextLink> feed.
 			</p>
 
 			<Link href="/" className={styles.homeButtonContainer}>

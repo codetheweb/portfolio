@@ -15,6 +15,7 @@ interface HomePageProps {
 		slug: string;
 		title: string;
 		publishedAt: string;
+		tags: string[];
 	}>;
 }
 
@@ -45,6 +46,12 @@ export default function Home({posts}: HomePageProps) {
 						<li key={post.slug}>
 							<span className={styles.postPublishedAt}>{post.publishedAt}</span>
 							<TextLink href={`/posts/${post.slug}`}>{post.title}</TextLink>
+
+							<div className={styles.postTags}>
+								{post.tags.slice(0, 3).map(tag => (
+									<span key={tag} className={styles.postTag}>{tag}</span>
+								))}
+							</div>
 						</li>
 					))}
 				</ul>
@@ -83,6 +90,7 @@ export const getStaticProps: GetStaticProps = async () => {
 			posts: posts.map(p => ({
 				slug: p.slug,
 				title: p.meta.title,
+				tags: p.meta.tags,
 				publishedAt: dayjs(p.meta.date).format('MMMM D, YYYY'),
 			})),
 		},

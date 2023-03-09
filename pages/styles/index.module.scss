@@ -8,6 +8,7 @@
 
 .marginForSectionTop {
   margin-top: 3rem;
+  margin-bottom: 0.5rem;
 }
 
 .blogPostList {
@@ -15,10 +16,36 @@
   padding-left: 0;
   font-weight: 600;
 
+  li {
+    display: flex;
+    flex-direction: column;
+
+    @media only screen and (min-width: variables.$mobile-max-width) {
+      flex-direction: row;
+    }
+  }
+
   .postPublishedAt {
     color: lighten(variables.$black, 30%);
     text-transform: lowercase;
     margin-right: 1em;
+  }
+
+  .postTags {
+    display: flex;
+
+    @media only screen and (min-width: variables.$mobile-max-width) {
+      margin-left: auto;
+    }
+
+    .postTag {
+      color: lighten(variables.$black, 30%);
+      margin-right: 0.5rem;
+
+      &:before {
+        content: '#';
+      }
+    }
   }
 }
 

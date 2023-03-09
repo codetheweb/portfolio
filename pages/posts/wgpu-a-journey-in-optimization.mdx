@@ -10,8 +10,8 @@ import Attempt3CPUUsagePng from '../../public/posts/wgpu/attempt-3-cpu-usage.png
 import Attempt4CPUUsagePng from '../../public/posts/wgpu/attempt-4-cpu-usage.png'
 
 export const meta = {
-  title: 'Rendering 5 million pixel updates per second with wgpu',
-  description: "CPU usage hovers around 18-25%, rendering an average of 5 million pixel updates per second. How does it work?",
+  title: 'wgpu: a journey in optimization',
+  description: "Or, rendering 5 million pixel updates per second with Rust & wgpu",
   date: '2023-03-08',
   tags: ['rust', 'wgpu', 'r/place', 'gamedev', 'screensaver', 'rendering'],
 }
@@ -20,54 +20,16 @@ export const meta = {
 
 *When CPU usage or time is mentioned, it's measured as a percentage of a single core.*
 
-I'm on a quest to build a screensaver that plays back parts of [/r/place](https://www.reddit.com/r/place/), using Rust and [wgpu](https://github.com/gfx-rs/wgpu). There's only two rules when building a screensaver:
+I'm on a quest to build a screensaver that plays back parts of [/r/place](https://www.reddit.com/r/place/), using Rust and [`wgpu`](https://github.com/gfx-rs/wgpu). There's only two rules when building a screensaver:
 
-1. it needs to be pretty
-2. it needs to be efficient
+1. It needs to be pretty
+2. It needs to be efficient
 
-On /r/place art is in the eye of the beholder, but I have efficiency covered. At 10,000x playback speed, CPU usage hovers around 18-25%, rendering an average of 5 million pixel updates per second. How does it work?
+On /r/place art is in the eye of the beholder, but my player *is* incredibly efficient. At 10,000x playback speed, CPU usage hovers around 18-25%, rendering an average of 5 million pixel updates per second. How does it work?
 
 Let's dive in. 👇
 
-## Attempt 1: 🎨 pixels
-
-I started out by using a crate called [`pixels`](https://crates.io/crates/pixels) that provides an incredibly easy-to-use GPU-accelerated pixel buffer.
-
-Unfortunately I don't have any code from this period, but let's take a look at one of the provided examples to see why `pixels` didn't work in this instance.
-
-Here's a simple clone of Space Invaders:
-
-<EmbeddedVideo src="/posts/wgpu/invaders-example.mp4" loop autoPlay hideSoundControls/>
-
-I expanded the window size to 2000x2000 pixels, since that's the final size of /r/place's canvas. The example is otherwise unmodified.
-
-But popping open `htop`, we see that it's using... 60% of our CPU?!
-
-<ImageForMdx src={InvadersHtopPng} alt="htop of space invaders example, showing 60% CPU usage" priority/>
-
-What's going on?
-
-Here's the output of a quick [cargo flamegraph](https://github.com/flamegraph-rs/flamegraph):
-
-<ImageForMdx src={InvadersFlamegraphPng} alt="flamegraph of space invaders example"/>
-
-Around 50% of CPU time is spent in `World::draw`, but we don't really care about that as it looks like the code loops over every pixel at least once--it could probably be optimized if necessary.
-
-More interesting is that `Queue::write_texture` accounts for ~35% of CPU time.
-
-(A **texture** is a GPU term for a 2D array of colors, i.e. an image. In this case, the "pixel buffer" is actually a texture.)
-
-As it turns out, `pixels` transfers the *entire* texture to the GPU every frame. This is fine for small canvas sizes, but a 2000x2000 texture is `2000 * 2000 * 4 = 16MB` per frame and `960MB/s` at 60 FPS. Modern GPUs can easily sustain this transfer rate, but it still takes a lot of CPU time to copy that much memory. [^1]
-
-[^1]: `wgpu` doesn't support direct mapped memory between CPU and GPU to avoid transfers as some architectures don't allow it
-
-**tl;dr**: `pixels` works great for small canvas sizes or when you don't care about performance, but it's not a good fit for a screensaver with a large canvas.
-
-## Attempt 2: partial texture updates
-
-Leaving `pixels` is painful because we now have to learn how to use `wgpu` directly, but it's time to rip off the bandaid. 🩹
-
-### What's wgpu?
+## What's `wgpu`?
 
 `wgpu` describes itself as a
 
@@ -88,9 +50,47 @@ Wait, isn't [WebGL](https://developer.mozilla.org/en-US/docs/Web/API/WebGL_API) 
 So, to summerize:
 
 - WebGPU is a new *browser* API that provides much lower-level access to GPU features than WebGL (and is only currently available behind [feature flags](https://caniuse.com/webgpu))
-- wgpu is a Rust library that implements the WebGPU spec, allowing the same code to target both the browser and native platforms
+- `wgpu` is a Rust library that implements the WebGPU spec, allowing the same code to target both the browser and native platforms
 
-Enough talking, let's see some code.
+Enough talking, let's see some implementations.
+
+## Attempt 1: 🎨 pixels
+
+I started out by using a crate called [`pixels`](https://crates.io/crates/pixels) that provides an easy-to-use GPU-accelerated pixel buffer (using `wgpu` under the hood).
+
+Unfortunately I don't have any code from this period, but let's take a look at one of the provided examples to see why `pixels` didn't work in this instance.
+
+Here's a simple clone of Space Invaders:
+
+<EmbeddedVideo src="/posts/wgpu/invaders-example.mp4" loop autoPlay hideSoundControls/>
+
+I expanded the window size to 2000x2000 pixels, since that's the final size of /r/place's canvas. The example is otherwise unmodified.
+
+But popping open `htop`, we see that it's using... 60% of our CPU?!
+
+<ImageForMdx src={InvadersHtopPng} alt="htop of space invaders example, showing 60% CPU usage" priority/>
+
+What's going on?
+
+Here's the output of a quick [cargo flamegraph](https://github.com/flamegraph-rs/flamegraph):
+
+<ImageForMdx src={InvadersFlamegraphPng} alt="flamegraph of space invaders example"/>
+
+Around 50% of CPU time is spent in `World::draw`, but we don't really care about that since it looks like the code loops over every pixel at least once—it could probably be optimized if necessary.
+
+More interesting is that `Queue::write_texture` accounts for ~35% of CPU time.
+
+(A **texture** is a GPU term for a 2D array of colors, i.e. an image. In this case, the "pixel buffer" is actually a texture.)
+
+As it turns out, `pixels` transfers the *entire* texture to the GPU every frame. This is fine for small canvas sizes, but a 2000x2000 texture is `2000 * 2000 * 4 = 16MB` per frame and `960MB/s` at 60 FPS. Modern GPUs can easily sustain this transfer rate, but it still takes a lot of CPU time to copy that much memory. [^1]
+
+[^1]: `wgpu` doesn't support direct mapped memory between CPU and GPU to avoid transfers as some architectures don't allow it
+
+**tl;dr**: `pixels` works great for small canvas sizes or when you don't care about performance, but it's not a good fit for a screensaver with a large canvas.
+
+## Attempt 2: partial texture updates
+
+Leaving `pixels` is painful because we now have to learn how to use `wgpu` directly, but it's time to rip off the bandaid. 🩹
 
 ### Updating a texture
 
@@ -183,7 +183,7 @@ fn main(@builtin(global_invocation_id) id: vec3<u32>) {
 
 (In general, I call pixels "tiles" in code.)
 
-As far as shaders go, this is quite simple--it's just a function that takes a `CoordinateUpdate` and applies it to the texture.
+As far as shaders go, this is quite simple—it's just a function that takes a `CoordinateUpdate` and applies it to the texture.
 
 Our Rust binding code looks something like this:
 
@@ -210,7 +210,7 @@ cpass.set_bind_group(0, &self.bind_group, &[]);
 cpass.dispatch_workgroups(tiles.len() as u32, 1, 1);
 ```
 
-We first copy the pixel updates into a staging buffer, then copy the staging buffer into a buffer that's bound to the compute shader. Finally, we dispatch `tiles.len()` number of workgroups--in GPU terms, each workgroup is a piece of work that the GPU can run in parallel. In our case, each workgroup is responsible for applying a single pixel update.
+We first copy the pixel updates into a staging buffer, then copy the staging buffer into a buffer that's bound to the compute shader. Finally, we dispatch `tiles.len()` number of workgroups—in GPU terms, each workgroup is a piece of work that the GPU can run in parallel. In our case, each workgroup is responsible for applying a single pixel update.
 
 This works really well! CPU usage stays around 10-40% at 1,000x playback speed, and it's always responsive with no stuttering.
 
@@ -232,7 +232,7 @@ A major limitation of our current compute shader is that it's only deterministic
 
 Because of this, we dedupe updates by coordinates (using a HashMap) on the CPU before passing them to the GPU. The logic on the CPU side every frame looks something like this:
 
-<ImageForMdx src={CPUDecodeFrameRenderPng} alt="frame rendering with CPU decoding"/>
+<ImageForMdx src={CPUDecodeFrameRenderPng} alt="frame rendering with CPU decoding" invertInDarkMode/>
 
 To unlock extreme performance, we need to move this logic entirely to the GPU.
 
@@ -268,7 +268,7 @@ fn main() {
 
 Now, instead of all workgroups incrementing `x` in parallel, the accesses to `x` are serialized. Thus the value of `x` is guaranteed to be the number of dispatched workgroups.
 
-🥱 how is this relevant? Well, our compute shader needs to modify a shared variable that keeps track of the most recent update for each coordinate. To prevent race conditions, we need to use an atomic.
+🥱 How is this relevant? Well, our compute shader needs to modify a shared variable that keeps track of the most recent update for each coordinate. To prevent race conditions, we need to use an atomic.
 
 Here's how we can find the most recent update for each coordinate:
 
@@ -354,7 +354,7 @@ And here's the same thing for attempt 4 (fully\* GPU):
 
 Not bad.
 
-In fact, on my machine (using a M1 Max) we can go up to *30,000x* playback speed before we get the occasional stutter (and yes, the bottleneck is still a few avoidable remaining memory operations on the CPU--GPUs are stupid fast).
+In fact, on my machine (using a M1 Max) we can go up to *30,000x* playback speed before we get the occasional stutter (and yes, the bottleneck is still a few avoidable remaining memory operations on the CPU—GPUs are stupid fast).
 
 Ok, fine. The moment you've all been waiting for: the entirety of 2022's /r/place, compressed to 30s, rendered in real-time:
 
@@ -366,7 +366,7 @@ Ok, fine. The moment you've all been waiting for: the entirety of 2022's /r/plac
 
 Reddit provides the history of 2022's /r/place as a gigantic 22GB CSV file. This is not really tenable to ship to end users, nor is it fast to iterate over. Instead, we encode the history into a packed binary format with [bincode](https://github.com/bincode-org/bincode), ending up with a ~1.6GB file.[^2]
 
-[^2]: the data can be further compressed to under 1GB, but to prevent stuttering inflation needs to be handled on a separate thread and I haven't gotten around to implementing it yet
+[^2]: The data can be further compressed to under 1GB, but to prevent stuttering inflation needs to be handled on a separate thread and I haven't gotten around to implementing it yet
 
 Each pixel update gets turned into a 9-byte struct:
 
