@@ -1,4 +1,5 @@
 import React from 'react';
+import Script from 'next/script';
 import {AppProps} from 'next/app';
 import Head from 'next/head';
 import {FirstLoadProvider} from '../lib/first-load';
@@ -11,8 +12,6 @@ const MyApp = ({Component, pageProps}: AppProps) => (
 		<Head>
 			<title>Max Isom</title>
 			<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover"/>
-			<script async defer data-website-id="7adba6d9-6329-413c-b4f5-ee0b9ae93fa0" src="https://um.maxisom.me/umami.js"/>
-
 			<link rel="apple-touch-icon" sizes="180x180" href="/images/favicon/apple-touch-icon.png"/>
 			<link rel="icon" type="image/png" sizes="32x32" href="/images/favicon/favicon-32x32.png"/>
 			<link rel="icon" type="image/png" sizes="16x16" href="/images/favicon/favicon-16x16.png"/>
@@ -22,8 +21,8 @@ const MyApp = ({Component, pageProps}: AppProps) => (
 			<meta name="msapplication-TileColor" content="#000000"/>
 			<meta name="msapplication-config" content="/images/favicon/browserconfig.xml"/>
 			<meta name="theme-color" content="#000000"/>
-
 		</Head>
+		<Script async defer src="https://um.maxisom.me/umami.js" data-website-id="7adba6d9-6329-413c-b4f5-ee0b9ae93fa0"/>
 
 		<Wave/>
 

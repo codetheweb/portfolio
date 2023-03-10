@@ -8,7 +8,6 @@ $offset: 15px;
   border-radius: variables.$radius;
   display: flex;
   flex-direction: column;
-  background-color: variables.$white;
   color: variables.$black;
   transition-property: background, color;
   transition-duration: variables.$transition-duration;
@@ -178,7 +177,6 @@ $offset: 15px;
 
 html:global(.dark-mode) {
   .container {
-    background: black;
     color: variables.$white;
 
     &:before {

@@ -2,6 +2,7 @@ import React, {useMemo, useRef, useState} from 'react';
 import Image, {ImageProps} from 'next/image';
 import Link from 'next/link';
 import {ChevronRight} from 'react-feather';
+import {Except} from 'type-fest';
 import useColorMode from '../lib/use-color-mode';
 import styles from './styles/project-tile.module.scss';
 
@@ -10,10 +11,11 @@ type ExtendedImageProps = ImageProps & {
 };
 
 type ImageOptions = ExtendedImageProps & {
-	dark?: ExtendedImageProps;
+	dark?: Except<ExtendedImageProps, 'alt'>;
 };
 
 export type ProjectTileProps = {
+	slug: string;
 	image?: ImageOptions;
 	video?: string;
 	isVideoShadowed?: boolean;
@@ -25,7 +27,7 @@ export type ProjectTileProps = {
 	isVideoRounded?: boolean;
 };
 
-export default function ProjectTile({image, video, isVideoShadowed: shouldVideoHaveShadow = false, isImageAlignedWithBottom: alignImageWithBottom = false, name, year, description, technologies, isVideoRounded: roundedVideo = false}: ProjectTileProps) {
+export default function ProjectTile({image, video, isVideoShadowed: shouldVideoHaveShadow = false, isImageAlignedWithBottom: alignImageWithBottom = false, name, year, description, technologies, isVideoRounded: roundedVideo = false, slug}: ProjectTileProps) {
 	const videoRef = useRef<HTMLVideoElement>(null);
 	const [videoIsPlaying, setVideoIsPlaying] = useState(false);
 
@@ -47,61 +49,63 @@ export default function ProjectTile({image, video, isVideoShadowed: shouldVideoH
 		}
 	};
 
-	const imageToUse = useMemo(() => {
+	const imageToUse = useMemo<ExtendedImageProps | undefined>(() => {
 		if (!image) {
 			return image;
 		}
 
 		if (colorMode === 'dark' && typeof image.dark !== 'undefined') {
-			return image.dark;
+			return {
+				...image.dark,
+				alt: image.alt,
+			};
 		}
 
 		return image;
 	}, [colorMode, image]);
 
 	return (
-		<Link href={`/projects/${name.toLowerCase().split(' ').join('-')}`}>
-			<a className={styles.container} onMouseEnter={playVideoPreview} onMouseLeave={resetVideoPreview}>
-				<div className={styles.imageContainer} style={{paddingBottom: alignImageWithBottom ? 0 : '1rem'}}>
+		<Link href={slug} className={styles.container} onMouseEnter={playVideoPreview} onMouseLeave={resetVideoPreview}>
+			<div className={styles.imageContainer} style={{paddingBottom: alignImageWithBottom ? 0 : '1rem'}}>
 
+				{
+					imageToUse && (
+						<div
+							className={styles.imageWrapper}
+							style={{opacity: videoIsPlaying ? 0 : 1, marginTop: alignImageWithBottom ? 'auto' : '0'}}
+						>
+							<Image
+								fill
+								src={imageToUse.src}
+								alt={imageToUse.alt}
+								sizes="512px"
+								style={{objectFit: 'contain'}}
+								priority={imageToUse.hasPriority}
+								placeholder={typeof image?.dark === 'undefined' ? 'blur' : undefined}/>
+						</div>
+					)
+				}
+
+				{video && <div className={`${styles.videoContainer} ${roundedVideo ? styles.roundedVideo : ''} ${shouldVideoHaveShadow ? styles.withShadow : ''}`} style={{opacity: videoIsPlaying || !imageToUse ? 1 : 0}}><video ref={videoRef} muted loop playsInline src={`${video}#t=0.001`} preload="auto"/></div>}
+			</div>
+
+			<div className={styles.details}>
+				<div className={styles.nameAndYear}>
+					<h3>{name} <ChevronRight className={styles.arrow}/></h3>
+
+					<span className={styles.year}>{year}</span>
+				</div>
+
+				<p>{description}</p>
+
+				<div className={styles.tags}>
 					{
-						imageToUse && (
-							<div
-								className={styles.imageWrapper}
-								style={{opacity: videoIsPlaying ? 0 : 1, marginTop: alignImageWithBottom ? 'auto' : '0'}}
-							>
-								<Image
-									src={imageToUse.src}
-									layout="fill"
-									sizes="512px"
-									objectFit="contain"
-									priority={imageToUse.hasPriority}
-									placeholder={typeof image?.dark === 'undefined' ? 'blur' : undefined}/>
-							</div>
-						)
+						technologies.map(technology => (
+							<div key={technology} className={styles.tag}>{technology}</div>
+						))
 					}
-
-					{video && <div className={`${styles.videoContainer} ${roundedVideo ? styles.roundedVideo : ''} ${shouldVideoHaveShadow ? styles.withShadow : ''}`} style={{opacity: videoIsPlaying || !imageToUse ? 1 : 0}}><video ref={videoRef} muted loop playsInline src={`${video}#t=0.001`} preload="auto"/></div>}
 				</div>
-
-				<div className={styles.details}>
-					<div className={styles.nameAndYear}>
-						<h3>{name} <ChevronRight className={styles.arrow}/></h3>
-
-						<span className={styles.year}>{year}</span>
-					</div>
-
-					<p>{description}</p>
-
-					<div className={styles.tags}>
-						{
-							technologies.map(technology => (
-								<div key={technology} className={styles.tag}>{technology}</div>
-							))
-						}
-					</div>
-				</div>
-			</a>
+			</div>
 		</Link>
 	);
 }

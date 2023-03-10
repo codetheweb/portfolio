@@ -1,0 +1,5 @@
+html:global(.dark-mode) {
+  .invertInDarkMode {
+    filter: invert(1);
+  }
+}

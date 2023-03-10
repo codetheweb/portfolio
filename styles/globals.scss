@@ -63,17 +63,29 @@ blockquote {
   padding-left: 1rem;
 }
 
-code {
-  background-color: variables.$black;
-  color: variables.$white;
-  transition-property: background-color, color;
-  transition-duration: variables.$transition-duration;
-  border-radius: calc(variables.$radius / 2);
-  padding: 0.1rem 0.2rem;
-  white-space: nowrap;
+hr {
+  border: 0;
+  border-top: 1px solid variables.$primary-accent;
+  margin: 2rem 0;
 }
 
-html.dark-mode code {
-  background-color: variables.$white;
-  color: variables.$black;
+*:not(.disable-default-code-styles) > {
+  code {
+    background-color: variables.$black;
+    color: variables.$white;
+    transition-property: background-color, color;
+    transition-duration: variables.$transition-duration;
+    border-radius: calc(variables.$radius / 2);
+    padding: 0.1rem 0.2rem;
+    white-space: nowrap;
+  }
+}
+
+html.dark-mode {
+  *:not(.disable-default-code-styles) > {
+    code {
+      background-color: variables.$white;
+      color: variables.$black;
+    }
+  }
 }

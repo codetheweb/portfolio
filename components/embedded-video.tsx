@@ -14,6 +14,7 @@ type Props = {
 	loop?: boolean;
 	syncWith?: RefObject<HTMLVideoElement>;
 	style?: CSSProperties;
+	hideSoundControls?: boolean;
 };
 
 const EmbeddedVideo = React.forwardRef<HTMLVideoElement, Props>(({
@@ -25,6 +26,7 @@ const EmbeddedVideo = React.forwardRef<HTMLVideoElement, Props>(({
 	autoPlay = false,
 	loop = false,
 	syncWith,
+	hideSoundControls = false,
 	style = {}}, ref) => {
 	const [isMuted, setIsMuted] = useState(autoPlay);
 	const thisVideo = useRef<HTMLVideoElement>(null);
@@ -52,7 +54,7 @@ const EmbeddedVideo = React.forwardRef<HTMLVideoElement, Props>(({
 				loop={syncWith ? undefined : loop}
 				className={styles.video}/>
 
-			{autoPlay && (
+			{autoPlay && !hideSoundControls && (
 				<Button
 					className={styles.unmuteButton}
 					type="button"

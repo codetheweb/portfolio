@@ -27,6 +27,8 @@ $dark-bg: mix(variables.$white, variables.$primary-accent, 15%);
       top: calc((var(--body-size) * 4) / -2);
       left: calc((var(--container-size) / 2) - ((var(--body-size) * 4) / 2));
 
+      border: none;
+
       margin-top: env(safe-area-inset-right);
       margin-right: env(safe-area-inset-right);
       width: calc((1vh + 1vw) * 4);
@@ -49,11 +51,6 @@ $dark-bg: mix(variables.$white, variables.$primary-accent, 15%);
   }
 
   .particlesContainer {
-    position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
     transition-duration: variables.$theme-transition-duration;
     opacity: 0;
     transition-property: opacity;

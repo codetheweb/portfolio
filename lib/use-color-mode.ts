@@ -1,4 +1,4 @@
-import useDarkMode, {DarkModeConfig} from 'use-dark-mode';
+import useDarkMode, {DarkModeConfig} from '@fisch0920/use-dark-mode';
 
 const useColorMode = () => {
 	const config: DarkModeConfig = {};

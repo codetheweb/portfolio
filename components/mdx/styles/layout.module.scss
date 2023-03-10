@@ -1,0 +1,61 @@
+@use "../../../styles/variables.scss";
+
+.container {
+  pre[class*="language-"], code[class*="language-"] {
+    border-radius: variables.$radius;
+    font-size: 1rem;
+    font-family: monospace, monospace;
+  }
+
+  main {
+    margin-top: 1rem;
+  }
+}
+
+.date {
+  color: lighten(variables.$black, 30%);
+  font-weight: bold;
+  font-size: 1.1rem;
+  margin-top: 0.8rem;
+}
+
+.homeButtonContainer {
+  z-index: 1000;
+  position: fixed;
+  right: 0;
+  bottom: 0;
+  width: 6rem;
+  height: 6rem;
+  display: flex;
+  align-items: flex-end;
+  justify-content: flex-end;
+  padding-right: 0.8rem;
+  padding-bottom: 0.8rem;
+  clip-path: polygon(100% 0, 0% 100%, 100% 100%);
+  backdrop-filter: contrast(0.9) blur(10px);
+  transition-property: background, width, height, padding, color;
+  transition-duration: variables.$transition-duration;
+
+  .homeButtonIcon {
+    color: variables.$black;
+    z-index: 1;
+  }
+
+  &:hover {
+    background: variables.$primary-accent;
+    width: 8rem;
+    height: 8rem;
+    padding-right: 1.4rem;
+    padding-bottom: 1.4rem;
+
+    .homeButtonIcon {
+      color: variables.$white;
+    }
+  }
+}
+
+html:global(.dark-mode) {
+  .homeButtonIcon {
+    color: variables.$white;
+  }
+}

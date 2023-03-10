@@ -21,7 +21,7 @@ export default function XKCDY() {
 
 					<Links year="2020" website="https://xkcdy.com" apple="https://apps.apple.com/us/app/xkcdy/id1520259318" github="https://github.com/XKCDY/app"/>
 
-					<EmbeddedImg hasPriority size="small" src={homeImg}/>
+					<EmbeddedImg hasPriority size="small" src={homeImg} alt="main screen of app"/>
 
 					<p>
 						In the summer of 2020, I decided to learn Swift & SwiftUI by making an app.
@@ -36,7 +36,7 @@ export default function XKCDY() {
 
 				<Header size="h2">Design</Header>
 
-				<EmbeddedImg size="medium" src={ipadImg}/>
+				<EmbeddedImg size="medium" src={ipadImg} alt="iPad view"/>
 
 				<div className={commonStyles.textSection}>
 					<p>
@@ -60,7 +60,7 @@ export default function XKCDY() {
 				<Header size="h2">Problems Encountered</Header>
 				<div className={commonStyles.textSection}>
 					<div style={{float: 'right'}}>
-						<PhoneFramedVideo src="/videos/xkcdy/swipe.mp4"/>
+						<PhoneFramedVideo src="/videos/xkcdy/swipe.mp4" alt="swipe animation"/>
 					</div>
 
 					<p>
