@@ -50,7 +50,7 @@ const handler: NextApiHandler = async (request, response) => {
 						))}
 					</div>
 
-					<div style={{marginLeft: 'auto', fontSize: 26, textTransform: 'lowercase'}}>
+					<div style={{marginLeft: 'auto', fontSize: 26}}>
 						{formattedPublishedAt}
 					</div>
 				</div>

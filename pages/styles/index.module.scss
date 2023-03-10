@@ -22,20 +22,27 @@
 
     @media only screen and (min-width: variables.$mobile-max-width) {
       flex-direction: row;
+      align-items: center;
+
+      .postTitle {
+        margin-left: 1em;
+        max-width: 50%;
+      }
     }
   }
 
   .postPublishedAt {
     color: lighten(variables.$black, 30%);
-    text-transform: lowercase;
     margin-right: 1em;
   }
 
   .postTags {
-    display: flex;
+    display: none;
+    margin-bottom: 0.2em;
+    margin-left: auto;
 
     @media only screen and (min-width: variables.$mobile-max-width) {
-      margin-left: auto;
+      display: flex;
     }
 
     .postTag {

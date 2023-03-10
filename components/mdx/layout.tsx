@@ -6,7 +6,6 @@ import Head from 'next/head';
 import {Home} from 'react-feather';
 import Link from 'next/link';
 import TextLink from '../text-link';
-import Header from '../header';
 import {getOgImageUrlForPost} from '../../lib/get-og-image-url-for-post';
 import {getPublicOrigin} from '../../lib/get-public-origin';
 import styles from './styles/layout.module.scss';
@@ -44,7 +43,7 @@ export const MdxLayout = ({children, meta}: MdxLayoutProps) => {
 				<meta name="twitter:image" content={getOgImageUrlForPost(meta.title, meta.tags, meta.date)}/>
 			</Head>
 
-			<Header size="h2">{meta.title}</Header>
+			<h1>{meta.title}</h1>
 
 			<p className={styles.date}>
 				{publishedAt} ({dayjs(meta.date).fromNow()})

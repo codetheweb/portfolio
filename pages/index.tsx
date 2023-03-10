@@ -39,24 +39,26 @@ export default function Home({posts}: HomePageProps) {
 					I&apos;m currently building an API to the physical world at <TextLink href="https://www.getseam.com/">Seam</TextLink>.
 				</p>
 
-				<h2 className={styles.marginForSectionTop}>a few things I&apos;ve written</h2>
+				<h2 className={styles.marginForSectionTop}>A few things I&apos;ve written</h2>
 
 				<ul className={styles.blogPostList}>
 					{posts.map(post => (
 						<li key={post.slug}>
-							<span className={styles.postPublishedAt}>{post.publishedAt}</span>
-							<TextLink href={`/posts/${post.slug}`}>{post.title}</TextLink>
-
-							<div className={styles.postTags}>
-								{post.tags.slice(0, 3).map(tag => (
-									<span key={tag} className={styles.postTag}>{tag}</span>
-								))}
+							<div>
+								<span className={styles.postPublishedAt}>{post.publishedAt}</span>
+								<div className={styles.postTags}>
+									{post.tags.slice(0, 3).map(tag => (
+										<span key={tag} className={styles.postTag}>{tag}</span>
+									))}
+								</div>
 							</div>
+
+							<TextLink href={`/posts/${post.slug}`} className={styles.postTitle}>{post.title}</TextLink>
 						</li>
 					))}
 				</ul>
 
-				<h2 className={styles.marginForSectionTop}>a few things I&apos;ve worked on</h2>
+				<h2 className={styles.marginForSectionTop}>A few things I&apos;ve worked on</h2>
 
 				<p>
 					I like to keep busy with side projects. My rule of thumb when starting a new project is to learn at least one thing, whether that&apos;s a framework, technology, language, or dev-ops methodology.
@@ -73,7 +75,7 @@ export default function Home({posts}: HomePageProps) {
 				}
 			</div>
 
-			<h2 className={styles.marginForSectionTop}>want to talk?</h2>
+			<h2 className={styles.marginForSectionTop}>Want to talk?</h2>
 
 			<p>
 				Feel free to email me if you have feedback on something, you&apos;re looking for a developer, or you just want to connect: <TextLink href="mailto:hi@maxisom.me">hi@maxisom.me</TextLink>. You might also want to check out my <TextLink href="/resume.pdf">résumé</TextLink>.

@@ -3,7 +3,28 @@ import type {MDXComponents} from 'mdx/types';
 import classNames from 'classnames';
 import TextLink from './components/text-link';
 
-const getHeaderId = (children: React.ReactNode) => children?.toString().toLocaleLowerCase().replaceAll(' ', '-');
+const getNodeText = (node: React.ReactNode): string => {
+	if (['string', 'number'].includes(typeof node)) {
+		// eslint-disable-next-line @typescript-eslint/no-base-to-string
+		return node!.toString();
+	}
+
+	if (Array.isArray(node)) {
+		return node.map(n => getNodeText(n)).join('');
+	}
+
+	if (React.isValidElement(node)) {
+		if (node.props.children) {
+			return getNodeText(node.props.children);
+		}
+
+		return '';
+	}
+
+	return '';
+};
+
+const getHeaderId = (children: React.ReactNode) => getNodeText(children).toLocaleLowerCase().replaceAll(' ', '-');
 
 const WrappedHeader = (props: any) => {
 	const id = getHeaderId(props.children);

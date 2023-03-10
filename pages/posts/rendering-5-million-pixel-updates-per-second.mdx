@@ -10,9 +10,9 @@ import Attempt3CPUUsagePng from '../../public/posts/wgpu/attempt-3-cpu-usage.png
 import Attempt4CPUUsagePng from '../../public/posts/wgpu/attempt-4-cpu-usage.png'
 
 export const meta = {
-  title: 'wgpu: a journey in optimization',
-  description: "Or, rendering 5 million pixel updates per second with Rust & wgpu",
-  date: '2023-03-08',
+  title: 'Rendering 5 million pixel changes per second with Rust & wgpu',
+  description: "Modern GPUs are stupid fast—but by misdesigning your application, it's easy to limit their potential. In this article, we explore the basics of wgpu by optimizing a program that replays /r/place.",
+  date: '2023-03-09 21:17',
   tags: ['rust', 'wgpu', 'r/place', 'gamedev', 'screensaver', 'rendering'],
 }
 
@@ -185,6 +185,8 @@ fn main(@builtin(global_invocation_id) id: vec3<u32>) {
 
 As far as shaders go, this is quite simple—it's just a function that takes a `CoordinateUpdate` and applies it to the texture.
 
+The `global_invocation_id` is a special variable that describes the index of the current workgroup, or thread. In GPU terms, each workgroup is a piece of work that the GPU can run in parallel. In our case, each workgroup is responsible for applying a single pixel update.
+
 Our Rust binding code looks something like this:
 
 ```rust
@@ -210,7 +212,7 @@ cpass.set_bind_group(0, &self.bind_group, &[]);
 cpass.dispatch_workgroups(tiles.len() as u32, 1, 1);
 ```
 
-We first copy the pixel updates into a staging buffer, then copy the staging buffer into a buffer that's bound to the compute shader. Finally, we dispatch `tiles.len()` number of workgroups—in GPU terms, each workgroup is a piece of work that the GPU can run in parallel. In our case, each workgroup is responsible for applying a single pixel update.
+We first copy the pixel updates into a staging buffer, then copy the staging buffer into a buffer that's bound to the compute shader. Finally, we dispatch `tiles.len()` number of workgroups.
 
 This works really well! CPU usage stays around 10-40% at 1,000x playback speed, and it's always responsive with no stuttering.
 
