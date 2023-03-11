@@ -10,7 +10,7 @@ import Attempt3CPUUsagePng from '../../public/posts/wgpu/attempt-3-cpu-usage.png
 import Attempt4CPUUsagePng from '../../public/posts/wgpu/attempt-4-cpu-usage.png'
 
 export const meta = {
-  title: 'Rendering 5 million pixel updates per second with Rust & wgpu',
+  title: 'Applying 5 million pixel updates per second with Rust & wgpu',
   description: "Modern GPUs are stupid fast—but by misdesigning your application, it's easy to limit their potential. In this article, we explore the basics of wgpu by optimizing a program that replays /r/place.",
   date: '2023-03-09 21:17',
   tags: ['rust', 'wgpu', 'r/place', 'gamedev', 'screensaver', 'rendering'],
@@ -18,14 +18,14 @@ export const meta = {
 
 *Note: code examples omit some steps for brevity. If you're interested building something similar, check out the [source](https://github.com/codetheweb/placed).*
 
-*When CPU usage or time is mentioned, it's measured as a percentage of a single core.*
+*When CPU usage or time is mentioned, it's measured as a percentage of a single core. I use a M1 Max-based system.*
 
 I'm on a quest to build a screensaver that plays back parts of [/r/place](https://www.reddit.com/r/place/), using Rust and [`wgpu`](https://github.com/gfx-rs/wgpu). There's only two rules when building a screensaver:
 
 1. It needs to be pretty
 2. It needs to be efficient
 
-On /r/place art is in the eye of the beholder, but my playback prototype *is* incredibly efficient. At 10,000x playback speed, CPU usage hovers around 18-25%, rendering an average of 5 million pixel updates per second. How does it work?
+On /r/place art is in the eye of the beholder, but my playback prototype *is* incredibly efficient. At 10,000x playback speed, CPU usage hovers around 18-25%, applying & rendering an average of 5 million pixel updates per second. How does it work?
 
 Let's dive in. 👇
 

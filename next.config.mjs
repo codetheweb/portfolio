@@ -35,6 +35,13 @@ const nextConfig = {
 			destination: '/api/feed.rss',
 		},
 	],
+	redirects: () => [
+		{
+			source: '/posts/rendering-5-million-pixel-updates-per-second',
+			destination: '/posts/applying-5-million-pixel-updates-per-second',
+			permanent: true,
+		},
+	],
 };
 
 export default withMDX(nextConfig);
