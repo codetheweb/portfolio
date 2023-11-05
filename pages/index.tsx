@@ -32,10 +32,6 @@ export default function Home({posts}: HomePageProps) {
 
 			<div>
 				<p>
-					I recently graduated from <TextLink href="https://mtu.edu">Michigan Tech</TextLink> (majored in CS and minored in math).
-				</p>
-
-				<p>
 					I&apos;m currently building an API to the physical world at <TextLink href="https://www.getseam.com/">Seam</TextLink>.
 				</p>
 
