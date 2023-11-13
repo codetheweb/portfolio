@@ -80,7 +80,7 @@ export default function ProjectTile({image, video, isVideoShadowed: shouldVideoH
 									fill
 									src={imageToUse.src}
 									alt={imageToUse.alt}
-									sizes="512px"
+									sizes="256px"
 									style={{objectFit: 'contain'}}
 									priority={imageToUse.hasPriority}
 									placeholder={typeof image?.dark === 'undefined' ? 'blur' : undefined}/>
