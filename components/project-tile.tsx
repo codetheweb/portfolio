@@ -5,6 +5,7 @@ import {ChevronRight} from 'react-feather';
 import {Except} from 'type-fest';
 import useColorMode from '../lib/use-color-mode';
 import styles from './styles/project-tile.module.scss';
+import NoSsr from './no-ssr';
 
 type ExtendedImageProps = ImageProps & {
 	hasPriority?: boolean;
@@ -54,7 +55,7 @@ export default function ProjectTile({image, video, isVideoShadowed: shouldVideoH
 			return image;
 		}
 
-		if (colorMode === 'dark' && typeof image.dark !== 'undefined') {
+		if (typeof image.dark !== 'undefined' && colorMode === 'dark') {
 			return {
 				...image.dark,
 				alt: image.alt,
@@ -74,14 +75,17 @@ export default function ProjectTile({image, video, isVideoShadowed: shouldVideoH
 							className={styles.imageWrapper}
 							style={{opacity: videoIsPlaying ? 0 : 1, marginTop: alignImageWithBottom ? 'auto' : '0'}}
 						>
-							<Image
-								fill
-								src={imageToUse.src}
-								alt={imageToUse.alt}
-								sizes="512px"
-								style={{objectFit: 'contain'}}
-								priority={imageToUse.hasPriority}
-								placeholder={typeof image?.dark === 'undefined' ? 'blur' : undefined}/>
+							<NoSsr when={Boolean(image?.dark)}>
+								<Image
+									fill
+									src={imageToUse.src}
+									alt={imageToUse.alt}
+									sizes="512px"
+									style={{objectFit: 'contain'}}
+									priority={imageToUse.hasPriority}
+									placeholder={typeof image?.dark === 'undefined' ? 'blur' : undefined}/>
+
+							</NoSsr>
 						</div>
 					)
 				}

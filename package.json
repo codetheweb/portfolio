@@ -10,7 +10,6 @@
     "lint:fix": "xo --fix"
   },
   "dependencies": {
-    "@fisch0920/use-dark-mode": "^2.4.0",
     "@mdx-js/loader": "^3.0.0",
     "@mdx-js/react": "^3.0.0",
     "@next/mdx": "^13.5.6",
@@ -24,6 +23,7 @@
     "mdx": "^0.3.1",
     "next": "^14.0.1",
     "next-seo": "^6.4.0",
+    "next-themes": "^0.2.1",
     "prism-themes": "^1.9.0",
     "react": "18.2.0",
     "react-dom": "18.2.0",

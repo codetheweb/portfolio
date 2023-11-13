@@ -1,8 +1,14 @@
-import React from 'react';
-import dynamic from 'next/dynamic';
+import React, {useEffect, useState} from 'react';
 
-const NoSsr = ({children}: {children: React.ReactNode}) => children as React.ReactElement;
+const NoSsr = ({children, when = true}: {children: React.ReactNode; when?: boolean}): React.ReactElement => {
+	const [isMounted, setIsMounted] = useState(!when);
 
-export default dynamic(async () => Promise.resolve(NoSsr), {
-	ssr: false,
-});
+	useEffect(() => {
+		setIsMounted(true);
+	}, []);
+
+	// eslint-disable-next-line react/jsx-no-useless-fragment
+	return <>{isMounted ? children : null}</>;
+};
+
+export default NoSsr;

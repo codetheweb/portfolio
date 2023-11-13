@@ -16,7 +16,7 @@
      1px 1px 0 var(--title-color)
 }
 
-html:global(.dark-mode) {
+html[data-theme='dark'] {
   .title {
     color: variables.$black;
     --title-color: #{variables.$white};

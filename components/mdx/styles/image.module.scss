@@ -1,4 +1,4 @@
-html:global(.dark-mode) {
+html[data-theme='dark'] {
   .invertInDarkMode {
     filter: invert(1);
   }

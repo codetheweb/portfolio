@@ -175,7 +175,7 @@ $offset: 15px;
   }
 }
 
-html:global(.dark-mode) {
+html[data-theme='dark'] {
   .container {
     color: variables.$white;
 

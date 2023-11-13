@@ -1,17 +1,13 @@
-import useDarkMode, {DarkModeConfig} from '@fisch0920/use-dark-mode';
+import {useTheme} from 'next-themes';
 
 const useColorMode = () => {
-	const config: DarkModeConfig = {};
-
-	if (global.document?.documentElement) {
-		config.element = global.document.documentElement;
-	}
-
-	const {toggle, value} = useDarkMode(false, config);
+	const {resolvedTheme, setTheme} = useTheme();
 
 	return {
-		colorMode: value ? 'dark' as const : 'light' as const,
-		toggleColorMode: toggle,
+		colorMode: resolvedTheme as 'light' | 'dark' | undefined,
+		toggleColorMode: () => {
+			setTheme(resolvedTheme === 'dark' ? 'light' : 'dark');
+		},
 	};
 };
 

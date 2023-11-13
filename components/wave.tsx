@@ -71,11 +71,11 @@ export default function Wave() {
 						)
 					}
 				</div>
-			</NoSsr>
 
-			<div className={`${styles.themeSelector} ${isDark ? styles.isDark : styles.isLight} ${wasChanged ? styles.wasChanged : ''}`}>
-				<button type="button" className={styles.body} onClick={toggleColorMode}/>
-			</div>
+				<div className={`${styles.themeSelector} ${isDark ? styles.isDark : styles.isLight} ${wasChanged ? styles.wasChanged : ''}`}>
+					<button type="button" className={styles.body} onClick={toggleColorMode}/>
+				</div>
+			</NoSsr>
 		</div>
 	);
 }

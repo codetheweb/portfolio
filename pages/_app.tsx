@@ -2,6 +2,7 @@ import React from 'react';
 import Script from 'next/script';
 import {AppProps} from 'next/app';
 import Head from 'next/head';
+import {ThemeProvider} from 'next-themes';
 import {FirstLoadProvider} from '../lib/first-load';
 import Wave from '../components/wave';
 import '../styles/globals.scss';
@@ -24,11 +25,13 @@ const MyApp = ({Component, pageProps}: AppProps) => (
 		</Head>
 		<Script async src="https://um.maxisom.me/script.js" data-website-id="7adba6d9-6329-413c-b4f5-ee0b9ae93fa0"/>
 
-		<Wave/>
+		<ThemeProvider>
+			<Wave/>
 
-		<div className={styles.wrapper}>
-			<Component {...pageProps}/>
-		</div>
+			<div className={styles.wrapper}>
+				<Component {...pageProps}/>
+			</div>
+		</ThemeProvider>
 	</FirstLoadProvider>
 );
 

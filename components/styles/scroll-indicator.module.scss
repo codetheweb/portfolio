@@ -22,7 +22,7 @@
   transition-duration: variables.$transition-duration;
 }
 
-html:global(.dark-mode) {
+html[data-theme='dark'] {
   .icon {
     color: variables.$white;
   }

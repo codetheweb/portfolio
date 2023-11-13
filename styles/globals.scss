@@ -14,7 +14,7 @@ body {
   min-height: 100vh;
 }
 
-html.dark-mode, html.dark-mode body {
+html[data-theme='dark'], html[data-theme='dark'] body {
   background-color: variables.$black;
   color: variables.$white;
 }
@@ -33,7 +33,7 @@ html body {
   }
 }
 
-html.dark-mode body {
+html[data-theme='dark'] body {
   &:before {
     background-color: rgba(variables.$primary-accent, 0.05);
   }
@@ -81,7 +81,7 @@ hr {
   }
 }
 
-html.dark-mode {
+html[data-theme='dark'] {
   *:not(.disable-default-code-styles) > {
     code {
       background-color: variables.$white;

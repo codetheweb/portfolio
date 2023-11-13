@@ -54,7 +54,7 @@
   }
 }
 
-html:global(.dark-mode) {
+html[data-theme='dark'] {
   .homeButtonIcon {
     color: variables.$white;
   }
