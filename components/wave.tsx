@@ -1,4 +1,4 @@
-import React, {useState, useEffect, useCallback} from 'react';
+import React, {useCallback} from 'react';
 import {Particles, ParticlesProps} from 'react-particles';
 import type {Engine} from 'tsparticles-engine';
 import {loadFull} from 'tsparticles';
@@ -40,15 +40,10 @@ const particlesConfig: ParticlesProps['params'] = {
 
 export default function Wave() {
 	const {colorMode, toggleColorMode} = useColorMode();
-	const [isReady, setIsReady] = useState(false);
 
 	const previousValue = usePrevious(colorMode);
 	const wasChanged = (previousValue !== undefined) && (previousValue !== colorMode);
 	const isDark = colorMode === 'dark';
-
-	useEffect(() => {
-		setIsReady(true);
-	}, []);
 
 	const particlesInit = useCallback(async (engine: Engine) => {
 		if (typeof window === 'undefined') {
@@ -68,15 +63,15 @@ export default function Wave() {
 				</defs>
 			</svg>
 
-			<div className={`${styles.particlesContainer} ${(isDark && isReady) ? styles.active : ''}`}>
-				<NoSsr>
+			<NoSsr>
+				<div className={`${styles.particlesContainer} ${(isDark) ? styles.active : ''}`}>
 					{
 						isDark && (
-							<Particles className={styles.particles} params={particlesConfig} init={particlesInit}/>
+							<Particles className={styles.particles} options={particlesConfig} init={particlesInit}/>
 						)
 					}
-				</NoSsr>
-			</div>
+				</div>
+			</NoSsr>
 
 			<div className={`${styles.themeSelector} ${isDark ? styles.isDark : styles.isLight} ${wasChanged ? styles.wasChanged : ''}`}>
 				<button type="button" className={styles.body} onClick={toggleColorMode}/>
