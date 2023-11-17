@@ -1,7 +1,7 @@
 import React, {useCallback} from 'react';
 import {Particles, ParticlesProps} from 'react-particles';
 import type {Engine} from 'tsparticles-engine';
-import {loadFull} from 'tsparticles';
+import {loadSlim} from 'tsparticles-slim';
 import usePrevious from 'react-use/lib/usePrevious';
 import useColorMode from '../lib/use-color-mode';
 import styles from './styles/wave.module.scss';
@@ -50,7 +50,7 @@ export default function Wave() {
 			return;
 		}
 
-		await loadFull(engine);
+		await loadSlim(engine);
 	}, []);
 
 	return (
