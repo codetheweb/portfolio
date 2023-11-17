@@ -3,11 +3,10 @@ import dayjs from 'dayjs';
 import relativeTime from 'dayjs/plugin/relativeTime';
 import 'prism-themes/themes/prism-vsc-dark-plus.css';
 import Head from 'next/head';
-import {Home} from 'react-feather';
-import Link from 'next/link';
 import TextLink from '../text-link';
 import {getOgImageUrlForPost} from '../../lib/get-og-image-url-for-post';
 import {getPublicOrigin} from '../../lib/get-public-origin';
+import {HoveringHomeButton} from '../hovering-home-button';
 import styles from './styles/layout.module.scss';
 
 dayjs.extend(relativeTime);
@@ -59,11 +58,7 @@ export const MdxLayout = ({children, meta}: MdxLayoutProps) => {
 				Interested in hearing about new posts? <TextLink href="https://twitter.com/mtisom">Follow me</TextLink> or subscribe to a <TextLink href="/feed.rss">RSS</TextLink>, <TextLink href="/feed.atom">Atom</TextLink>, or <TextLink href="/feed.json">JSON</TextLink> feed.
 			</p>
 
-			<Link href="/" className={styles.homeButtonContainer}>
-				<span className={styles.homeButtonIcon}>
-					<Home/>
-				</span>
-			</Link>
+			<HoveringHomeButton/>
 		</div>
 	);
 };

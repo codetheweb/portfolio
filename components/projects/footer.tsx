@@ -2,6 +2,7 @@ import React from 'react';
 import {useRouter} from 'next/router';
 import {useFirstLoad} from '../../lib/first-load';
 import TextLink from '../text-link';
+import {HoveringHomeButton} from '../hovering-home-button';
 
 const Footer = () => {
 	const isFirstLoad = useFirstLoad();
@@ -20,6 +21,8 @@ const Footer = () => {
 	return (
 		<div style={{marginTop: '3rem', lineHeight: '1.5'}}>
 			<TextLink href="/" onClick={handleGoToHome}>return to home</TextLink>
+
+			<HoveringHomeButton/>
 		</div>
 	);
 };
