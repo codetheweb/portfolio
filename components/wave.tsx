@@ -50,6 +50,11 @@ export default function Wave() {
 			return;
 		}
 
+		// Unsure why this is needed, but without waiting for a tick loadSlim() fails about 30% of the time
+		await new Promise<void>(resolve => {
+			setTimeout(resolve);
+		});
+
 		await loadSlim(engine);
 	}, []);
 
