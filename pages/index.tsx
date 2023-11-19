@@ -54,7 +54,7 @@ export default function Home({posts}: HomePageProps) {
 					))}
 				</ul>
 
-				<h2 className={styles.marginForSectionTop}>...and a few things I&apos;ve worked on</h2>
+				<h2 className={styles.marginForSectionTop}>...and a few things I&apos;ve worked on.</h2>
 			</div>
 
 			<div className={`${styles.projectTiles} ${isFirstLoad ? styles.projectTilesAnimate : ''}`}>
