@@ -14,7 +14,7 @@ $dark-bg: mix(variables.$white, variables.$primary-accent, 15%);
   .themeSelector {
     --body-size: calc(1vh + 1vw);
     --container-size: calc(var(--wave-container-height));
-    position: absolute;
+    position: fixed;
     top: calc(var(--body-size) * 2);
     right: calc(var(--body-size) * 2);
     height: var(--container-size);
@@ -51,6 +51,7 @@ $dark-bg: mix(variables.$white, variables.$primary-accent, 15%);
   }
 
   .particlesContainer {
+    position: fixed;
     transition-duration: variables.$theme-transition-duration;
     opacity: 0;
     transition-property: opacity;
