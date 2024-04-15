@@ -32,7 +32,10 @@ export default function Home({posts}: HomePageProps) {
 
 			<div>
 				<p>
-					I&apos;m currently building an API to the physical world at <TextLink href="https://www.getseam.com/">Seam</TextLink>.
+					I&apos;m currently at <TextLink href="https://www.trychroma.com/">Chroma</TextLink>.
+				</p>
+				<p>
+					Previously, I was at <TextLink href="https://www.getseam.com/">Seam</TextLink> building an API to the physical world.
 				</p>
 
 				<h2 className={styles.marginForSectionTop}>here&apos;s one thing I wrote...</h2>
@@ -70,7 +73,14 @@ export default function Home({posts}: HomePageProps) {
 			<h2 className={styles.marginForSectionTop}>want to talk?</h2>
 
 			<p>
-				Feel free to email me if you have feedback on something, you&apos;re looking for a developer, or you just want to connect: <TextLink href="mailto:hi@maxisom.me">hi@maxisom.me</TextLink>. You might also want to check out my <TextLink href="/resume.pdf">résumé</TextLink>.
+				<ul>
+					<li>
+						<TextLink href="mailto:hi@maxisom.me">hi@maxisom.me</TextLink>
+					</li>
+					<li>
+						<TextLink href="/resume.pdf">résumé</TextLink>
+					</li>
+				</ul>
 			</p>
 		</div>
 	);
