@@ -76,8 +76,6 @@ const CoursesPage = () => {
 				<p>I launched the initial version in March of 2021. Even though it was fairly basic, the tool still <TextLink href="https://www.reddit.com/r/MTU/comments/lygw7x/launch_of_michigantechcoursescom/">received a very positive reception</TextLink>.</p>
 
 				<p>I launched the feature-rich v2 seven months later, again to a <TextLink href="https://www.reddit.com/r/MTU/comments/qa2die/v2_launch_of_michigantechcoursescom/">very positive reception</TextLink>.</p>
-
-				<p>This is my biggest open-source project to date with well over 13k lines of code. I really enjoyed watching it slowly grow to match my original vision and I&#39;m super happy with how it turned out.</p>
 			</div>
 
 			<Header size="h2">Design</Header>
@@ -97,13 +95,13 @@ const CoursesPage = () => {
 					type: 'video/mp4',
 				}}/>
 
-			<p style={{marginTop: '2rem'}}>Since this is a mostly STEM school, a not-insignificant portion of the student body uses ultrawide monitors. Owning one myself—and wanting to improve the overall workflow if extra screen space was available—I added a 2-column layout that&#39;s activated when the browser window is wide enough:</p>
+			<p style={{marginTop: '2rem'}}>Since this is a mostly STEM school, many students have wide and/or 4k monitors. I wanted to improve the workflow if extra screen space was available, so there&apos;s a 2-column layout that&#39;s activated when the browser window is wide enough:</p>
 
 			<div style={{gridColumn: '1/4'}}>
 				<Image src={UltrawideDemoImg} placeholder="blur" alt="demo on an ultrawide monitor" style={{maxWidth: '100%', height: 'auto'}}/>
 			</div>
 
-			<p>This works far better than having to hide parts of the interface behind a modal or drawer, as is sadly the case with smaller screens. Because ultrawide users often keep their browser window to half the width of their screen or less in day-to-day use, I also added a tip instructing users to resize their browser that appears if this 2-column layout is supported.</p>
+			<p>Because many users often don&apos;t keep their browser window fully expanded in day-to-day use, I also added a tip instructing users to resize their browser that appears if this 2-column layout is supported.</p>
 
 			<Header size="h2">Features</Header>
 
@@ -140,9 +138,7 @@ const CoursesPage = () => {
 			<Header size="h2">Results</Header>
 
 			<div className={commonStyles.textSection}>
-				<p>Over 4k unique people have visited the app as of December 2021. Users have caught <TextLink href="https://github.com/Michigan-Tech-Courses/frontend/issues/37">one</TextLink> or <TextLink href="https://github.com/Michigan-Tech-Courses/scraper/issues/10">two</TextLink> bugs that slipped through testing, all of which were promptly fixed.</p>
-
-				<p>I learned a ton during the development process. In particular, I ended up extensively using <TextLink href="https://mobx.js.org/README.html">MobX</TextLink> and Kubernetes, two major technologies that I had previously never touched. MobX handles all state management in the app, from loading data to handling basket states. And the backend (along with a few supporting services) is deployed automatically upon every push to <code>main</code> using GitHub Actions + Kubernetes. </p>
+				<p>As of November 2024 (3 years later), according to analytics around 80-90% of the student body actively uses Michigan Tech Courses.</p>
 
 				<Footer/>
 			</div>

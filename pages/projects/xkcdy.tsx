@@ -16,7 +16,7 @@ export default function XKCDY() {
 			<NextSeo title="XKCDY | Max Isom"/>
 
 			<div className={commonStyles.largerContainer}>
-				<div className={commonStyles.textSection}>
+				<div className={commonStyles.textSection} style={{overflow: 'auto'}}>
 					<Header size="h1">XKCDY</Header>
 
 					<Links year="2020" website="https://xkcdy.com" apple="https://apps.apple.com/us/app/xkcdy/id1520259318" github="https://github.com/XKCDY/app"/>

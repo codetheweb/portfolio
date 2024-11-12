@@ -72,16 +72,14 @@ export default function Home({posts}: HomePageProps) {
 
 			<h2 className={styles.marginForSectionTop}>want to talk?</h2>
 
-			<p>
-				<ul>
-					<li>
-						<TextLink href="mailto:hi@maxisom.me">hi@maxisom.me</TextLink>
-					</li>
-					<li>
-						<TextLink href="/resume.pdf">résumé</TextLink>
-					</li>
-				</ul>
-			</p>
+			<ul>
+				<li>
+					<TextLink href="mailto:hi@maxisom.me">hi@maxisom.me</TextLink>
+				</li>
+				<li>
+					<TextLink href="/resume.pdf">résumé</TextLink>
+				</li>
+			</ul>
 		</div>
 	);
 }
