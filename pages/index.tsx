@@ -32,7 +32,7 @@ export default function Home({posts}: HomePageProps) {
 
 			<div>
 				<p>
-					I&apos;m currently at <TextLink href="https://www.trychroma.com/">Chroma</TextLink>.
+					I&apos;m currently building a retrieval system for AI at <TextLink href="https://www.trychroma.com/">Chroma</TextLink>.
 				</p>
 				<p>
 					Previously, I was at <TextLink href="https://www.getseam.com/">Seam</TextLink> building an API to the physical world.
