@@ -1,4 +1,4 @@
-import React, {useMemo, useRef, useState} from 'react';
+import React, {useEffect, useMemo, useRef, useState} from 'react';
 import Image, {ImageProps} from 'next/image';
 import Link from 'next/link';
 import {ChevronRight} from 'react-feather';
@@ -18,7 +18,10 @@ type ImageOptions = ExtendedImageProps & {
 export type ProjectTileProps = {
 	slug: string;
 	image?: ImageOptions;
-	video?: string;
+	video?: string | {
+		light: string;
+		dark: string;
+	};
 	isVideoShadowed?: boolean;
 	isImageAlignedWithBottom?: boolean;
 	name: string;
@@ -31,8 +34,12 @@ export type ProjectTileProps = {
 export default function ProjectTile({image, video, isVideoShadowed: shouldVideoHaveShadow = false, isImageAlignedWithBottom: alignImageWithBottom = false, name, year, description, technologies, isVideoRounded: roundedVideo = false, slug}: ProjectTileProps) {
 	const videoRef = useRef<HTMLVideoElement>(null);
 	const [videoIsPlaying, setVideoIsPlaying] = useState(false);
-
+	const [isClient, setIsClient] = useState(false);
 	const {colorMode} = useColorMode();
+
+	useEffect(() => {
+		setIsClient(true);
+	}, []);
 
 	const playVideoPreview = async () => {
 		if (videoRef.current) {
@@ -65,8 +72,18 @@ export default function ProjectTile({image, video, isVideoShadowed: shouldVideoH
 		return image;
 	}, [colorMode, image]);
 
-	return (
-		<Link href={slug} className={styles.container} onMouseEnter={playVideoPreview} onMouseLeave={resetVideoPreview}>
+	const videoSrc = useMemo(() => {
+		if (video && colorMode) {
+			if (typeof video === 'string') {
+				return video;
+			}
+
+			return video[colorMode];
+		}
+	}, [colorMode, video]);
+
+	const inner = (
+		<>
 			<div className={styles.imageContainer} style={{paddingBottom: alignImageWithBottom ? 0 : '1rem'}}>
 
 				{
@@ -90,7 +107,7 @@ export default function ProjectTile({image, video, isVideoShadowed: shouldVideoH
 					)
 				}
 
-				{video && <div className={`${styles.videoContainer} ${roundedVideo ? styles.roundedVideo : ''} ${shouldVideoHaveShadow ? styles.withShadow : ''}`} style={{opacity: videoIsPlaying || !imageToUse ? 1 : 0}}><video ref={videoRef} muted loop playsInline src={`${video}#t=0.001`} preload="auto"/></div>}
+				{isClient && videoSrc && <div className={`${styles.videoContainer} ${roundedVideo ? styles.roundedVideo : ''} ${shouldVideoHaveShadow ? styles.withShadow : ''}`} style={{opacity: videoIsPlaying || !imageToUse ? 1 : 0}}><video ref={videoRef} muted loop playsInline src={`${videoSrc}#t=0.001`} preload="auto"/></div>}
 			</div>
 
 			<div className={styles.details}>
@@ -110,6 +127,20 @@ export default function ProjectTile({image, video, isVideoShadowed: shouldVideoH
 					}
 				</div>
 			</div>
+		</>
+	);
+
+	if (slug.startsWith('http')) {
+		return (
+			<a href={slug} target="_blank" className={styles.container} rel="noreferrer" onMouseEnter={playVideoPreview} onMouseLeave={resetVideoPreview}>
+				{inner}
+			</a>
+		);
+	}
+
+	return (
+		<Link href={slug} className={styles.container} onMouseEnter={playVideoPreview} onMouseLeave={resetVideoPreview}>
+			{inner}
 		</Link>
 	);
 }

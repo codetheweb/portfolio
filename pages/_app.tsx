@@ -9,7 +9,7 @@ import '../styles/globals.scss';
 import styles from './styles/app.module.scss';
 
 const MyApp = ({Component, pageProps}: AppProps) => (
-	<FirstLoadProvider>
+	<>
 		<Head>
 			<title>Max Isom</title>
 			<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover"/>
@@ -28,11 +28,13 @@ const MyApp = ({Component, pageProps}: AppProps) => (
 		<ThemeProvider>
 			<Wave/>
 
-			<div className={styles.wrapper}>
-				<Component {...pageProps}/>
-			</div>
+			<FirstLoadProvider>
+				<div className={styles.wrapper}>
+					<Component {...pageProps}/>
+				</div>
+			</FirstLoadProvider>
 		</ThemeProvider>
-	</FirstLoadProvider>
+	</>
 );
 
 export default MyApp;

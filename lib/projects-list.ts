@@ -10,6 +10,19 @@ import {ProjectTileProps} from '../components/project-tile';
 
 export const PROJECTS_LIST: readonly ProjectTileProps[] = [
 	{
+		name: 'epub-tools',
+		year: '2025',
+		description: 'A small collection of tools for working with ePub files.',
+		technologies: ['Rust'],
+		slug: 'https://github.com/codetheweb/epub-tools',
+		video: {
+			light: '/videos/epub-tools/promo-light.mov',
+			dark: '/videos/epub-tools/promo-dark.mov',
+		},
+		isVideoRounded: true,
+		isVideoShadowed: true,
+	},
+	{
 		name: 'MTU Courses',
 		year: '2021',
 		description: 'Find courses. Plan your semester.',
