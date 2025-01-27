@@ -1,4 +1,4 @@
-import React, {useEffect, useMemo, useRef, useState} from 'react';
+import React, {useMemo, useRef, useState} from 'react';
 import Image, {ImageProps} from 'next/image';
 import Link from 'next/link';
 import {ChevronRight} from 'react-feather';
@@ -34,12 +34,7 @@ export type ProjectTileProps = {
 export default function ProjectTile({image, video, isVideoShadowed: shouldVideoHaveShadow = false, isImageAlignedWithBottom: alignImageWithBottom = false, name, year, description, technologies, isVideoRounded: roundedVideo = false, slug}: ProjectTileProps) {
 	const videoRef = useRef<HTMLVideoElement>(null);
 	const [videoIsPlaying, setVideoIsPlaying] = useState(false);
-	const [isClient, setIsClient] = useState(false);
 	const {colorMode} = useColorMode();
-
-	useEffect(() => {
-		setIsClient(true);
-	}, []);
 
 	const playVideoPreview = async () => {
 		if (videoRef.current) {
@@ -107,7 +102,9 @@ export default function ProjectTile({image, video, isVideoShadowed: shouldVideoH
 					)
 				}
 
-				{isClient && videoSrc && <div className={`${styles.videoContainer} ${roundedVideo ? styles.roundedVideo : ''} ${shouldVideoHaveShadow ? styles.withShadow : ''}`} style={{opacity: videoIsPlaying || !imageToUse ? 1 : 0}}><video ref={videoRef} muted loop playsInline src={`${videoSrc}#t=0.001`} preload="auto"/></div>}
+				<NoSsr>
+					{videoSrc && <div className={`${styles.videoContainer} ${roundedVideo ? styles.roundedVideo : ''} ${shouldVideoHaveShadow ? styles.withShadow : ''}`} style={{opacity: videoIsPlaying || !imageToUse ? 1 : 0}}><video ref={videoRef} muted loop playsInline src={`${videoSrc}#t=0.001`} preload="auto"/></div>}
+				</NoSsr>
 			</div>
 
 			<div className={styles.details}>

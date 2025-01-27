@@ -70,7 +70,8 @@
       "import/no-absolute-path": "off",
       "@typescript-eslint/naming-convention": "off",
       "react/no-unused-prop-types": "off",
-      "node/prefer-global/process": "off"
+      "node/prefer-global/process": "off",
+      "react/no-unescaped-entities": "off"
     },
     "ignore": [
       "public/noflash.js",

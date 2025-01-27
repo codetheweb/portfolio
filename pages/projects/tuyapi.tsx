@@ -14,7 +14,7 @@ export default function LinkHere() {
 			<div className={commonStyles.textSection}>
 				<Header size="h1">TuyAPI</Header>
 
-				<Links year="2017 → present" github="https://github.com/TuyaAPI" website="https://github.com/codetheweb/tuyapi"/>
+				<Links year="2017 → 2022" github="https://github.com/TuyaAPI" website="https://github.com/codetheweb/tuyapi"/>
 
 				<p>
 					TuyAPI was my first major, published entry into the world of open source. It&apos;s a collection of packages that enable the control of thousands of cheap IoT devices. Smart plugs, robot vaccums, and washing machines - TuyAPI can control them all. Although other scripts exist that allow you to flash custom firmware on Tuya devices, TuyAPI implements a reverse-engineered version of the manufacturer&apos;s protocol.

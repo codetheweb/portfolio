@@ -6,6 +6,7 @@ import linkhereLightImg from '/public/images/linkhere/promo-light.png';
 import linkhereDarkImg from '/public/images/linkhere/promo-dark.png';
 import museLogoImg from '/public/images/muse/logo.png';
 import tuyapiLogoImg from '/public/images/tuyapi/logo.png';
+import ignitePromoImg from '/public/images/ignite/promo.jpg';
 import {ProjectTileProps} from '../components/project-tile';
 
 export const PROJECTS_LIST: readonly ProjectTileProps[] = [
@@ -21,6 +22,20 @@ export const PROJECTS_LIST: readonly ProjectTileProps[] = [
 		},
 		isVideoRounded: true,
 		isVideoShadowed: true,
+	},
+	{
+		name: 'Ignite',
+		year: '2024 → present',
+		description: 'A fast converter for Kindle ebooks (.azw3).',
+		technologies: ['Rust', 'Binary parsing'],
+		slug: '/projects/ignite',
+		image: {
+			src: ignitePromoImg,
+			alt: 'Photo of an Ignite-created ebook on a Kindle Paperwhite',
+			hasPriority: true,
+
+		},
+		isImageAlignedWithBottom: true,
 	},
 	{
 		name: 'MTU Courses',
@@ -44,7 +59,6 @@ export const PROJECTS_LIST: readonly ProjectTileProps[] = [
 		image: {
 			src: aoedeLogoImg,
 			alt: 'Aoede logo',
-			hasPriority: true,
 		},
 		name: 'Aoede',
 		year: '2021',
@@ -109,7 +123,7 @@ export const PROJECTS_LIST: readonly ProjectTileProps[] = [
 			alt: 'TuyAPI logo',
 		},
 		name: 'TuyAPI',
-		year: '2017 → present',
+		year: '2017 → 2022',
 		description: 'A collection of projects that enable local control of thousands of low-cost IoT devices.',
 		technologies: ['Typescript', 'JavaScript'],
 		slug: '/projects/tuyapi',
