@@ -71,7 +71,8 @@
       "@typescript-eslint/naming-convention": "off",
       "react/no-unused-prop-types": "off",
       "node/prefer-global/process": "off",
-      "react/no-unescaped-entities": "off"
+      "react/no-unescaped-entities": "off",
+      "react/jsx-no-target-blank": "off"
     },
     "ignore": [
       "public/noflash.js",

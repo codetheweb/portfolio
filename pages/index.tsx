@@ -77,7 +77,7 @@ export default function Home({posts}: HomePageProps) {
 					<TextLink href="mailto:hi@maxisom.me">hi@maxisom.me</TextLink>
 				</li>
 				<li>
-					<TextLink href="/resume.pdf">résumé</TextLink>
+					<TextLink href="/resume.pdf" eventName="resume-view">résumé</TextLink>
 				</li>
 			</ul>
 		</div>
