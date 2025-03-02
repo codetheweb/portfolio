@@ -43,10 +43,16 @@ const options: IParticlesProps['options'] = {
 	fullScreen: false,
 };
 
-const Stars = React.memo(() => <Particles className={styles.particles} options={options}/>);
+const Stars = React.memo(({onLoad}: {onLoad: () => void}) => (
+	<Particles
+		className={styles.particles} options={options} particlesLoaded={async () => {
+			onLoad();
+		}}/>
+));
 
 const Wave = () => {
 	const [init, setInit] = useState(false);
+	const [areStarsReady, setAreStarsReady] = useState(false);
 	const {colorMode, toggleColorMode} = useColorMode();
 
 	const previousValue = usePrevious(colorMode);
@@ -72,8 +78,10 @@ const Wave = () => {
 			</svg>
 
 			<NoSsr>
-				<div className={`${styles.particlesContainer} ${(isDark) ? styles.active : ''}`}>
-					{init && <Stars/>}
+				<div className={`${styles.particlesContainer} ${(isDark && areStarsReady) ? styles.active : ''}`}>
+					{init && <Stars onLoad={() => {
+						setAreStarsReady(true);
+					}}/>}
 				</div>
 			</NoSsr>
 
