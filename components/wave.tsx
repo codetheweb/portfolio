@@ -1,36 +1,41 @@
-import React, {useCallback} from 'react';
-import {Particles, ParticlesProps} from 'react-particles';
-import type {Engine} from 'tsparticles-engine';
-import {loadSlim} from 'tsparticles-slim';
+import React, {useEffect, useState} from 'react';
+import {initParticlesEngine, IParticlesProps, Particles} from '@tsparticles/react';
+import {loadSlim} from '@tsparticles/slim';
 import usePrevious from 'react-use/lib/usePrevious';
 import useColorMode from '../lib/use-color-mode';
 import styles from './styles/wave.module.scss';
 import NoSsr from './no-ssr';
 
-const particlesConfig: ParticlesProps['params'] = {
+const options: IParticlesProps['options'] = {
 	particles: {
 		number: {
 			value: 100,
 			density: {
 				enable: true,
-				value_area: 800,
+				width: 800,
+				height: 800,
 			},
 		},
-		line_linked: {
-			enable: false,
-		},
-		move: {
-			direction: 'right',
-			speed: 0.05,
-		},
 		size: {
-			value: 2,
+			value: {
+				min: 1,
+				max: 3,
+			},
 		},
 		opacity: {
-			anim: {
+			value: {
+				min: 0,
+				max: 1,
+			},
+			animation: {
 				enable: true,
-				speed: 0.7,
-				opacity_min: 0.05,
+				speed: {
+					min: 0.05,
+					max: 0.2,
+				},
+				sync: true,
+				startValue: 'random',
+				mode: 'random',
 			},
 		},
 	},
@@ -38,24 +43,22 @@ const particlesConfig: ParticlesProps['params'] = {
 	fullScreen: false,
 };
 
-export default function Wave() {
+const Stars = React.memo(() => <Particles className={styles.particles} options={options}/>);
+
+const Wave = () => {
+	const [init, setInit] = useState(false);
 	const {colorMode, toggleColorMode} = useColorMode();
 
 	const previousValue = usePrevious(colorMode);
 	const wasChanged = (previousValue !== undefined) && (previousValue !== colorMode);
 	const isDark = colorMode === 'dark';
 
-	const particlesInit = useCallback(async (engine: Engine) => {
-		if (typeof window === 'undefined') {
-			return;
-		}
-
-		// Unsure why this is needed, but without waiting for a tick loadSlim() fails about 30% of the time
-		await new Promise<void>(resolve => {
-			setTimeout(resolve);
+	useEffect(() => {
+		void initParticlesEngine(async engine => {
+			await loadSlim(engine);
+		}).then(() => {
+			setInit(true);
 		});
-
-		await loadSlim(engine);
 	}, []);
 
 	return (
@@ -70,17 +73,15 @@ export default function Wave() {
 
 			<NoSsr>
 				<div className={`${styles.particlesContainer} ${(isDark) ? styles.active : ''}`}>
-					{
-						isDark && (
-							<Particles className={styles.particles} options={particlesConfig} init={particlesInit}/>
-						)
-					}
-				</div>
-
-				<div className={`${styles.themeSelector} ${isDark ? styles.isDark : styles.isLight} ${wasChanged ? styles.wasChanged : ''}`}>
-					<button type="button" className={styles.body} onClick={toggleColorMode}/>
+					{init && <Stars/>}
 				</div>
 			</NoSsr>
+
+			<div className={`${styles.themeSelector} ${isDark ? styles.isDark : styles.isLight} ${wasChanged ? styles.wasChanged : ''}`}>
+				<button type="button" className={styles.body} onClick={toggleColorMode}/>
+			</div>
 		</div>
 	);
-}
+};
+
+export default Wave;

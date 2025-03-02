@@ -6,10 +6,11 @@ import {ThemeProvider} from 'next-themes';
 import {FirstLoadProvider} from '../lib/first-load';
 import Wave from '../components/wave';
 import '../styles/globals.scss';
+import {DisableThemeTransitionOnLoad} from '../lib/disable-theme-transition-on-load';
 import styles from './styles/app.module.scss';
 
 const MyApp = ({Component, pageProps}: AppProps) => (
-	<>
+	<ThemeProvider>
 		<Head>
 			<title>Max Isom</title>
 			<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover"/>
@@ -25,16 +26,15 @@ const MyApp = ({Component, pageProps}: AppProps) => (
 		</Head>
 		<Script async src="https://um.maxisom.me/script.js" data-website-id="7adba6d9-6329-413c-b4f5-ee0b9ae93fa0"/>
 
-		<ThemeProvider>
-			<Wave/>
+		<DisableThemeTransitionOnLoad/>
+		<Wave/>
 
-			<FirstLoadProvider>
-				<div className={styles.wrapper}>
-					<Component {...pageProps}/>
-				</div>
-			</FirstLoadProvider>
-		</ThemeProvider>
-	</>
+		<FirstLoadProvider>
+			<div className={styles.wrapper}>
+				<Component {...pageProps}/>
+			</div>
+		</FirstLoadProvider>
+	</ThemeProvider>
 );
 
 export default MyApp;
