@@ -1,4 +1,4 @@
-import React, {useEffect, useState} from 'react';
+import React, {useCallback, useEffect, useState} from 'react';
 import {initParticlesEngine, IParticlesProps, Particles} from '@tsparticles/react';
 import {loadSlim} from '@tsparticles/slim';
 import usePrevious from 'react-use/lib/usePrevious';
@@ -43,11 +43,9 @@ const options: IParticlesProps['options'] = {
 	fullScreen: false,
 };
 
-const Stars = React.memo(({onLoad}: {onLoad: () => void}) => (
+const Stars = React.memo(({onLoad}: {onLoad: () => Promise<void>}) => (
 	<Particles
-		className={styles.particles} options={options} particlesLoaded={async () => {
-			onLoad();
-		}}/>
+		className={styles.particles} options={options} particlesLoaded={onLoad}/>
 ));
 
 const Wave = () => {
@@ -67,6 +65,10 @@ const Wave = () => {
 		});
 	}, []);
 
+	const handleLoad = useCallback(async () => {
+		setAreStarsReady(true);
+	}, []);
+
 	return (
 		<div className={styles.container}>
 			<svg height="0" width="0">
@@ -79,9 +81,7 @@ const Wave = () => {
 
 			<NoSsr>
 				<div className={`${styles.particlesContainer} ${(isDark && areStarsReady) ? styles.active : ''}`}>
-					{init && <Stars onLoad={() => {
-						setAreStarsReady(true);
-					}}/>}
+					{init && <Stars onLoad={handleLoad}/>}
 				</div>
 			</NoSsr>
 
@@ -92,4 +92,4 @@ const Wave = () => {
 	);
 };
 
-export default Wave;
+export default React.memo(Wave);
