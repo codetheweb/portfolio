@@ -50,7 +50,7 @@ const CoursesPage = () => {
 						preload="metadata"
 						className={styles.heroVideo}
 					>
-						<source src="/videos/courses/hero/hero.mov" type="video/quicktime"/>
+						<source src="/videos/courses/hero/hero.mov" type="video/mp4;codecs=hvc1"/>
 						<source src="/videos/courses/hero/hero.webm" type="video/webm"/>
 					</video>
 				</div>
