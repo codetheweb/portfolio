@@ -33,10 +33,29 @@
       color: variables.$white;
     }
   }
+
+  &.bounce {
+    animation: bounce 0.25s ease-in-out 4 alternate;
+  }
 }
 
 html[data-theme='dark'] {
   .homeButtonIcon {
     color: variables.$white;
+  }
+}
+
+@keyframes bounce {
+  0% {
+    padding-right: 0.8rem;
+    padding-bottom: 0.8rem;
+    width: 6rem;
+    height: 6rem;
+  }
+  100% {
+    padding-right: 1.2rem;
+    padding-bottom: 1.2rem;
+    width: 7rem;
+    height: 7rem;
   }
 }
