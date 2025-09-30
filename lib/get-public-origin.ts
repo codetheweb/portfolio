@@ -1,13 +1,8 @@
 export const getPublicOrigin = (): string => {
-	const hostAndPort = process.env.NEXT_PUBLIC_VERCEL_URL ?? process.env.VERCEL_URL;
-
-	if (!hostAndPort) {
-		throw new Error('VERCEL_URL is not defined');
+	// Use hardcoded domain for production
+	if (process.env.NODE_ENV === 'development') {
+		return 'http://localhost:3000';
 	}
 
-	if (hostAndPort.includes('localhost')) {
-		return `http://${hostAndPort}`;
-	}
-
-	return `https://${hostAndPort}`;
+	return 'https://maxisom.me';
 };

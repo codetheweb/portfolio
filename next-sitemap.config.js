@@ -1,4 +1,4 @@
 module.exports = {
-	siteUrl: process.env.SITE_URL || 'https://maxisom.me',
+	siteUrl: 'https://maxisom.me',
 	generateRobotsTxt: true,
 };
