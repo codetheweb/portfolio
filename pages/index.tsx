@@ -24,6 +24,10 @@ export default function Home({posts}: HomePageProps) {
 
 	return (
 		<div className={styles.container}>
+			<div className={styles.warningBanner}>
+				Someone is attempting to impersonate me. My verified profiles and public key can be found <TextLink href="https://keyoxide.org/DB42D3EFBEC9504C474BCBB31CD468DBEE04D151">here</TextLink>. If you are using a communication channel outside of the ones verified with my public key, <strong>always</strong> request a video call and/or that I sign something using my key. I will be happy to oblige.
+			</div>
+
 			<Title label="hi, I'm Max."/>
 
 			<div style={{marginTop: '1rem'}}>

@@ -1,5 +1,16 @@
 @use '../../styles/variables';
 
+.warningBanner {
+  background-color: variables.$yellow;
+  color: variables.$black;
+  padding: 1rem 1.5rem;
+  border-radius: variables.$radius;
+  margin-bottom: 2rem;
+  max-width: 40rem;
+  font-size: 0.9rem;
+  line-height: 1.5;
+}
+
 .container {
   width: min-content;
   margin-left: auto;
