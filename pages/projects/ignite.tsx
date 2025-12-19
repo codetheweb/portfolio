@@ -6,7 +6,7 @@ import EmbeddedImg from '../../components/embedded-img';
 import Footer from '../../components/projects/footer';
 import TextLink from '../../components/text-link';
 import commonStyles from './styles/common.module.scss';
-import demoJpg from '/public/images/ignite/demo.jpg';
+import demoJpg from '../../public/images/ignite/demo.jpg';
 
 export default function Ignite() {
 	return (

@@ -1,7 +1,7 @@
 import React from 'react';
 import Image from 'next/image';
 import styles from './styles/iphone-framed-video.module.scss';
-import frameImg from '/public/images/iphone-frame.png';
+import frameImg from '../public/images/iphone-frame.png';
 
 export default function PhoneFramedVideo({src, alt}: {src: string; alt: string}) {
 	return (

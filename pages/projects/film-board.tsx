@@ -6,11 +6,11 @@ import TextLink from '../../components/text-link';
 import EmbeddedImg from '../../components/embedded-img';
 import Footer from '../../components/projects/footer';
 import commonStyles from './styles/common.module.scss';
-import showtimesImg from '/public/images/filmboard/showtimes.png';
-import moviesImg from '/public/images/filmboard/movies.png';
-import mockupImg from '/public/images/filmboard/mockup.png';
-import editMovieImg from '/public/images/filmboard/edit-movie.png';
-import editPageImg from '/public/images/filmboard/edit-page.png';
+import showtimesImg from '../../public/images/filmboard/showtimes.png';
+import moviesImg from '../../public/images/filmboard/movies.png';
+import mockupImg from '../../public/images/filmboard/mockup.png';
+import editMovieImg from '../../public/images/filmboard/edit-movie.png';
+import editPageImg from '../../public/images/filmboard/edit-page.png';
 
 export default function LinkHere() {
 	return (
