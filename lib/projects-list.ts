@@ -1,12 +1,12 @@
-import courseHeroLightImg from '/public/images/courses/promo-light.png';
-import courseHeroDarkImg from '/public/images/courses/promo-dark.png';
-import aoedeLogoImg from '/public/images/aoede/logo.png';
-import xkcdyHeroImg from '/public/images/xkcdy/hero.png';
-import linkhereLightImg from '/public/images/linkhere/promo-light.png';
-import linkhereDarkImg from '/public/images/linkhere/promo-dark.png';
-import museLogoImg from '/public/images/muse/logo.png';
-import tuyapiLogoImg from '/public/images/tuyapi/logo.png';
-import ignitePromoImg from '/public/images/ignite/promo.jpg';
+import courseHeroLightImg from '../public/images/courses/promo-light.png';
+import courseHeroDarkImg from '../public/images/courses/promo-dark.png';
+import aoedeLogoImg from '../public/images/aoede/logo.png';
+import xkcdyHeroImg from '../public/images/xkcdy/hero.png';
+import linkhereLightImg from '../public/images/linkhere/promo-light.png';
+import linkhereDarkImg from '../public/images/linkhere/promo-dark.png';
+import museLogoImg from '../public/images/muse/logo.png';
+import tuyapiLogoImg from '../public/images/tuyapi/logo.png';
+import ignitePromoImg from '../public/images/ignite/promo.jpg';
 import {ProjectTileProps} from '../components/project-tile';
 
 export const PROJECTS_LIST: readonly ProjectTileProps[] = [

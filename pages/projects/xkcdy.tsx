@@ -7,8 +7,8 @@ import EmbeddedImg from '../../components/embedded-img';
 import Footer from '../../components/projects/footer';
 import PhoneFramedVideo from '../../components/iphone-framed-video';
 import commonStyles from './styles/common.module.scss';
-import homeImg from '/public/images/xkcdy/home.png';
-import ipadImg from '/public/images/xkcdy/ipad.png';
+import homeImg from '../../public/images/xkcdy/home.png';
+import ipadImg from '../../public/images/xkcdy/ipad.png';
 
 export default function XKCDY() {
 	return (

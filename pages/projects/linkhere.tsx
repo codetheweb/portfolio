@@ -5,7 +5,7 @@ import Links from '../../components/projects/links';
 import EmbeddedImg from '../../components/embedded-img';
 import Footer from '../../components/projects/footer';
 import commonStyles from './styles/common.module.scss';
-import demoGif from '/public/images/linkhere/demo.gif';
+import demoGif from '../../public/images/linkhere/demo.gif';
 
 export default function LinkHere() {
 	return (
