@@ -36,13 +36,22 @@ export default function Home({posts}: HomePageProps) {
 
 			<div>
 				<p>
-					I&apos;m currently building a retrieval system for AI at <TextLink href="https://www.trychroma.com/">Chroma</TextLink>.
+					I&apos;m currently working on filesystems at <TextLink href="https://archil.com/">Archil</TextLink> in San Francisco (we're hiring!).
 				</p>
 				<p>
-					Previously, I was at <TextLink href="https://www.getseam.com/">Seam</TextLink> building an API to the physical world.
+					Previously I was at:
+
+					<ul>
+						<li>
+							<TextLink href="https://www.trychroma.com/">Chroma</TextLink>
+						</li>
+						<li>
+							<TextLink href="https://www.getseam.com/">Seam</TextLink>
+						</li>
+					</ul>
 				</p>
 
-				<h2 className={styles.marginForSectionTop}>here&apos;s one thing I wrote...</h2>
+				<h2 className={styles.marginForSectionTop}>one thing I wrote...</h2>
 
 				<ul className={styles.blogPostList}>
 					{posts.map(post => (
